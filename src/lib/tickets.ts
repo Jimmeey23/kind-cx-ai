@@ -79,7 +79,7 @@ export function statusClass(s: Status): string {
 }
 
 export async function loadTickets(): Promise<Ticket[]> {
-  const res = await fetch("/data/tickets.json", { cache: "no-store" });
+  const res = await fetch("/api/tickets", { cache: "no-store" });
   const raw = (await res.json()) as Ticket[];
   return raw.filter((t) => !t._error && t.ticket_id);
 }
