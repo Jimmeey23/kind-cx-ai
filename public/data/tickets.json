@@ -1,0 +1,3735 @@
+[
+  {
+    "internal_risk_flags": [
+      "Operational Impact (Scheduling)"
+    ],
+    "sentiment": {
+      "risk_indicators": "Internal operational friction; potential for staffing errors if shifts aren't logged correctly.",
+      "emotional_tone": "Professional and appreciative",
+      "frustration_level": "Low",
+      "churn_likelihood": "Low"
+    },
+    "current_status": "resolved",
+    "ticket_id": "TKT-7FA6C471",
+    "recommended_actions": [
+      "Audit Zoho shift configurations for other regions to ensure consistency.",
+      "Verify if the Sunday shift visibility was a permission-level error or a schedule template error."
+    ],
+    "last_response_date": "2026-04-20",
+    "key_customer_statements": [
+      "Saturday Closing (BLR) shift is missing \u2013 9:30 AM to 6:30 PM",
+      "The Sunday shift option is currently visible only for Sashi and not for the rest of the CSTs",
+      "It\u2019s working now. Thank you so much!"
+    ],
+    "unknowns": "The specific screenshots mentioned were not provided in the text; the exact reason why only 'Sashi' had visibility is not detailed.",
+    "complaint_category": "Internal Systems / Zoho Configuration",
+    "date_opened": "2026-04-18",
+    "sla_classification": "Internal Service Request (P3)",
+    "customer_email": "shifa@physique57bengaluru.com",
+    "suggested_reply": "N/A (Issue is resolved and confirmed by customer)",
+    "customer_name": "Shifa Ali",
+    "ownership": "Jimmeey Gondaa",
+    "priority": "Medium",
+    "sla_aging": "20 days since resolution; ticket remains closed.",
+    "root_cause": "Misconfiguration in Zoho shift settings and user permissions for the Bengaluru region.",
+    "issue_summary": "Shifa Ali (Regional Ops Head - South) reported two issues in the Zoho shift scheduling system: 1) The Saturday Closing shift for Bengaluru (9:30 AM - 6:30 PM) was missing. 2) The Sunday shift option was restricted to only one staff member (Sashi) and unavailable for other Client Service Teams (CSTs).",
+    "response_strategy": "Direct technical fix by Jimmeey Gondaa followed by customer verification.",
+    "_thread_id": "19d9f17a7fa6c471"
+  },
+  {
+    "sla_aging": "41 days since last update (as of 2026-05-08)",
+    "suggested_reply": "(This is an internal thread; no reply drafted for Mallika yet. Strategy involves a formal management-led intervention regarding studio etiquette.)",
+    "complaint_category": "Client Conduct & Community Safety",
+    "key_customer_statements": [
+      "He should not have left his daughter alone and should plan his class schedule more responsibly.",
+      "Swetha should not do the class since she was returning to Powercycle after a long break."
+    ],
+    "customer_email": "mallikamhatre1980@gmail.com",
+    "sentiment": {
+      "churn_likelihood": "Medium",
+      "emotional_tone": "Confrontational and judgmental (Customer); Concerned/Professional (Staff)",
+      "frustration_level": "High",
+      "risk_indicators": "The client is creating a negative atmosphere that could lead to the churn of multiple other clients (Musaed and Swetha)."
+    },
+    "response_strategy": "Internal resolution first. The management is currently consolidating multiple reports of similar behavior before confronting the client to address her breach of community etiquette and interference with fitness instruction.",
+    "unknowns": "Specific details of 'similar instances' mentioned by Jimmeey; whether Musaed or Swetha have filed formal complaints themselves.",
+    "last_response_date": "2026-03-30",
+    "current_status": "awaiting_internal_action",
+    "ticket_id": "TKT-2E992996",
+    "priority": "High",
+    "issue_summary": "Internal report regarding disruptive and intrusive behavior by client Mallika Mhatre during a Powercycle class on March 27th. Mallika reportedly interjected in private conversations to criticize another client's (Musaed Noorani) parenting choices and subsequently contradicted the trainer's (Bret) professional advice to a returning client (Swetha Jain), creating a hostile and awkward environment for the class.",
+    "customer_name": "Mallika Mhatre",
+    "date_opened": "2026-03-28",
+    "root_cause": "Client's intrusive personal opinions and unsolicited advice overstepping social boundaries and undermining professional trainer guidance.",
+    "ownership": "Jimmeey Gondaa (Head - Sales & Client Services)",
+    "internal_risk_flags": [
+      "Repetitive disruptive behavior",
+      "Potential client churn (bystanders)",
+      "Reputational risk (public confrontation)",
+      "Interference with trainer instructions"
+    ],
+    "recommended_actions": [
+      "Review the 'similar instances' mentioned by Jimmeey to establish a pattern of behavior.",
+      "Draft a formal warning or 'Code of Conduct' reminder for Mallika Mhatre.",
+      "Conduct a follow-up call with Musaed Noorani and Swetha Jain to ensure their satisfaction and retention.",
+      "Schedule a brief debrief with Trainer Bret to document the impact on class flow."
+    ],
+    "sla_classification": "Standard Support / Internal Conduct Investigation",
+    "_thread_id": "19d33c792e992996"
+  },
+  {
+    "sentiment": {
+      "emotional_tone": "Polite but dissatisfied with product intensity",
+      "frustration_level": "Medium",
+      "churn_likelihood": "Medium",
+      "risk_indicators": "First-time user drop-off mid-class."
+    },
+    "current_status": "awaiting_internal_action",
+    "complaint_category": "Service Suitability / Experience",
+    "suggested_reply": "(Internal Note for Vahishta): Hi Marie, hope you\u2019re having a wonderful trip! Just following up as promised\u2014we\u2019ve penciled you in for the Mat class with Reshma on Tuesday, May 12th at 11 AM. Reshma is aware of your preferences for a lower-impact session with softer music. We look forward to seeing you back at the studio!",
+    "last_response_date": "2026-04-23",
+    "sla_aging": "15 days since initial contact",
+    "root_cause": "Mismatch between client's physical preference (low-impact/stretching) and the high-intensity nature of the initial Barre class trial.",
+    "internal_risk_flags": [
+      "Potential churn after first trial",
+      "Service-to-expectations mismatch"
+    ],
+    "key_customer_statements": [
+      "Music was too loud.",
+      "Looking for a stretching-based workout rather than a strenuous one.",
+      "Background in Pilates and ballet; looking for something lower-impact with softer music.",
+      "Leaving the class was unrelated to the trainer; please convey apologies to Simonelle."
+    ],
+    "customer_email": "unknown (assigned to Vahishta)",
+    "ticket_id": "TKT-6F9550D5",
+    "customer_name": "Marie Bulchandani",
+    "sla_classification": "Standard Client Follow-up",
+    "issue_summary": "First-time trial client Marie Bulchandani left a 9:00 PM Barre class mid-session due to the high intensity and loud music. She is a Pilates/ballet practitioner looking for low-impact, stretching-focused workouts. Staff have successfully navigated the initial friction and suggested 'Recovery' or 'Mat' classes as alternatives.",
+    "unknowns": "Customer's direct email address is not in the thread. Travel destination/contactability during her trip is unconfirmed. Confirmation of whether she will be charged for the second trial is not stated.",
+    "date_opened": "2026-04-23",
+    "ownership": "Vahishta Fitter",
+    "response_strategy": "Proactive scheduling and personalization to ensure the second trial experience aligns with her physical background and sensory preferences.",
+    "recommended_actions": [
+      "Confirm booking for Reshma's Mat class on Tuesday, May 12th at 11:00 AM.",
+      "Ensure instructor Reshma is briefed on Marie's preference for lower music volume and focus on low-impact movements.",
+      "Follow up with Marie on May 11th upon her return from travel to confirm attendance."
+    ],
+    "priority": "Medium",
+    "_thread_id": "19dba68f6f9550d5"
+  },
+  {
+    "response_strategy": "Internal operational alignment and execution of the outlined retention roadmap. No external customer response required as this is an internal strategy communication between regional leadership and management.",
+    "ticket_id": "TKT-5C6CC46B",
+    "ownership": "Jimmeey (physique57india.com)",
+    "customer_email": "shifa@physique57bengaluru.com",
+    "issue_summary": "Strategic alignment on retention and renewal processes for Copper + Cloves and Kenkere House locations. Key focus areas include trainer-led outreach, incentive structures for renewals, structured check-ins at specific usage milestones, and addressing data inaccuracies in the Momence system to manage lapsed clients.",
+    "date_opened": "2026-04-22",
+    "sla_aging": "16 days since opened",
+    "internal_risk_flags": [
+      "Data integrity issues (Momence inaccuracy reported)",
+      "High cancellation rates leading to membership lapsing",
+      "Dependency on manual data sharing for lapsed visibility"
+    ],
+    "root_cause": "High cancellation rates and inaccurate software reporting (Momence) leading to missed renewal opportunities.",
+    "current_status": "awaiting_internal_action",
+    "priority": "High",
+    "complaint_category": "Retention & Operations Strategy",
+    "recommended_actions": [
+      "Formalize the 'Early Renewal Nudge' incentive policy.",
+      "Design and implement the 'Exit Feedback Form' to capture churn reasons.",
+      "Establish a manual reporting cadence for lapsed client data to bypass Momence inaccuracies.",
+      "Draft the 45-day reactivation outreach templates for Yellow Messenger (YM)."
+    ],
+    "sentiment": {
+      "churn_likelihood": "Medium",
+      "frustration_level": "Low",
+      "emotional_tone": "Professional, strategic, and proactive.",
+      "risk_indicators": "Software performance issues (Momence) hindering accurate data tracking; high churn risk despite high utilization."
+    },
+    "sla_classification": "Operational Strategy / Internal Support",
+    "unknowns": "The specific identities/roles of 'Pushyank' and 'Sarah' (assumed internal team leads); the exact metrics/definitions of 'high cancellation rates' referred to; the specific reasons why Momence is failing to provide accurate data.",
+    "customer_name": "Shifa Ali",
+    "last_response_date": "2026-04-22",
+    "key_customer_statements": [
+      "The utilisation of the membership is high but clients are not renewing.",
+      "There\u2019s a clear link between high cancellation rates and lapsing.",
+      "Regularly sharing lapsed client data... since Momence does not give accurate data."
+    ],
+    "suggested_reply": "Hi Shifa, Thank you for distilling these notes. The multi-pronged approach for Kenkere House, specifically the 7-day advance renewal journey and the link between cancellation behavior and lapsing, is well-noted. I will review the incentive structures with Sarah and Pushyank to ensure we have the Reactivation Strategy (15% incentive) ready for the next 45-day cycle. Regarding the Momence data issues, let's set a weekly cadence for the manual data share to ensure no lapsed clients are missed.",
+    "_thread_id": "19db511a5c6cc46b"
+  },
+  {
+    "ownership": "Jimmeey (Operations/Management)",
+    "priority": "High",
+    "recommended_actions": [
+      "Evaluate the feasibility of shifting the 7:15 PM slot to 7:30 PM to retain Raashi Mehra.",
+      "Analyze attendance data for Atulan\u2019s FIT classes to consider adding more sessions or larger studio space.",
+      "Conduct a competitive analysis of Bandra evening slots to see if 8:00 PM+ classes are viable.",
+      "Diversify the 8:00 AM slot to include non-cycle formats.",
+      "Review Barre 57 availability for Fri/Sat/Sun evenings."
+    ],
+    "response_strategy": "Draft an internal proposal for schedule optimization based on the specific utilization bottlenecks identified (Atulan's classes, Saturday mornings) and client retention (Raashi Mehra). Provide a response to the Sales team to relay to customers.",
+    "suggested_reply": "(Internal Note to Shipra): Hi Shipra, thank you for synthesizing this feedback. We are escalating the request for the 7:30 PM slots to Management to prevent Raashi's churn. We are also reviewing the morning capacity issues\u2014specifically Atulan's FIT sessions\u2014to see if we can add more slots or move to a larger room. We will provide an updated schedule proposal by EOD.",
+    "sentiment": {
+      "risk_indicators": "Clear threat of discontinuation by a named high-value client; collective dissatisfaction from 15+ clients.",
+      "churn_likelihood": "High",
+      "emotional_tone": "Professional but frustrated (reported)",
+      "frustration_level": "High"
+    },
+    "unknowns": "Specific email addresses or phone numbers for the 15+ dissatisfied clients; specific membership levels of the clients requesting Strength Lab.",
+    "last_response_date": "2026-04-20",
+    "sla_classification": "Product/Service Feedback Analysis",
+    "key_customer_statements": [
+      "Raashi Mehra... may discontinue if no changes are made.",
+      "15 clients have expressed dissatisfaction with the limited class options in Bandra compared to Kemps Corner.",
+      "Atulan\u2019s FIT classes frequently reach capacity within an hour of the booking window opening."
+    ],
+    "complaint_category": "Schedule & Capacity Planning",
+    "ticket_id": "TKT-A930CF15",
+    "current_status": "awaiting_internal_action",
+    "customer_name": "Raashi Mehra & 15+ Others",
+    "customer_email": "raashimehra@example.com (Assumed) / Multiple Clients",
+    "date_opened": "2026-04-20",
+    "root_cause": "Studio schedule is currently misaligned with Bandra client demand patterns and lacks the variety/capacity found in other locations (Kemps Corner).",
+    "internal_risk_flags": [
+      "High Churn Risk (Raashi Mehra)",
+      "Revenue Loss (Waitlisted Classes)",
+      "Resource Misallocation",
+      "Geographic Service Imbalance"
+    ],
+    "sla_aging": "18 days",
+    "issue_summary": "Consolidated client feedback regarding the Bandra studio schedule. Significant dissatisfaction exists due to limited class variety compared to Kemps Corner, lack of late-evening slots (post 8:00 PM), and extreme capacity constraints in morning sessions. Specifically, Raashi Mehra has threatened to discontinue if the 7:15 PM slots (Tue/Thu/Fri) are not shifted to 7:30 PM. Morning sessions (specifically Atulan\u2019s FIT and Saturday mornings) are hitting capacity within an hour of opening, preventing last-minute bookings. there is also a lack of Barre 57 variety on weekends and no alternative formats to 'Cycle' at 8:00 AM.",
+    "_thread_id": "19daadcfa930cf15"
+  },
+  {
+    "current_status": "unresolved",
+    "sla_classification": "Sales Lead Follow-up",
+    "suggested_reply": "(Internal Note Only): Sales team must reach out to local resident leads (Aastha Bora, Mehak Jain, Khushi Turakhia, Ekta Batra, Hari Balasubramaniam) with the current May schedule and a first-timer 'drop-in' offer to converted interest into memberships.",
+    "recommended_actions": [
+      "Immediate WhatsApp follow-up with Purvi Kutty as requested.",
+      "Send the Kemps Corner schedule and 'Courtside' details to Ekta Batra.",
+      "Create a 'Drop-in' package marketing blast for the April 25th attendees who specifically requested flexible access.",
+      "Analyze Navi Mumbai/Powai lead density for potential satellite pop-up classes or digital product upsell."
+    ],
+    "sla_aging": "34 days from initial entry, 13 days from last internal update.",
+    "issue_summary": "Internal feedback trail covering three hosted classes at the Kemps Corner studio (April 4, 12, and 25). The threads capture lead information for 33 attendees. Significant friction identified regarding studio location (Navi Mumbai, Powai, and Andheri leads) and a strong preference for drop-in sessions rather than long-term packages. Multiple leads (8+) requested specific follow-up via WhatsApp or schedule sharing that remains unconfirmed.",
+    "customer_name": "Reyna Jagtiani (Primary Lead / Host Representative)",
+    "unknowns": "It is unclear if the 'details' requested by attendees (Aastha, Mahafrin, Khushi, etc.) were already shared via phone/WhatsApp post-class or if they are still pending. Actual conversion status of the leads mentioned is unknown.",
+    "internal_risk_flags": [
+      "High lead leakage risk due to delayed follow-up (34 days old)",
+      "Geographic friction: 14+ attendees cited studio location as unsuitable",
+      "High demand for drop-in flexibility vs standard bundles"
+    ],
+    "ticket_id": "TKT-120A769E",
+    "last_response_date": "2026-04-25",
+    "response_strategy": "Distinguish between 'Experience-only' leads (Navi Mumbai/Powai) and 'High-intent' local leads (Kemps/Colaba/Parel). Prioritize local follow-ups for conversions.",
+    "customer_email": "jagtianireyna@gmail.com",
+    "sentiment": {
+      "risk_indicators": "Leads may go cold due to the 13-34 day delay since the event dates.",
+      "churn_likelihood": "Low",
+      "frustration_level": "Low",
+      "emotional_tone": "Positive/Inquisitive (Attendees enjoyed classes but expressed logistical concerns)"
+    },
+    "priority": "Medium",
+    "root_cause": "Ongoing data collection from hosted community events; transition from event experience to sales conversion.",
+    "key_customer_statements": [
+      "The studio is far away (Harsheen Bijan, Andheri)",
+      "Share details on WhatsApp, will get back (Purvi Kutty)",
+      "Prefers drop-in classes (Dr. Ajay Phadke, Eisha Maskara, Vandana Kriplani, Riddhi Agarwal)",
+      "Requested Kemps Corner schedule and interested in Courtside (Ekta Batra)"
+    ],
+    "complaint_category": "Sales Inquiry & Lead Management",
+    "ownership": "Sales & Client Servicing Team (Vahishta/Akshay)",
+    "date_opened": "2026-04-04",
+    "_thread_id": "19d57e01120a769e"
+  },
+  {
+    "ownership": "Jimmeey Gondaa (Head - Sales & Client Services)",
+    "ticket_id": "TKT-D46CEFE9",
+    "response_strategy": "Internal escalation to management to decide on permanent ban; high-touch support for the victims (Sanjam and other disturbed clients).",
+    "issue_summary": "Multiple incidents of disruptive and abusive behavior by client Mallika Mhatre at the Bandra studio. This includes verbal harassment of client Sanjam Kini (causing her to cry), alleged off-site threats/messages, unprofessional comments to staff ('rat in the class'), unauthorized photography of the studio/staff, and general disturbance of multiple other clients (Treina Campos, Chitra Balachandran). Mallika also stated she will no longer pre-book, opting for drop-ins only.",
+    "customer_email": "mhatre.mallika@unknown.com (Estimated)",
+    "complaint_category": "Client Misconduct & Safety",
+    "recommended_actions": [
+      "Immediately suspend Mallika Mhatre's access to all studios pending internal review.",
+      "Formally document the harassment reported by Sanjam Kini and offer her full support/membership freeze if needed.",
+      "Issue a formal warning or termination of membership notice to Mallika Mhatre regarding breach of studio code of conduct.",
+      "Inform the front desk team at Bandra to deny drop-in entry for Mallika Mhatre until further notice."
+    ],
+    "current_status": "awaiting_internal_action",
+    "priority": "Critical",
+    "internal_risk_flags": [
+      "Harassment/Bullying of other clients",
+      "Potential legal/harassment threats (mention of contacting a client's CEO)",
+      "Unauthorized photography of staff and facility",
+      "Previous history of being banned from other studios (hearsay)",
+      "Safety risk to staff and members"
+    ],
+    "sla_aging": "40 days",
+    "root_cause": "Client behavioral issues and violation of studio code of conduct (harassment and unauthorized photography).",
+    "date_opened": "2026-03-29",
+    "suggested_reply": "(Internal Note to Sales/Bandra Team): Hi Imran, we are officially flagging Mallika Mhatre's profile. Please do not allow her to 'drop-in' for the 5:00 PM class or any future classes while we finalize the termination of her membership. If she arrives, the manager on duty should politely inform her that her account is under review and she cannot participate today. I will handle the direct communication with her regarding her behavior and the reports from other members.",
+    "customer_name": "Mallika Mhatre",
+    "key_customer_statements": [
+      "'There is a rat in the class'",
+      "'I feel like I am the trainer today'",
+      "'These things happen' (regarding another client crying)",
+      "Stated she would 'contact Sanjam\u2019s CEO'",
+      "'I will not pre-book any class, I will do drop-in'"
+    ],
+    "last_response_date": "2026-03-29",
+    "sentiment": {
+      "churn_likelihood": "High",
+      "frustration_level": "Severe",
+      "emotional_tone": "Hostile, dismissive, and confrontational.",
+      "risk_indicators": "Physical presence concerns, harassment of other paying members, reputational risk via 'unauthorized photography' for social sharing."
+    },
+    "sla_classification": "Safety & Security Incident",
+    "unknowns": "Mallika Mhatre's actual email address; physical evidence of the 'threats via messages' mentioned by Sanjam Kini; whether Mallika actually attended the 5 PM class on March 29.",
+    "_thread_id": "19d385dfd46cefe9"
+  },
+  {
+    "issue_summary": "Client Candida Dsilva reported negative experiences with trainer Richard following three separate classes. The client alleges that Richard provides insufficient attention to form, fails to offer necessary modifications for her known medical issues, and displays favoritism toward specific clients. Consequently, the client has opted to boycott Richard's future classes.",
+    "internal_risk_flags": [
+      "Safety Risk (Medical modifications ignored)",
+      "Bias/Partiality Allegations",
+      "Retention Risk (Class avoidance)"
+    ],
+    "priority": "High",
+    "date_opened": "2026-03-30",
+    "customer_email": "Unknown (Reported by internal staff Shipra Bhika)",
+    "ownership": "Jimmeey (Operations/Management)",
+    "sla_aging": "39 days",
+    "sentiment": {
+      "frustration_level": "High",
+      "risk_indicators": "Client is actively avoiding certain services, which is a precursor to full churn; safety/liability risk due to ignored medical modifications.",
+      "emotional_tone": "Disappointed and physically concerned, yet hesitant to cause conflict.",
+      "churn_likelihood": "Medium"
+    },
+    "ticket_id": "TKT-6418E7CA",
+    "unknowns": "Customer's personal email address is not provided in the internal forward; specific nature of the 'medical issues' is not detailed.",
+    "last_response_date": "2026-03-30",
+    "response_strategy": "Internal investigation and corrective action for the trainer, followed by a soft-touch client reconciliation via the account manager (Shipra).",
+    "sla_classification": "Standard Professional Inquiry",
+    "current_status": "awaiting_internal_action",
+    "key_customer_statements": [
+      "He does not pay sufficient attention to form during class.",
+      "[He] fails to provide necessary modifications for her medical issues.",
+      "He seems to focus only on specific clients.",
+      "[She] felt neglected across all three classes she attended with him."
+    ],
+    "customer_name": "Candida Dsilva",
+    "recommended_actions": [
+      "Conduct an immediate performance review and audit of Richard's classes.",
+      "Interview Richard regarding safety protocols for medical modifications.",
+      "Reach out to Candida Dsilva via the Sales team to validate if she requires further redress (e.g., credit or personal training session).",
+      "Review studio safety compliance regarding client medical records being accessible to trainers."
+    ],
+    "complaint_category": "Trainer Performance & Safety",
+    "suggested_reply": "(Internal Note to Shipra): Hi Shipra, thank you for capturing this feedback from Candida. This is concerning, particularly the lack of medical modifications which presents a safety risk. I will be meeting with Richard to discuss these observations and review our class standards. Please keep Candida informed that her feedback is being taken seriously to improve our service, and let us know if she would be open to a complimentary session with a senior trainer to ensure her medical needs are being properly met.",
+    "root_cause": "Potential trainer negligence and failure to adhere to inclusive coaching standards and safety protocols for injured/medical-need clients.",
+    "_thread_id": "19d3e6c16418e7ca"
+  },
+  {
+    "last_response_date": "2026-04-04",
+    "customer_email": "Unknown (Internal report from Shipra)",
+    "sentiment": {
+      "frustration_level": "High",
+      "churn_likelihood": "High",
+      "risk_indicators": "Accusation of locker tampering; request for surveillance footage; high-value monetary loss.",
+      "emotional_tone": "Concerned and suspicious of locker security."
+    },
+    "response_strategy": "Maintain a transparent yet cautious stance. Acknowledge the gravity of the claim, provide the findings of the CCTV review promptly, and involve senior management or legal counsel due to the cash amount involved. Provide a clear path for the client to file a formal complaint if required.",
+    "ticket_id": "TKT-3575A220",
+    "internal_risk_flags": [
+      "Potential Staff Misconduct (Imran used master code)",
+      "Theft on Premises",
+      "Liability for Cash (\u20b940,000)",
+      "Legal/Police Escalation Risk",
+      "Reputational Risk (Cycle trial class)"
+    ],
+    "ownership": "Shipra Bhika (Sales & Client Servicing)",
+    "date_opened": "2026-04-04",
+    "complaint_category": "Theft/Security Complaint",
+    "root_cause": "Reported theft; specific cause unknown (potential unauthorized locker access or staff intervention during master-code unlock).",
+    "key_customer_statements": [
+      "An envelope containing \u20b940,000 is missing from her bag.",
+      "She was unable to open the locker and called Imran for assistance. He used the master code to unlock it.",
+      "Her bag was open and suspects that someone may have attempted to access the locker.",
+      "She wants to check the CCTV footage."
+    ],
+    "priority": "Critical",
+    "suggested_reply": "Dear Behnaz, We take your report regarding the missing funds extremely seriously. Following your conversation with Shipra, we have initiated an immediate internal investigation into the security of the locker area during the 7:15 PM session on April 3rd. We are currently reviewing the CCTV footage as requested and are interviewing the staff members on duty to reconstruct the timeline of events, including the master-code assistance provided. We will provide you with a formal update on our findings by [Insert Time/Date]. In the meantime, please let us know if you have reported this to the local authorities so we may coordinate with them directly.",
+    "sla_classification": "Security Incident / High-Priority Loss",
+    "current_status": "awaiting_internal_action",
+    "customer_name": "Behnaz Khan",
+    "unknowns": "Client's personal email address; whether the shower area CCTV actually covers the locker entrance (privacy laws often restrict cameras IN shower areas); whether other clients were in the area; the specific locker number used.",
+    "issue_summary": "Client Behnaz Khan reports a missing envelope containing \u20b940,000 from her bag which was stored in a locker in the shower area during a 7:15 PM cycle trial class on April 3, 2026. The client required staff assistance (Imran) to open the locker with a master code after class. She later discovered the bag was open and the money missing upon arriving home at 10 PM. She is requesting to review CCTV footage.",
+    "recommended_actions": [
+      "Immediately secure and review CCTV footage for the shower area entrance and locker vicinity from 7:00 PM to 9:00 PM on April 3.",
+      "Interview 'Imran' regarding the locker malfunction and the use of the master code.",
+      "Verify locker secondary access logs if the digital system tracks master code usage.",
+      "Draft a formal response regarding the company's liability policy for valuables left in lockers.",
+      "Determine if a police report (FIR) has been filed by the client yet."
+    ],
+    "sla_aging": "34 days",
+    "_thread_id": "19d56ad53575a220"
+  },
+  {
+    "issue_summary": "Multiple clients (Nitika, Kshitij) have expressed dissatisfaction with the intensity level of Simonelle's classes in Bandra (Evening Barre 57/Cardio Barre), stating they are 'slower' and 'less challenging' compared to veteran trainers like Atulan or Vivaran. Nitika specifically indicated she will stop attending evening sessions due to this. Leadership is requesting a schedule adjustment or trainer swap to include Richard, but operational constraints (format eligibility) currently prevent a direct swap.",
+    "sentiment": {
+      "emotional_tone": "Professional but critical; reflecting client frustration with service quality.",
+      "risk_indicators": "Client loss (Nitika), negative word-of-mouth comparison between trainers.",
+      "churn_likelihood": "High",
+      "frustration_level": "High"
+    },
+    "priority": "High",
+    "last_response_date": "2026-03-09",
+    "response_strategy": "Internal coordination to normalize class intensity followed by direct outreach to high-risk clients (Nitika) to communicate schedule improvements.",
+    "root_cause": "Inconsistency in class difficulty levels between new and veteran trainers, coupled with scheduling inflexibility due to specific trainer certifications (Lab vs Mat vs CB).",
+    "ticket_id": "TKT-3143C4E5",
+    "unknowns": "Direct email addresses for clients Nitika, Kshitij, and Anushka; specific outcome of Vivaran's class observations of Simonelle.",
+    "customer_name": "Nitika / Kshitij",
+    "key_customer_statements": [
+      "Nitika said... she will not be continuing to come for the evening classes as they're not challenging enough.",
+      "Kshitij has also said her Barre is considerably slower/less challenging than older trainers."
+    ],
+    "sla_aging": "144 days since initial complaint (as of 2026-05-08)",
+    "internal_risk_flags": [
+      "Churn Risk: Client Nitika stated she will not return for evening classes",
+      "Reputational Risk: Perceived lack of uniformity in class intensity across trainers",
+      "Operational Constraint: Scheduling conflicts preventing preferred trainer swaps (Simonelle vs Richard)"
+    ],
+    "recommended_actions": [
+      "Review the April-June 2026 proposed schedule to ensure more experienced trainers are allocated to high-profile evening slots.",
+      "Mandate a performance review/upskilling for Simonelle to align class intensity with 'older trainer' standards.",
+      "Reach out to Nitika to acknowledge feedback and offer a trial of a more challenging session to prevent churn.",
+      "Finalize the Friday discussion regarding the Cover column changes."
+    ],
+    "date_opened": "2025-12-15",
+    "sla_classification": "Service Quality Escalation",
+    "complaint_category": "Service Quality / Trainer Performance",
+    "ownership": "Mrigakshi Jaiswal (Head Trainer Mumbai)",
+    "customer_email": "Nitika (Email Unknown) / Kshitij (Email Unknown)",
+    "current_status": "awaiting_internal_action",
+    "suggested_reply": "(Internal Use) As per Mitali's feedback, the new schedule must ensure that Simonelle's evening slots are either supplemented with more challenging formats or replaced by Richard/Vivaran where possible. We need to confirm that the 'Pink' highlighted changes in the new sheet address the lack of intensity reported by Nitika and Kshitij.",
+    "_thread_id": "19b17a323143c4e5"
+  },
+  {
+    "ownership": "Nadiya Shaikh (Sales & Client Servicing Associate)",
+    "sentiment": {
+      "emotional_tone": "Observational but critical of service disparity",
+      "frustration_level": "Medium",
+      "churn_likelihood": "Medium",
+      "risk_indicators": "Customer is comparing locations; may switch studios or reduce frequency if evening needs aren't met."
+    },
+    "customer_email": "Unknown (Referenced by Nadiya Shaikh)",
+    "last_response_date": "2026-04-13",
+    "sla_aging": "25 days since internal escalation",
+    "internal_risk_flags": [
+      "Location disparity sentiment (Bandra vs. Kemps Corner)",
+      "Limited evening variety potentially impacting retention"
+    ],
+    "date_opened": "2026-04-13",
+    "ticket_id": "TKT-468CE2EC",
+    "complaint_category": "Service Availability / Schedule Disparity",
+    "key_customer_statements": [
+      "There are more class formats and options available [at Kemps Corner] compared to the Bandra location after 7:00 PM."
+    ],
+    "root_cause": "Geographic/Studio-specific scheduling differences; Bandra's 7 PM+ slots do not currently offer all class formats available at other locations.",
+    "issue_summary": "Client Mansi Ganjawalla expressed dissatisfaction regarding the limited class variety at the Bandra location after 7:00 PM compared to the Kemps Corner schedule. Specifically, Back Body Blaze and Mat 57 formats are missing from the late evening Bandra slots.",
+    "unknowns": "Client's direct email address; whether the client actually attended the Sunday Mat 57 class; if there is a plan to synchronize formats between locations.",
+    "sla_classification": "Customer Feedback / Schedule Request",
+    "current_status": "awaiting_customer_response",
+    "priority": "Medium",
+    "suggested_reply": "(Internal Response to Nadiya): Hi Nadiya, thanks for handling the initial breakdown with Mansi. Given it's been some time since the April 13th update, did she successfully attend the Sunday Mat 57 class? We should check in to see if she still feels the 7 PM Bandra slots are insufficient before the next schedule rotation.",
+    "customer_name": "Mansi Ganjawalla",
+    "response_strategy": "Proactive education on existing schedule and alternative options while acknowledging the request for more variety.",
+    "recommended_actions": [
+      "Monitor Mansi's attendance of the Sunday 5:00 PM Mat 57 class to gauge satisfaction.",
+      "Review Bandra late-evening utilization to see if Back Body Blaze or Mat 57 can be rotated into the 7 PM slot.",
+      "Follow up with the client if no response is received regarding the detailed schedule by end of week."
+    ],
+    "_thread_id": "19d86398468ce2ec"
+  },
+  {
+    "last_response_date": "2026-05-02",
+    "complaint_category": "Lead Feedback & Sales Inquiry",
+    "suggested_reply": "Hi Sales Team - Following up on Akshay's report from the May 2nd class at Kemps. We have several leads citing distance as a primary barrier. For the Marine Lines group (5 pax), let's reach out with a 'Drop-in' or 'Single Class' offer as requested. For the Parel/Goregaon/Lalbaug leads, please check if they are interested in our on-demand or virtual platforms. Ensure Nidhi Jhaveri is contacted ASAP before she departs for Dubai.",
+    "issue_summary": "Internal sales report detailing feedback from 17 attendees of 'Harshavi\u2019s Hosted Barre Class' held on April 4th. Key themes include location friction (leads from Lalbaug, Goregaon, and Parel finding Kemps Corner too far) and a preference/need for single classes (Marine Lines group). One attendee is a temporary visitor from Dubai. Host Harshavi Jain is already being managed by the Bandra team.",
+    "unknowns": "Specific contact details for the 17 individual leads; status of the Bandra team's current interaction with Harshavi Jain.",
+    "response_strategy": "Internal coordination to categorize leads by geography and sales preference; outreach focused on flexibility (single classes) and digital options for remote leads.",
+    "current_status": "awaiting_internal_action",
+    "sla_aging": "6 days",
+    "ticket_id": "TKT-2C849B80",
+    "date_opened": "2026-05-02",
+    "key_customer_statements": [
+      "Found the studio location too far (Multiple clients from Lalbaug, Goregaon, Parel)",
+      "Prefer Single Classes (Clients from Marine Lines)",
+      "Visiting from Dubai and is in Mumbai temporarily (Nidhi Jhaveri)"
+    ],
+    "recommended_actions": [
+      "Identify and offer 'Single Class' packages to the Marine Lines group (Mili B, Mamta, Khushi, Manvi, Sanchi).",
+      "Check for digital/online class options for the Goregaon/Parel/Lalbaug leads who found the commute difficult.",
+      "Flag Nidhi Jhaveri as a 'Short-term/Visitor' lead for immediate conversion efforts before she returns to Dubai.",
+      "Close loop with the Bandra team regarding Harshavi Jain."
+    ],
+    "root_cause": "Geographic mismatch between studio location (Kemps Corner) and lead residence (Lalbaug, Goregaon, Parel), and misalignment of package structures with lead preferences (Single Class preference).",
+    "sla_classification": "Internal Feedback Management",
+    "internal_risk_flags": [
+      "High distance friction recorded for 8+ prospects",
+      "Low conversion probability for long-distance leads",
+      "Specific demand for single classes vs packages"
+    ],
+    "customer_email": "akshay@physique57mumbai.com",
+    "sentiment": {
+      "churn_likelihood": "High",
+      "frustration_level": "Medium",
+      "risk_indicators": "High drop-off risk due to travel distance.",
+      "emotional_tone": "Neutral, factual reporting."
+    },
+    "ownership": "Jimmeey (Sales/Ops Team)",
+    "customer_name": "Akshay Rane (Staff Internal Lead Report)",
+    "priority": "Medium",
+    "_thread_id": "19de71c52c849b80"
+  },
+  {
+    "priority": "Medium",
+    "unknowns": "The email addresses of the actual customers (except for Mansi Ganjawalla placeholder) are not provided; the thread is internal to Physique 57 staff. Confirmation for the April 9th and April 13th (Mansi Ganjawalla) transactions is missing from Gaurav's replies.",
+    "date_opened": "2026-04-02",
+    "ownership": "Gaurav Sogam (Finance/Internal Operations)",
+    "response_strategy": "Finance (Gaurav) must provide the bank transaction details for the remaining pending payments to allow the Sales team to update client records and close the loop for the opening/closing shifts.",
+    "recommended_actions": [
+      "Gaurav to verify and confirm receipt of the Rs. 37,346 payment from Mansi Ganjawalla (13-Apr).",
+      "Gaurav to verify and confirm receipt of the payments for Atulan Purohit and Riddhima Sharma (09-Apr).",
+      "Consolidate all April transaction confirmations into a single report for the Bandra studio team."
+    ],
+    "issue_summary": "Internal staff (Deesha/Nadiya) are seeking confirmation of multiple UPI payments received from various clients (Nishika Roongta, Bhuvi Singh, Anushka Kaushik, Varunika Sawant, Eugi Belousova, Atulan Purohit, Riddhima Sharma, and Mansi Ganjawalla) for sessions at the Bandra studio during April 2026. While several smaller transactions from early April have been confirmed by Finance (Gaurav), the largest transaction for Rs. 37,346 from Mansi Ganjawalla on April 13th and the April 9th transactions remain unconfirmed as of the last message in the thread.",
+    "sla_classification": "Standard Internal Reconciliation (48 hours) - OVERDUE",
+    "customer_name": "Mansi Ganjawalla",
+    "ticket_id": "TKT-DF474058",
+    "key_customer_statements": [
+      "Kindly confirm if we have received the UPI amount. Mansi Ganjawalla - Rs. 37,346/-",
+      "Kindly confirm if we have received the UPI amount. Atulan Purohit - 290/- Riddhima Sharma - 320/-"
+    ],
+    "customer_email": "mansi.ganjawalla@example.com",
+    "internal_risk_flags": [
+      "Pending high-value reconciliation (Rs. 37,346)",
+      "Delayed internal response (11 days for initial confirmation)"
+    ],
+    "root_cause": "Manual reconciliation process requiring Finance to cross-verify UPI screenshots from the sales team against bank statements.",
+    "sla_aging": "36 days",
+    "last_response_date": "2026-04-13",
+    "suggested_reply": "Hi Nadiya/Deesha, I have verified the transactions for the 9th and 13th of April. Please see details below: [Date] [Details] [Amount]. All payments from the listed clients are now confirmed. Thanks, Gaurav.",
+    "complaint_category": "Payment Verification / Internal Reconciliation",
+    "current_status": "partially_resolved",
+    "sentiment": {
+      "risk_indicators": "High-value transaction pending confirmation (Rs. 37,346).",
+      "churn_likelihood": "Low",
+      "frustration_level": "Low",
+      "emotional_tone": "Professional and task-oriented; internal coordination."
+    },
+    "_thread_id": "19d4eac5df474058"
+  },
+  {
+    "sla_aging": "47 days past initial internal report date",
+    "customer_email": "N/A (Internal Report)",
+    "date_opened": "2026-03-22T18:11:00Z",
+    "response_strategy": "Convert internal feedback into actionable sales outreach while addressing the operational delay with the Bandra studio team.",
+    "sentiment": {
+      "churn_likelihood": "Low",
+      "risk_indicators": "Delayed class start time may impact brand reputation if repeated.",
+      "frustration_level": "Low",
+      "emotional_tone": "Positive/Informative (Internal)"
+    },
+    "key_customer_statements": [
+      "Kayuri, Vaibhavi, and Nadani expressed specific interest in trying the Barre 57 class",
+      "The group thoroughly enjoyed the Powercycle session",
+      "The remaining attendees requested that we share further details with them"
+    ],
+    "priority": "Medium",
+    "ticket_id": "TKT-EC00EE30",
+    "issue_summary": "Internal feedback report regarding 'Laani host class' held on March 22nd. The session had 12 attendees and started 15 minutes late (4:45 PM instead of 4:30 PM). While the Powercycle session was well-received, specific leads (Kayuri, Vaibhavi, Nadani) expressed interest in Barre 57, and other attendees require follow-up information.",
+    "last_response_date": "2026-03-22T18:11:00Z",
+    "complaint_category": "Sales & Lead Management",
+    "current_status": "awaiting_internal_action",
+    "unknowns": "Contact details (emails/phones) for the 12 attendees are not provided in the thread. Reason for the 15-minute delay is not specified.",
+    "internal_risk_flags": [
+      "Operational Delay (15-minute late start)",
+      "Potential lead drop-off if not followed up promptly"
+    ],
+    "suggested_reply": "N/A - This is an internal communication. Recommended internal reply: 'Hi Shipra, thank you for the feedback. I will coordinate with the sales team to ensure Kayuri, Vaibhavi, and Nadani are contacted for Barre 57. Can you clarify why the class started 15 minutes late at the Bandra location?'",
+    "root_cause": "Host class feedback and lead generation report. Operational root cause for the 15-minute delay is currently unknown.",
+    "recommended_actions": [
+      "Contact Kayuri, Vaibhavi, and Nadani specifically for Barre 57 trial bookings.",
+      "Send general brand/pricing collateral to the remaining 9 attendees.",
+      "Investigate cause of 15-minute delay at Bandra location to prevent recurrence."
+    ],
+    "ownership": "Jimmeey . (Sales/Management)",
+    "sla_classification": "Internal Lead Follow-up",
+    "customer_name": "Laani Host Class Group",
+    "_thread_id": "19d15904ec00ee30"
+  },
+  {
+    "root_cause": "Scheduling misalignment between client's early morning availability and studio's operational bandwidth, compounded by environmental discomfort (heat/AC issues).",
+    "customer_name": "Vidushi Agarwal",
+    "issue_summary": "Client Vidushi Agarwal is dissatisfied with the current class schedule at the Bandra/Kemps Corner studios. Specifically, she requires 7:00 AM Cycle classes to fit her schedule, whereas the earliest available is 8:00 AM. She also reported that the 11:00 AM classes are uncomfortably hot due to direct sunlight. Due to the lack of suitable timings, she feels she cannot effectively use her 'All-In' membership, leading to a request to pause her membership for 30 days. Note: The thread also briefly mentions a separate temperature complaint from client Krrisha Patel regarding excessive AC coldness.",
+    "date_opened": "2026-04-22",
+    "ticket_id": "TKT-92DD3998",
+    "priority": "High",
+    "sla_classification": "Standard Feedback/Retention",
+    "ownership": "Jimmeey (physique57india) / Shipra Bhika (Client Servicing)",
+    "recommended_actions": [
+      "Monitor Vidushi Agarwal's 30-day pause period and reach out before it expires.",
+      "Evaluate studio shading/insulation for the 11:00 AM slot to mitigate heat from direct sunlight.",
+      "Confirm if late evening or new 8:00 AM options (as mentioned by Mitali) might satisfy the client's needs.",
+      "Ensure the Bandra studio team regulates AC for Krrisha Patel as promised to prevent her leaving classes early."
+    ],
+    "internal_risk_flags": [
+      "Churn Risk: Membership Paused",
+      "Environmental Discomfort (Heat)",
+      "Limited Scheduling Bandwidth"
+    ],
+    "key_customer_statements": [
+      "Current schedule isn\u2019t working well for her, and her days are passing without her being able to make effective use of her membership.",
+      "11:00 AM time slot has become increasingly uncomfortable due to the heat.",
+      "Strongly prefers Cycle classes at 7:00 AM."
+    ],
+    "customer_email": "Unknown (Client: Vidushi Agarwal)",
+    "complaint_category": "Studio Operations & Scheduling",
+    "suggested_reply": "(Note: Suggested reply is for internal follow-up with the client after the pause period) Hi Vidushi, we hope you've had a chance to reassess your schedule during this 30-day break. While we aren't able to introduce a 7:00 AM Cycle class at this time, we have recently updated our schedule to include more 8:00 AM options and evening sessions. We have also looked into the temperature concerns you mentioned for the mid-morning slots to ensure a more comfortable environment. We'd love to have you back in the studio\u2014would you like to discuss which of these new timings might work for you?",
+    "sla_aging": "16 days since last internal update; 16 days since initial report.",
+    "current_status": "partially_resolved",
+    "sentiment": {
+      "churn_likelihood": "High",
+      "frustration_level": "High",
+      "emotional_tone": "Dissatisfied and inconvenienced.",
+      "risk_indicators": "Membership paused, schedule conflict, environmental discomfort."
+    },
+    "response_strategy": "The membership has been paused as a temporary retention measure. The internal stance is that 7:00 AM cycle classes are not feasible. Strategy should shift to highlighting the new 8:00 AM and evening options while addressing the physical discomfort (heat) in the studio to prevent total churn after the 30-day pause.",
+    "unknowns": "Customer's direct email address is not provided in the internal staff trail. Direct contact details for Krrisha Patel are also missing. Specific 'new' 8:00 AM days were not listed.",
+    "last_response_date": "2026-04-28",
+    "_thread_id": "19db42d492dd3998"
+  },
+  {
+    "ownership": "Jimmeey (Management) / Sales & Client Servicing Team",
+    "date_opened": "2026-04-22",
+    "complaint_category": "Policy Flexibility & Facility Operations",
+    "key_customer_statements": [
+      "They are humans after all, and such unavoidable delays occur. (Tanvi Sawney)",
+      "The policy make it inflexible for her to attend classes... reconsidering renewing her membership. (Vidushi Agarwal)",
+      "Since she had booked earlier, she had expected her size to be available. (Kyra Bakshi)",
+      "Limited [recovery] options available during the week. (Minakshi Gaba)"
+    ],
+    "root_cause": "Rigid enforcement of safety policies without considering external infrastructure issues (roadwork), coupled with inadequate inventory for larger-sized equipment and booking system synchronization delays.",
+    "priority": "High",
+    "customer_email": "vidz789@gmail.com",
+    "last_response_date": "2026-05-01",
+    "response_strategy": "Internal management needs to approve a one-time gesture (complimentary class) for Tanvi Sawney and Kyra Bakshi. Client Servicing must reconcile shoe inventory with the Momence booking system to avoid 'first-come-first-served' for pre-booked equipment.",
+    "sentiment": {
+      "emotional_tone": "Frustrated and disappointed across multiple high-value clients.",
+      "frustration_level": "High",
+      "risk_indicators": "Threats to stop purchasing/renewing memberships; feedback about policy inflexibility.",
+      "churn_likelihood": "High"
+    },
+    "ticket_id": "TKT-89161D13",
+    "internal_risk_flags": [
+      "High Churn Risk (multiple clients reconsidering membership)",
+      "Operational Resource Shortage (cycling shoe inventory)",
+      "SLA Breach (thread active since April 22 without management resolution)",
+      "Brand Perception Risk due to rigid entry policies during city construction"
+    ],
+    "unknowns": "Exact number of size 47/48 shoes currently in budget for procurement; whether the Momence booking delay is a systemic API issue or a one-time sync error.",
+    "issue_summary": "A series of incidents at Bandra and Kemps Corner studios highlight client dissatisfaction with the rigid 5-10 minute late-entry policy (compounded by Mumbai roadwork), equipment shortages (cycling shoe sizes 46-48), and class intensity/availability for injured clients. \nSpecific clients affected: \n1. Zahra Lokhandwala (Late entry - resolved)\n2. Tanvi Sawney (Late entry - considering canceling 12-class pack)\n3. Vidushi Agarwal (Late entry - confused by 5 min vs 10 min policy, considering cancellation)\n4. Minakshi Gaba (Barre/Mat Pilates too intense; requesting more Recovery classes)\n5. Kyra Bakshi (Shoe size unavailability despite early booking)",
+    "customer_name": "Vidushi Agarwal (Multiple Clients)",
+    "sla_aging": "16 days",
+    "recommended_actions": [
+      "Standardize and clearly communicate the 5-minute vs 10-minute entry window across all platforms (App/Web/Email).",
+      "Review the 'Door Lock' policy for peak traffic hours specifically due to Bandra roadwork.",
+      "Immediate procurement of larger cycling shoe sizes (47, 48) to match booking demand.",
+      "Assess the feasibility of adding a Friday evening Recovery class as requested by Minakshi Gaba.",
+      "Implement the suggested feedback section on the mobile app to capture real-time client sentiment."
+    ],
+    "suggested_reply": "(Internal Note for Jimmeey): Management needs to decide on the margin for late entries during the Bandra construction period. Additionally, we must authorize the purchase of size 47/48 shoes immediately. Reaching out to Vidushi and Tanvi with a personal apology and a complimentary session is recommended to prevent churn.",
+    "sla_classification": "Client Experience / Operations Incident Report",
+    "current_status": "awaiting_internal_action",
+    "_thread_id": "19db3f5189161d13"
+  },
+  {
+    "suggested_reply": "Dear Jharna, thank you so much for your thoughtful suggestion regarding sports electrolytes! We are excited to let you know that our Operations team is currently finalizing a vendor to bring these products to our boutique. We will keep you updated on when they will be available for purchase. We look forward to seeing you at your next workout!",
+    "root_cause": "Client identified a gap in the current boutique product offering regarding hydration/electrolyte supplements.",
+    "complaint_category": "Product Request / Suggestion",
+    "recommended_actions": [
+      "Confirm vendor finalization status with Saachi Shetty.",
+      "Once vendor is onboarded, notify Deesha Changwani to update the client.",
+      "Procure stock for the boutique section."
+    ],
+    "key_customer_statements": [
+      "consider adding sports electrolyte products to our boutique section",
+      "these are very hydrating and quite useful during workouts"
+    ],
+    "customer_name": "Jharna Gainchandani",
+    "sla_classification": "Standard Feedback/Request",
+    "response_strategy": "Proactive follow-up on vendor status to fulfill the client's product recommendation.",
+    "current_status": "awaiting_internal_action",
+    "unknowns": "Specific brand of electrolytes being considered; expected timeline for vendor onboarding completion; whether Deesha has already sent the interim update to Jharna as promised.",
+    "last_response_date": "2026-03-24",
+    "ticket_id": "TKT-2E20D729",
+    "sla_aging": "45 days since last activity",
+    "sentiment": {
+      "emotional_tone": "Helpful and constructive",
+      "frustration_level": "Low",
+      "risk_indicators": "None; positive engagement via product suggestion.",
+      "churn_likelihood": "Low"
+    },
+    "customer_email": "jharna@confidentialcouture.com",
+    "ownership": "Saachi Shetty (Sr. Operations Manager)",
+    "date_opened": "2026-03-23",
+    "priority": "Low",
+    "issue_summary": "The client suggested adding sports electrolyte products to the studio's boutique section for convenience and hydration during workouts. Operations has confirmed they are in the process of finalizing a vendor.",
+    "internal_risk_flags": [
+      "Operational dependency (vendor finalization)"
+    ],
+    "_thread_id": "19d19f1c2e20d729"
+  },
+  {
+    "current_status": "awaiting_internal_action",
+    "response_strategy": "Internal containment and proactive retention. The goal is to prevent the competitor from poaching existing members while managing the new client (Neha) who is acting as a brand ambassador for a different entity.",
+    "sla_aging": "52 days since last internal movement; 52 days since incident report.",
+    "complaint_category": "Solicitation / Client Poaching",
+    "last_response_date": "2026-03-19",
+    "unknowns": "Client Neha Varghese's contact information is not in the thread. The content of her conversation with Mrigakshi is unknown. It is unknown if Marketing/Reyna Jagtiani have taken action since the March 19th escalation.",
+    "issue_summary": "A new client, Neha Varghese (who joined on March 14th with a 12-class package), was observed actively soliciting other Physique 57 clients at the Bandra studio to attend free sessions at a competitor, Sohfit. Following this interaction, one high-value client (Husna Bootwala) immediately inquired about membership freezes, indicating a potential churn risk. Other clients targeted include Anisha Goel, Shona Barua, and Shuchi Mehta.",
+    "suggested_reply": "(Internal Note to Operations/Marketing): Following Saachi's escalation on March 19th, we need to confirm if Reyna Jagtiani and Marketing have reviewed the incident. We specifically need to track if Husna Bootwala or the other clients mentioned (Anisha, Shona, Shuchi) have reduced their attendance. Do we have a policy to terminate the membership of Neha Varghese if solicitation continues?",
+    "customer_email": "Unknown - Internal Report",
+    "internal_risk_flags": [
+      "Competitive Poaching/Solicitation",
+      "Churn Risk for Multiple Clients",
+      "Brand Reputation Risk"
+    ],
+    "sla_classification": "Internal Escalate - Urgent",
+    "root_cause": "Internal solicitation by a client potentially affiliated with or incentivized by a competitor (Sohfit).",
+    "priority": "High",
+    "customer_name": "Neha Varghese",
+    "sentiment": {
+      "risk_indicators": "High risk of group churn; one client already inquiring about freezes post-solicitation.",
+      "emotional_tone": "Professional and urgent (Internal reporting)",
+      "frustration_level": "Medium",
+      "churn_likelihood": "High"
+    },
+    "ownership": "Saachi Shetty (Sr. Operations Manager)",
+    "date_opened": "2026-03-17",
+    "ticket_id": "TKT-949236C1",
+    "key_customer_statements": [
+      "[Client Husna Bootwala] training at two different locations would be too much for her.",
+      "[Client Shuchi Mehta] prefers working out at Physique."
+    ],
+    "recommended_actions": [
+      "Review studio Terms & Conditions regarding solicitation on premises.",
+      "Conduct a wellness call/check-in with Husna Bootwala to address her freeze inquiry and reinforce value.",
+      "Monitor Neha Varghese\u2019s next scheduled classes; consider a formal warning if solicitation continues.",
+      "Brief the Bandra front desk team on how to move conversations away from competitors in the lobby.",
+      "Ensure Marketing and Reyna Jagtiani have reviewed the 'Hosted Class' feedback loop as requested."
+    ],
+    "_thread_id": "19cfaddd949236c1"
+  },
+  {
+    "last_response_date": "2026-03-16",
+    "key_customer_statements": [
+      "Several trainers are not present in the studio 30 minutes before class... they often arrive only 10 to 15 minutes before.",
+      "Rohan: During a Saturday Powercycle class, he arrived only 10 minutes before the start time while clients... were already waiting.",
+      "Atulan: Has been observed not interacting with new clients following their sessions.",
+      "Anmol: ...not greeting a client, Smita Modi, while she was waiting for class to begin."
+    ],
+    "complaint_category": "Staff Performance & Punctuality",
+    "unknowns": "Whether Smita Modi has formally complained. The specific date of the Saturday Powercycle class mentioned regarding Rohan. Whether the trainers have been previously warned for these specific behaviors.",
+    "date_opened": "2026-03-16",
+    "sla_classification": "Internal Operational Quality Control",
+    "internal_risk_flags": [
+      "Negative client experience (Smita Modi)",
+      "Safety risk (New clients/Powercycle bike fits)",
+      "Operational inefficiency",
+      "Repeated policy violations by multiple staff members"
+    ],
+    "sentiment": {
+      "churn_likelihood": "Medium",
+      "frustration_level": "Medium",
+      "emotional_tone": "Professional, concerned, and objective.",
+      "risk_indicators": "Potential for client churn due to poor service standards and safety concerns regarding equipment setup."
+    },
+    "current_status": "awaiting_internal_action",
+    "ticket_id": "TKT-98F432BA",
+    "recommended_actions": [
+      "Conduct formal performance reviews for Rohan, Atulan, and Anmol.",
+      "Reiterate the 30-minute pre-class arrival policy to all Bandra trainers.",
+      "Conduct a safety and service audit for Powercycle classes.",
+      "Personal outreach to Smita Modi to rectify the poor experience.",
+      "Recognize Anisha Shah for high performance to set the standard."
+    ],
+    "priority": "High",
+    "sla_aging": "53 days",
+    "issue_summary": "Internal staff feedback from Sales & Client Servicing regarding trainer performance and punctuality at the Bandra studio. Specific issues include trainers (Rohan, Atulan, Anmol) arriving late, failing to set up equipment prior to client arrival, and failing to engage with/greet new clients. This specifically impacts Powercycle classes where technical setup and safety (bike fits) are paramount.",
+    "root_cause": "Consistent failure of multiple trainers to adhere to the 30-minute arrival policy and lack of adherence to client engagement protocols.",
+    "response_strategy": "Address as an internal operational and management issue. Requires corrective action plans for the named trainers and a studio-wide meeting to reset expectations on professionalism and client engagement.",
+    "customer_email": "imran@physique57mumbai.com",
+    "customer_name": "Imran Shaikh",
+    "suggested_reply": "Hi Imran, Thank you for this detailed and constructive feedback. Maintaining the Physique 57 standard is our priority, and it is clear that current punctuality and engagement at the Bandra studio are falling short of expectations. I will be addressing these specific instances with Rohan, Atulan, and Anmol immediately to ensure corrective measures are taken. We will also review the pre-class protocols for Powercycle to ensure safety and service are not compromised. Best, [Jimmeey's Name]",
+    "ownership": "Jimmeey (Manager/Leadership)",
+    "_thread_id": "19cf68ef98f432ba"
+  },
+  {
+    "date_opened": "2026-03-16",
+    "sla_aging": "53 days",
+    "customer_email": "shifa@physique57bengaluru.com",
+    "sentiment": {
+      "risk_indicators": "Operational delay in HR/Performance management processes.",
+      "frustration_level": "Medium",
+      "emotional_tone": "Professional but persistent and operationally focused.",
+      "churn_likelihood": "Low"
+    },
+    "key_customer_statements": [
+      "I would like to close both between this week or next",
+      "I need both to work over the weekend since 28th & 29th are packed with classes + potentially 40-45 new clients coming in on Sunday",
+      "Both are off tomorrow since I need the entire team on Saturday and they are working on Sunday. We can stick to 31st at 1:00pm. Any other day?"
+    ],
+    "response_strategy": "Internal escalation to Jimmeey Gondaa to provide a final date for the missing review to avoid further HR delays.",
+    "priority": "Medium",
+    "ticket_id": "TKT-C069C2C2",
+    "issue_summary": "Shifa Ali (Regional Operations Head - South) is attempting to schedule performance reviews for two employees, Prathap and Api, with Jimmeey Gondaa (Head - Sales & Client Services). Despite multiple exchanges and proposed dates in March, a second slot has not been confirmed. The last communication on March 26th left one slot confirmed for March 31st, but the second remained pending because the employees were off-duty on the other proposed date. As of May 8th, there is no record of the second review being completed.",
+    "last_response_date": "2026-03-26",
+    "complaint_category": "Employee Performance Review Scheduling",
+    "current_status": "awaiting_internal_action",
+    "suggested_reply": "Hi Shifa, I apologize for the significant delay in following up on this. Regarding Prathap and Api's reviews, please let me know your availability for next week so we can finalize the second session. Also, please confirm if the review on the 31st was successfully completed. Best, Jimmeey.",
+    "internal_risk_flags": [
+      "Delayed performance review cycle (opened March, now May)",
+      "Scheduling conflict due to high-volume client weekend (40-45 new clients)",
+      "Non-response from Head of Sales since March 26th"
+    ],
+    "unknowns": "Whether the performance review scheduled for March 31st at 1:00pm occurred; which specific employee (Prathap or Api) was assigned to the March 31st slot.",
+    "root_cause": "Scheduling conflict and lack of follow-up from the Head of Sales after the initial proposal was rejected due to employee shifts.",
+    "recommended_actions": [
+      "Jimmeey Gondaa to provide immediate availability for the second performance review.",
+      "Confirm if the review on March 31st actually took place.",
+      "Check HR compliance for overdue performance appraisals for Prathap and Api."
+    ],
+    "ownership": "Jimmeey Gondaa",
+    "customer_name": "Shifa Ali",
+    "sla_classification": "Internal Staff Support / Operations",
+    "_thread_id": "19cf69d6c069c2c2"
+  },
+  {
+    "_thread_id": "19ceb1abd3f5f132",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-D3F5F132"
+  },
+  {
+    "_thread_id": "19d8644730cbd248",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-30CBD248"
+  },
+  {
+    "_thread_id": "19ceb40983111606",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-83111606"
+  },
+  {
+    "_thread_id": "19cef89ac5b459dc",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-C5B459DC"
+  },
+  {
+    "_thread_id": "19cfa02b6f7534c0",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-6F7534C0"
+  },
+  {
+    "_thread_id": "19d4e922aadf5e8a",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-AADF5E8A"
+  },
+  {
+    "_thread_id": "19cd74eed6c55cd7",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-D6C55CD7"
+  },
+  {
+    "_thread_id": "19d9b23c3e930bc2",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-3E930BC2"
+  },
+  {
+    "_thread_id": "19cd66db70181e33",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-70181E33"
+  },
+  {
+    "_thread_id": "19ce1c3e21c37593",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-21C37593"
+  },
+  {
+    "_thread_id": "19cd6d322fe986e4",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-2FE986E4"
+  },
+  {
+    "_thread_id": "19c7591a11c17465",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-11C17465"
+  },
+  {
+    "_thread_id": "19c94e765050eb2e",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-5050EB2E"
+  },
+  {
+    "_thread_id": "19c94e953436a8e3",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-3436A8E3"
+  },
+  {
+    "_thread_id": "19c844744b3378c4",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-4B3378C4"
+  },
+  {
+    "_thread_id": "19c5236953892202",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-53892202"
+  },
+  {
+    "_thread_id": "19c6ff5eeb6e4c83",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-EB6E4C83"
+  },
+  {
+    "_thread_id": "19c74c7d012a2727",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-012A2727"
+  },
+  {
+    "_thread_id": "19c6b0eb9449aada",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-9449AADA"
+  },
+  {
+    "_thread_id": "19c283d1eae31a4b",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-EAE31A4B"
+  },
+  {
+    "_thread_id": "19c73dc20511b555",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-0511B555"
+  },
+  {
+    "_thread_id": "19c4d3521b40fda1",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-1B40FDA1"
+  },
+  {
+    "_thread_id": "19beef1c244f164b",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-244F164B"
+  },
+  {
+    "_thread_id": "19ba12a69d2f2f84",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-9D2F2F84"
+  },
+  {
+    "_thread_id": "19c291a738b7facf",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-38B7FACF"
+  },
+  {
+    "_thread_id": "19be510dcf4aa9c2",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-CF4AA9C2"
+  },
+  {
+    "_thread_id": "19bef13f5258f27f",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-5258F27F"
+  },
+  {
+    "_thread_id": "19bd56117b8d0e3c",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-7B8D0E3C"
+  },
+  {
+    "_thread_id": "19c4ce56aaacbc6a",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-AAACBC6A"
+  },
+  {
+    "_thread_id": "19bd0ae206c9108e",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-06C9108E"
+  },
+  {
+    "_thread_id": "19bb71e77a78895a",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-7A78895A"
+  },
+  {
+    "_thread_id": "19bcaf74c70bc257",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-C70BC257"
+  },
+  {
+    "_thread_id": "19bb6e55a4ffe710",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-A4FFE710"
+  },
+  {
+    "_thread_id": "19babc9a3eb52229",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-3EB52229"
+  },
+  {
+    "_thread_id": "19b6a11e6ffcf148",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-6FFCF148"
+  },
+  {
+    "_thread_id": "19b7db01cbeb9e3f",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-CBEB9E3F"
+  },
+  {
+    "_thread_id": "19a91a1af23a02e9",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-F23A02E9"
+  },
+  {
+    "_thread_id": "19bf4ade5a012e2e",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-5A012E2E"
+  },
+  {
+    "_thread_id": "19b9705eed89e744",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-ED89E744"
+  },
+  {
+    "_thread_id": "19bc5ef8364dc3f7",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-364DC3F7"
+  },
+  {
+    "_thread_id": "19b9d632bb9d9eaf",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-BB9D9EAF"
+  },
+  {
+    "_thread_id": "19b7deb495e13a44",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-95E13A44"
+  },
+  {
+    "_thread_id": "19b93cd3a0a0c9c8",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-A0A0C9C8"
+  },
+  {
+    "_thread_id": "19b6f351afb38ca2",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-AFB38CA2"
+  },
+  {
+    "_thread_id": "19b83b4b582592e4",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-582592E4"
+  },
+  {
+    "_thread_id": "19b59d3969a9b9c8",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-69A9B9C8"
+  },
+  {
+    "_thread_id": "19ad856c6a197969",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-6A197969"
+  },
+  {
+    "_thread_id": "19b63cdfcb3a74ab",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-CB3A74AB"
+  },
+  {
+    "_thread_id": "19b353bf8f403d61",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-8F403D61"
+  },
+  {
+    "_thread_id": "19b216e10ad04766",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-0AD04766"
+  },
+  {
+    "_thread_id": "197c0221285e3baf",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-285E3BAF"
+  },
+  {
+    "_thread_id": "19abb424b4aa1e51",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-B4AA1E51"
+  },
+  {
+    "_thread_id": "19ac906c8b1d3756",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-8B1D3756"
+  },
+  {
+    "_thread_id": "19b177a4fb2bbdf7",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-FB2BBDF7"
+  },
+  {
+    "_thread_id": "19ae4087c4da0bd3",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-C4DA0BD3"
+  },
+  {
+    "_thread_id": "19acf30c553a1723",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-553A1723"
+  },
+  {
+    "_thread_id": "19af84892d0d354f",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-2D0D354F"
+  },
+  {
+    "_thread_id": "19b0c3c06f9dfe51",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-6F9DFE51"
+  },
+  {
+    "_thread_id": "19b083e866ec2ebe",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-66EC2EBE"
+  },
+  {
+    "_thread_id": "19afe83fea0ffd0f",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-EA0FFD0F"
+  },
+  {
+    "_thread_id": "19af768e0d654ed0",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-0D654ED0"
+  },
+  {
+    "_thread_id": "19af785964ecfc8e",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-64ECFC8E"
+  },
+  {
+    "_thread_id": "19af31cb02971aa6",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-02971AA6"
+  },
+  {
+    "_thread_id": "19af2b115474f244",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-5474F244"
+  },
+  {
+    "_thread_id": "199e7929726f3992",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-726F3992"
+  },
+  {
+    "_thread_id": "19ada9a1a48147df",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-A48147DF"
+  },
+  {
+    "_thread_id": "19aec50b4aa0425e",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-4AA0425E"
+  },
+  {
+    "_thread_id": "19ba81ea360e0742",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-360E0742"
+  },
+  {
+    "_thread_id": "19acace1abf2528b",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-ABF2528B"
+  },
+  {
+    "_thread_id": "19ac0a3c6ffcb956",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-6FFCB956"
+  },
+  {
+    "_thread_id": "19ab99469fbaa90f",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-9FBAA90F"
+  },
+  {
+    "_thread_id": "19ac027e2876b198",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-2876B198"
+  },
+  {
+    "_thread_id": "19abac4b88338b87",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-88338B87"
+  },
+  {
+    "_thread_id": "19a7db168141707d",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-8141707D"
+  },
+  {
+    "_thread_id": "19a9b90a81971d72",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-81971D72"
+  },
+  {
+    "_thread_id": "19a685ea2fc45b58",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-2FC45B58"
+  },
+  {
+    "_thread_id": "19a8ba1083ed133a",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-83ED133A"
+  },
+  {
+    "_thread_id": "19a765eb15ac6737",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-15AC6737"
+  },
+  {
+    "_thread_id": "19a63379cf594de2",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-CF594DE2"
+  },
+  {
+    "_thread_id": "1990fcd3358992bb",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-358992BB"
+  },
+  {
+    "_thread_id": "19a5e004e9387f7b",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-E9387F7B"
+  },
+  {
+    "_thread_id": "19a340ffb5209465",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-B5209465"
+  },
+  {
+    "_thread_id": "1999905c168e624a",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-168E624A"
+  },
+  {
+    "_thread_id": "19a238af67e92965",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-67E92965"
+  },
+  {
+    "_thread_id": "19a39b0837e7b6ca",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-37E7B6CA"
+  },
+  {
+    "_thread_id": "19a1ad882fbc9797",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-2FBC9797"
+  },
+  {
+    "_thread_id": "19a1fd2e180eadb2",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-180EADB2"
+  },
+  {
+    "_thread_id": "199d33fe3d26f606",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-3D26F606"
+  },
+  {
+    "_thread_id": "199bd475cebf823a",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-CEBF823A"
+  },
+  {
+    "_thread_id": "199cd3eefe38f8e7",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-FE38F8E7"
+  },
+  {
+    "_thread_id": "199db6634388c706",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-4388C706"
+  },
+  {
+    "_thread_id": "199f69421eec037f",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-1EEC037F"
+  },
+  {
+    "_thread_id": "1999af317b7a68ea",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-7B7A68EA"
+  },
+  {
+    "_thread_id": "1996c2b3df25f0a8",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-DF25F0A8"
+  },
+  {
+    "_thread_id": "19971ac3c52dadf8",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-C52DADF8"
+  },
+  {
+    "_thread_id": "19993f49f913b95f",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-F913B95F"
+  },
+  {
+    "_thread_id": "199ad30023b51f0e",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-23B51F0E"
+  },
+  {
+    "_thread_id": "199e24bf0062028d",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-0062028D"
+  },
+  {
+    "_thread_id": "19778305cb06c619",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-CB06C619"
+  },
+  {
+    "_thread_id": "19971ac9b3cca7c4",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-B3CCA7C4"
+  },
+  {
+    "_thread_id": "1997a0008ef22cb8",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-8EF22CB8"
+  },
+  {
+    "_thread_id": "1993952338288887",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-38288887"
+  },
+  {
+    "_thread_id": "19942959df3d8fd5",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-DF3D8FD5"
+  },
+  {
+    "_thread_id": "198e56898c5d5544",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-8C5D5544"
+  },
+  {
+    "_thread_id": "199388544f357f77",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-4F357F77"
+  },
+  {
+    "_thread_id": "1994be8291507f0d",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-91507F0D"
+  },
+  {
+    "_thread_id": "19947aa09fdc100a",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-9FDC100A"
+  },
+  {
+    "_thread_id": "19932dbaea7d92c5",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-EA7D92C5"
+  },
+  {
+    "_thread_id": "19933d1c89781641",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-89781641"
+  },
+  {
+    "_thread_id": "199320fdbbeff515",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-BBEFF515"
+  },
+  {
+    "_thread_id": "1992dc465eaf8228",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-5EAF8228"
+  },
+  {
+    "_thread_id": "1991499f2f68f013",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-2F68F013"
+  },
+  {
+    "_thread_id": "194ea44657b6ba15",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-57B6BA15"
+  },
+  {
+    "_thread_id": "199182969dddaa6f",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-9DDDAA6F"
+  },
+  {
+    "_thread_id": "198d585555624058",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-55624058"
+  },
+  {
+    "_thread_id": "198fa84d4bd8f215",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-4BD8F215"
+  },
+  {
+    "_thread_id": "198d221a89e9c246",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-89E9C246"
+  },
+  {
+    "_thread_id": "1990e59567756fef",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-67756FEF"
+  },
+  {
+    "_thread_id": "198d5554ab34f256",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-AB34F256"
+  },
+  {
+    "_thread_id": "198b214298ca3115",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-98CA3115"
+  },
+  {
+    "_thread_id": "19912bc0d06621b6",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-D06621B6"
+  },
+  {
+    "_thread_id": "19898a4a1f87391a",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-1F87391A"
+  },
+  {
+    "_thread_id": "1989954bd4faf2de",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-D4FAF2DE"
+  },
+  {
+    "_thread_id": "198893adb62a783c",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-B62A783C"
+  },
+  {
+    "_thread_id": "198366ea11f621ae",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-11F621AE"
+  },
+  {
+    "_thread_id": "198c172221ff4093",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-21FF4093"
+  },
+  {
+    "_thread_id": "198793dba2df85e3",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-A2DF85E3"
+  },
+  {
+    "_thread_id": "191b6f77fb617aac",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-FB617AAC"
+  },
+  {
+    "_thread_id": "19821aa4578e9c1c",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-578E9C1C"
+  },
+  {
+    "_thread_id": "19855ab217772e78",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-17772E78"
+  },
+  {
+    "_thread_id": "1986481dd6af2ca5",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-D6AF2CA5"
+  },
+  {
+    "_thread_id": "197d96e53f809a31",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-3F809A31"
+  },
+  {
+    "_thread_id": "197bfb2a227506d5",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-227506D5"
+  },
+  {
+    "_thread_id": "197c170dc5a344fe",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-C5A344FE"
+  },
+  {
+    "_thread_id": "196afba4c98fbbf9",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-C98FBBF9"
+  },
+  {
+    "_thread_id": "197aa2a424f2c3ca",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-24F2C3CA"
+  },
+  {
+    "_thread_id": "197b5eb5002dfef1",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-002DFEF1"
+  },
+  {
+    "_thread_id": "197b0d9c36b39dea",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-36B39DEA"
+  },
+  {
+    "_thread_id": "197aa3f6883fa5d2",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-883FA5D2"
+  },
+  {
+    "_thread_id": "1979b1e8f570a3ac",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-F570A3AC"
+  },
+  {
+    "_thread_id": "1976e11e312046f9",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-312046F9"
+  },
+  {
+    "_thread_id": "197636e5aa9b4e74",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-AA9B4E74"
+  },
+  {
+    "_thread_id": "1972f5926b666db8",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-6B666DB8"
+  },
+  {
+    "_thread_id": "1972aa8ecf68cedd",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-CF68CEDD"
+  },
+  {
+    "_thread_id": "19759b066d4848ab",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-6D4848AB"
+  },
+  {
+    "_thread_id": "196e37dcb62efc35",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-B62EFC35"
+  },
+  {
+    "_thread_id": "196b97bb757397ee",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-757397EE"
+  },
+  {
+    "_thread_id": "196bedfb3135faf2",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-3135FAF2"
+  },
+  {
+    "_thread_id": "195e09988042ef80",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-8042EF80"
+  },
+  {
+    "_thread_id": "196b3b9c89774032",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-89774032"
+  },
+  {
+    "_thread_id": "196ba75dded4d52d",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-DED4D52D"
+  },
+  {
+    "_thread_id": "196af9824de07af2",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-4DE07AF2"
+  },
+  {
+    "_thread_id": "1971ba9f6fe7fa5d",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-6FE7FA5D"
+  },
+  {
+    "_thread_id": "196a4e7a9c82b354",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-9C82B354"
+  },
+  {
+    "_thread_id": "195f072b0aae41c8",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-0AAE41C8"
+  },
+  {
+    "_thread_id": "196854c49b55dbcd",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-9B55DBCD"
+  },
+  {
+    "_thread_id": "1965e24632c98108",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-32C98108"
+  },
+  {
+    "_thread_id": "19677185c1beca6a",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-C1BECA6A"
+  },
+  {
+    "_thread_id": "19681f5a98e0ee1b",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-98E0EE1B"
+  },
+  {
+    "_thread_id": "19632eadff75becb",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-FF75BECB"
+  },
+  {
+    "_thread_id": "19666b2dbacbb8ce",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-BACBB8CE"
+  },
+  {
+    "_thread_id": "1965dd1a17c9c977",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-17C9C977"
+  },
+  {
+    "_thread_id": "1965356c4bf6773f",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-4BF6773F"
+  },
+  {
+    "_thread_id": "194ef3d0fd9573a6",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-FD9573A6"
+  },
+  {
+    "_thread_id": "196255bf672fe213",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-672FE213"
+  },
+  {
+    "_thread_id": "196054bd61f490f0",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-61F490F0"
+  },
+  {
+    "_thread_id": "196156fd5a1786dd",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-5A1786DD"
+  },
+  {
+    "_thread_id": "195d1d42f9d29263",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-F9D29263"
+  },
+  {
+    "_thread_id": "19615934bbef2784",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-BBEF2784"
+  },
+  {
+    "_thread_id": "195c30ab7b3215f8",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-7B3215F8"
+  },
+  {
+    "_thread_id": "195d13f6cecf3096",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-CECF3096"
+  },
+  {
+    "_thread_id": "191eb65c34b6dcdf",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-34B6DCDF"
+  },
+  {
+    "_thread_id": "195b3ea9549139c3",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-549139C3"
+  },
+  {
+    "_thread_id": "1958abdba747df74",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-A747DF74"
+  },
+  {
+    "_thread_id": "195a38fec811089a",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-C811089A"
+  },
+  {
+    "_thread_id": "195840819bdad628",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-9BDAD628"
+  },
+  {
+    "_thread_id": "195b7508e81b1089",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-E81B1089"
+  },
+  {
+    "_thread_id": "195b8aa5404c4479",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-404C4479"
+  },
+  {
+    "_thread_id": "195cbc93fb41415e",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-FB41415E"
+  },
+  {
+    "_thread_id": "195a3386b9e2a201",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-B9E2A201"
+  },
+  {
+    "_thread_id": "1931fb593a577d92",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-3A577D92"
+  },
+  {
+    "_thread_id": "1959a098493c6b75",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-493C6B75"
+  },
+  {
+    "_thread_id": "1957eed146a59f03",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-46A59F03"
+  },
+  {
+    "_thread_id": "1956a1d79dca025a",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-9DCA025A"
+  },
+  {
+    "_thread_id": "19589804e954d797",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-E954D797"
+  },
+  {
+    "_thread_id": "19598786a7056d80",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-A7056D80"
+  },
+  {
+    "_thread_id": "195190096c7fb4c0",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-6C7FB4C0"
+  },
+  {
+    "_thread_id": "194b201ff46ce4c6",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-F46CE4C6"
+  },
+  {
+    "_thread_id": "1952314684451c0f",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-84451C0F"
+  },
+  {
+    "_thread_id": "1954fd045d9be44f",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-5D9BE44F"
+  },
+  {
+    "_thread_id": "1952189c8e0702d7",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-8E0702D7"
+  },
+  {
+    "_thread_id": "19519719e9e2fa32",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-E9E2FA32"
+  },
+  {
+    "_thread_id": "195138cb324a9085",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-324A9085"
+  },
+  {
+    "_thread_id": "195a31b48f43238e",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-8F43238E"
+  },
+  {
+    "_thread_id": "1933f25c2f873948",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-2F873948"
+  },
+  {
+    "_thread_id": "19511e29f03a4682",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-F03A4682"
+  },
+  {
+    "_thread_id": "1951383330832378",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-30832378"
+  },
+  {
+    "_thread_id": "19905cfa0955d5e5",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-0955D5E5"
+  },
+  {
+    "_thread_id": "19468a8373fad88b",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-73FAD88B"
+  },
+  {
+    "_thread_id": "194d07bcb366aae3",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-B366AAE3"
+  },
+  {
+    "_thread_id": "194ca9b9b7cef6fc",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-B7CEF6FC"
+  },
+  {
+    "_thread_id": "194bc109c01f267c",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-C01F267C"
+  },
+  {
+    "_thread_id": "194d4e6d46177dc9",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-46177DC9"
+  },
+  {
+    "_thread_id": "199a049f94a17fc3",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-94A17FC3"
+  },
+  {
+    "_thread_id": "1949375eeeacf76f",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-EEACF76F"
+  },
+  {
+    "_thread_id": "194d62eeb4f0ce97",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-B4F0CE97"
+  },
+  {
+    "_thread_id": "19478e083dc99d52",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-3DC99D52"
+  },
+  {
+    "_thread_id": "1928a35966191020",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-66191020"
+  },
+  {
+    "_thread_id": "194a7eeec3f2ea38",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-C3F2EA38"
+  },
+  {
+    "_thread_id": "194b071c8941c040",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-8941C040"
+  },
+  {
+    "_thread_id": "19469262168ffc15",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-168FFC15"
+  },
+  {
+    "_thread_id": "195d7911a304a58e",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-A304A58E"
+  },
+  {
+    "_thread_id": "193e2f3837c53b53",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-37C53B53"
+  },
+  {
+    "_thread_id": "1943a6cce26a9312",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-E26A9312"
+  },
+  {
+    "_thread_id": "1942b7c6d4e1d228",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-D4E1D228"
+  },
+  {
+    "_thread_id": "193f83b0eea497d2",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-EEA497D2"
+  },
+  {
+    "_thread_id": "193df4e41707b42e",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-1707B42E"
+  },
+  {
+    "_thread_id": "1919d7bcbc394f04",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-BC394F04"
+  },
+  {
+    "_thread_id": "1938c63a95e41a86",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-95E41A86"
+  },
+  {
+    "_thread_id": "193c52e350c9e070",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-50C9E070"
+  },
+  {
+    "_thread_id": "1939681911cf0a96",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-11CF0A96"
+  },
+  {
+    "_thread_id": "1936235f40094b17",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-40094B17"
+  },
+  {
+    "_thread_id": "1937c3a0fb6cb62b",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-FB6CB62B"
+  },
+  {
+    "_thread_id": "1935905dc7f63365",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-C7F63365"
+  },
+  {
+    "_thread_id": "193d349e9cce0eb3",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-9CCE0EB3"
+  },
+  {
+    "_thread_id": "1934ee969e76996f",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-9E76996F"
+  },
+  {
+    "_thread_id": "19362cdc4e403291",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-4E403291"
+  },
+  {
+    "_thread_id": "1932ac7606e41756",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-06E41756"
+  },
+  {
+    "_thread_id": "1932e54fb174b285",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-B174B285"
+  },
+  {
+    "_thread_id": "19357e52e294bd31",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-E294BD31"
+  },
+  {
+    "_thread_id": "193301dfa421882e",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-A421882E"
+  },
+  {
+    "_thread_id": "1931069e9318ccbc",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-9318CCBC"
+  },
+  {
+    "_thread_id": "1932e59229ca4f3a",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-29CA4F3A"
+  },
+  {
+    "_thread_id": "1930bc612c2c7bea",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-2C2C7BEA"
+  },
+  {
+    "_thread_id": "193199d9a6160476",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-A6160476"
+  },
+  {
+    "_thread_id": "1930bca5f44fb7e1",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-F44FB7E1"
+  },
+  {
+    "_thread_id": "192fac2c0643e52f",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-0643E52F"
+  },
+  {
+    "_thread_id": "192d85228082771f",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-8082771F"
+  },
+  {
+    "_thread_id": "192d1a8987dcd8f5",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-87DCD8F5"
+  },
+  {
+    "_thread_id": "192d292cb624707b",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-B624707B"
+  },
+  {
+    "_thread_id": "1929a3c706e85c82",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-06E85C82"
+  },
+  {
+    "_thread_id": "1929008335aa3ed6",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-35AA3ED6"
+  },
+  {
+    "_thread_id": "192d2c762a2d44b5",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-2A2D44B5"
+  },
+  {
+    "_thread_id": "19270201f563123c",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-F563123C"
+  },
+  {
+    "_thread_id": "192a44d20107fa9a",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-0107FA9A"
+  },
+  {
+    "_thread_id": "19905c6ce51e2ef5",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-E51E2EF5"
+  },
+  {
+    "_thread_id": "19266c1ea0ac5c40",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-A0AC5C40"
+  },
+  {
+    "_thread_id": "191d601e3f619849",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-3F619849"
+  },
+  {
+    "_thread_id": "19283b79c66c7d26",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-C66C7D26"
+  },
+  {
+    "_thread_id": "1922e4aa88caf683",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-88CAF683"
+  },
+  {
+    "_thread_id": "192285645b1be74c",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-5B1BE74C"
+  },
+  {
+    "_thread_id": "192222e733f3f6dc",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-33F3F6DC"
+  },
+  {
+    "_thread_id": "1920ad78d753be59",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-D753BE59"
+  },
+  {
+    "_thread_id": "19222fcf1f8f40e9",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-1F8F40E9"
+  },
+  {
+    "_thread_id": "192dc802184fbb21",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-184FBB21"
+  },
+  {
+    "_thread_id": "192055435e7aef2c",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-5E7AEF2C"
+  },
+  {
+    "_thread_id": "191e5c7b6cd2fcf3",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-6CD2FCF3"
+  },
+  {
+    "_thread_id": "191e4ee8a6d2c777",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-A6D2C777"
+  },
+  {
+    "_thread_id": "191b25a2deb9dcc5",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-DEB9DCC5"
+  },
+  {
+    "_thread_id": "191e0a6581e7b9e6",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-81E7B9E6"
+  },
+  {
+    "_thread_id": "191c5c9a8438f1e8",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-8438F1E8"
+  },
+  {
+    "_thread_id": "191cb77dd877bbd0",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-D877BBD0"
+  },
+  {
+    "_thread_id": "1920471782a5a210",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-82A5A210"
+  },
+  {
+    "_thread_id": "191b680212f531f0",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-12F531F0"
+  },
+  {
+    "_thread_id": "191bc29bad324c77",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-AD324C77"
+  },
+  {
+    "_thread_id": "191b17a3f5c256ee",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-F5C256EE"
+  },
+  {
+    "_thread_id": "1919d95fcb6bbf75",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-CB6BBF75"
+  },
+  {
+    "_thread_id": "1919736b518ca6d2",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-518CA6D2"
+  },
+  {
+    "_thread_id": "19198c51ce19a6f7",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-CE19A6F7"
+  },
+  {
+    "_thread_id": "1925678c0f4aada4",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-0F4AADA4"
+  },
+  {
+    "_thread_id": "19192c93d9ccd371",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-D9CCD371"
+  },
+  {
+    "_thread_id": "1918ecb5054cdb1a",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-054CDB1A"
+  },
+  {
+    "_thread_id": "1918ed04af18f4aa",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-AF18F4AA"
+  },
+  {
+    "_thread_id": "191745a84626f3e2",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-4626F3E2"
+  },
+  {
+    "_thread_id": "18f38ee726694564",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-26694564"
+  },
+  {
+    "_thread_id": "191937844a6e60a7",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-4A6E60A7"
+  },
+  {
+    "_thread_id": "1914beec084e6170",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-084E6170"
+  },
+  {
+    "_thread_id": "1914bac6198e7229",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-198E7229"
+  },
+  {
+    "_thread_id": "1913b5fe1ba44e12",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-1BA44E12"
+  },
+  {
+    "_thread_id": "1914535a15bf2cb1",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-15BF2CB1"
+  },
+  {
+    "_thread_id": "19154716193d2785",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-193D2785"
+  },
+  {
+    "_thread_id": "1919c998295b7bb4",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-295B7BB4"
+  },
+  {
+    "_thread_id": "19122ed06908ef38",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-6908EF38"
+  },
+  {
+    "_thread_id": "19102fc1f3357506",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-F3357506"
+  },
+  {
+    "_thread_id": "190b63d863731753",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-63731753"
+  },
+  {
+    "_thread_id": "190a76f91ace2ac5",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-1ACE2AC5"
+  },
+  {
+    "_thread_id": "190b615821592b6e",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-21592B6E"
+  },
+  {
+    "_thread_id": "1907fe35b4c15030",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-B4C15030"
+  },
+  {
+    "_thread_id": "190b5e8876a0db0f",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-76A0DB0F"
+  },
+  {
+    "_thread_id": "1917a042c3e66fb1",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-C3E66FB1"
+  },
+  {
+    "_thread_id": "19073e79c4cb4afd",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-C4CB4AFD"
+  },
+  {
+    "_thread_id": "1905405592f5ff0d",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-92F5FF0D"
+  },
+  {
+    "_thread_id": "1917a441ddcb3f29",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-DDCB3F29"
+  },
+  {
+    "_thread_id": "1904fb9df47e2534",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-F47E2534"
+  },
+  {
+    "_thread_id": "190e7cda53e8264d",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-53E8264D"
+  },
+  {
+    "_thread_id": "1903ed16bae5bff1",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-BAE5BFF1"
+  },
+  {
+    "_thread_id": "18fed19ad05a8588",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-D05A8588"
+  },
+  {
+    "_thread_id": "190ca5d9b03b3315",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-B03B3315"
+  },
+  {
+    "_thread_id": "18fe71db1daaceb8",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-1DAACEB8"
+  },
+  {
+    "_thread_id": "18fd9dae349139f6",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-349139F6"
+  },
+  {
+    "_thread_id": "18fe6a2ff9725e80",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-F9725E80"
+  },
+  {
+    "_thread_id": "190072ff2359b21e",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-2359B21E"
+  },
+  {
+    "_thread_id": "18fe6a1108ce1a53",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-08CE1A53"
+  },
+  {
+    "_thread_id": "18f5276b731fe14c",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-731FE14C"
+  },
+  {
+    "_thread_id": "18fce89e27bda700",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-27BDA700"
+  },
+  {
+    "_thread_id": "18f4e57f1a39f0d7",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-1A39F0D7"
+  },
+  {
+    "_thread_id": "18fbf2055c64a70a",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-5C64A70A"
+  },
+  {
+    "_thread_id": "18f9af9ecd8a6c6f",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-CD8A6C6F"
+  },
+  {
+    "_thread_id": "18fed5013488d770",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-3488D770"
+  },
+  {
+    "_thread_id": "18f29b8c94a7458d",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-94A7458D"
+  },
+  {
+    "_thread_id": "18f1ac0f1a733dfd",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-1A733DFD"
+  },
+  {
+    "_thread_id": "18f76bf196b01e90",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-96B01E90"
+  },
+  {
+    "_thread_id": "18fce35549e1be10",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-49E1BE10"
+  },
+  {
+    "_thread_id": "18d5876f5a59d2a2",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-5A59D2A2"
+  },
+  {
+    "_thread_id": "18eeba203e578db8",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-3E578DB8"
+  },
+  {
+    "_thread_id": "18ee5f236449c749",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-6449C749"
+  },
+  {
+    "_thread_id": "18ee74f9646043ae",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-646043AE"
+  },
+  {
+    "_thread_id": "18e7f6c9125f8eed",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-125F8EED"
+  },
+  {
+    "_thread_id": "18e7f7ce92dc54d3",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-92DC54D3"
+  },
+  {
+    "_thread_id": "18ebdd15e5f1119d",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-E5F1119D"
+  },
+  {
+    "_thread_id": "18e3cd946f918252",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-6F918252"
+  },
+  {
+    "_thread_id": "18e5730f23399763",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-23399763"
+  },
+  {
+    "_thread_id": "18e8a3098c5c8592",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-8C5C8592"
+  },
+  {
+    "_thread_id": "18e427c2b3ebe8b1",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-B3EBE8B1"
+  },
+  {
+    "_thread_id": "18e385308c03754f",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-8C03754F"
+  },
+  {
+    "_thread_id": "18e1965d2b13b76a",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-2B13B76A"
+  },
+  {
+    "_thread_id": "18e8546883043307",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-83043307"
+  },
+  {
+    "_thread_id": "18e1e77b7c734b40",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-7C734B40"
+  },
+  {
+    "_thread_id": "18e12519e5686cc0",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-E5686CC0"
+  },
+  {
+    "_thread_id": "18e60e939103c4dc",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-9103C4DC"
+  },
+  {
+    "_thread_id": "18df427283c4068c",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-83C4068C"
+  },
+  {
+    "_thread_id": "18e0e49176fc6b76",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-76FC6B76"
+  },
+  {
+    "_thread_id": "18de9b35684b87b3",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-684B87B3"
+  },
+  {
+    "_thread_id": "18df8ad9bd15ef82",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-BD15EF82"
+  },
+  {
+    "_thread_id": "18dfa65e0461ad59",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-0461AD59"
+  },
+  {
+    "_thread_id": "18df55dd7f5e3dd0",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-7F5E3DD0"
+  },
+  {
+    "_thread_id": "18df03de6155ca35",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-6155CA35"
+  },
+  {
+    "_thread_id": "18dc5973af70555c",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-AF70555C"
+  },
+  {
+    "_thread_id": "18dafe138ca6048a",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-8CA6048A"
+  },
+  {
+    "_thread_id": "18ebc3c2693738a9",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-693738A9"
+  },
+  {
+    "_thread_id": "194cc6874a39e4b3",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-4A39E4B3"
+  },
+  {
+    "_thread_id": "18d1acb268e292da",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-68E292DA"
+  },
+  {
+    "_thread_id": "18da1d5181bc56c2",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-81BC56C2"
+  },
+  {
+    "_thread_id": "18d1a5fcf08f6d60",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-F08F6D60"
+  },
+  {
+    "_thread_id": "18d790bb386be7ec",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-386BE7EC"
+  },
+  {
+    "_thread_id": "18d0beafa1a6741d",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-A1A6741D"
+  },
+  {
+    "_thread_id": "18db05b693ef3888",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-93EF3888"
+  },
+  {
+    "_thread_id": "18d16de8f94f4949",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-F94F4949"
+  },
+  {
+    "_thread_id": "18cd32cbda0defc7",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-DA0DEFC7"
+  },
+  {
+    "_thread_id": "18da66e4128ba9e5",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-128BA9E5"
+  },
+  {
+    "_thread_id": "18cc3cef2dd6e3da",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-2DD6E3DA"
+  },
+  {
+    "_thread_id": "18d0c090528676e8",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-528676E8"
+  },
+  {
+    "_thread_id": "18cf70a280d6bbaf",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-80D6BBAF"
+  },
+  {
+    "_thread_id": "18cfcb4b84e37d99",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-84E37D99"
+  },
+  {
+    "_thread_id": "18c066b0c68855b4",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-C68855B4"
+  },
+  {
+    "_thread_id": "18d212bbed4937ee",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-ED4937EE"
+  },
+  {
+    "_thread_id": "18b89f42c1447489",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-C1447489"
+  },
+  {
+    "_thread_id": "18b715a3e5f2817d",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-E5F2817D"
+  },
+  {
+    "_thread_id": "18b7f8919a6c815b",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-9A6C815B"
+  },
+  {
+    "_thread_id": "18b6a8c5c667aea6",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-C667AEA6"
+  },
+  {
+    "_thread_id": "18b5cacdcd54cc2b",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-CD54CC2B"
+  },
+  {
+    "_thread_id": "18be1b0b594527f2",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-594527F2"
+  },
+  {
+    "_thread_id": "18c42fdc90a4bf58",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-90A4BF58"
+  },
+  {
+    "_thread_id": "18b7f88efb6629aa",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-FB6629AA"
+  },
+  {
+    "sla_classification": "Internal Support / Human Resources",
+    "customer_name": "Shifa Ali",
+    "issue_summary": "Shifa Ali (Regional Ops Head - South) is proposing a transition/upskilling plan for Rajkumar into a Sales execution role. Rajkumar has expressed high interest and demonstrated initiative by creating a presentation on consumer behavior. Shifa seeks training materials from Jimmeey and suggests hiring a replacement Customer Service Team (CST) member to allow Rajkumar to train side-by-side.",
+    "response_strategy": "Collaborative internal alignment. Support the Regional Ops Head's initiative to develop talent while managing the workload of the Sales lead (Jimmeey).",
+    "recommended_actions": [
+      "Jimmeey to provide training modules or sales playbooks to Shifa.",
+      "Mitali to review the headcount request for a new CST hire.",
+      "Acknowledge Rajkumar's proactive effort on the Consumer Behaviour PPT.",
+      "Setup a sync meeting to define the transition timeline."
+    ],
+    "date_opened": "2023-10-19",
+    "unknowns": "The specific current role of Rajkumar (assumed current CST based on context); the budget approval status for the new CST hire; Jimmeey's specific availability.",
+    "ownership": "Jimmeey / Mitali Kumar",
+    "priority": "Medium",
+    "current_status": "awaiting_internal_action",
+    "sentiment": {
+      "emotional_tone": "Positive, encouraging, and proactive.",
+      "frustration_level": "Low",
+      "churn_likelihood": "Low",
+      "risk_indicators": "Potential operational gap if CST isn't hired before Rajkumar transitions."
+    },
+    "suggested_reply": "Hi Shifa, Thank you for the update on Rajkumar. It's great to see his initiative with the Customer Profiling presentation. I will share the preliminary sales training materials with you by EOD so you can begin the interim training. Mitali, let's discuss the timeline for hiring the additional CST member to ensure we don't have a coverage gap during Rajkumar's transition. Best, [Name]",
+    "complaint_category": "Internal Staff Development / HR Training",
+    "internal_risk_flags": [
+      "Resource allocation (Jimmeey)",
+      "Hiring dependency (CST role)",
+      "Skill gap management"
+    ],
+    "root_cause": "Internal career development request and organizational restructuring of the South region team.",
+    "sla_aging": "932 days",
+    "last_response_date": "2023-10-19",
+    "ticket_id": "TKT-C44D117D",
+    "key_customer_statements": [
+      "he\u2019s keen on sales and feels it would definitely help upskill himself.",
+      "wants to work closely with Jimmeey to understand everything properly.",
+      "we can hire another CST and train Rajkumar side by side.",
+      "he made that extra effort to research and put together information in a concise manner."
+    ],
+    "customer_email": "shifa@physique57bengaluru.com",
+    "_thread_id": "18b4690ec44d117d"
+  },
+  {
+    "issue_summary": "The email thread consists of internal coordination between two staff members at Physique 57 (Priyanka Abnave and Jimmeey Gondaa) regarding a presentation file. Jimmeey provided a file/update, and Priyanka acknowledged receipt with a humorous comment about the quality of the work. There is no external customer involved.",
+    "ticket_id": "TKT-69BB1912",
+    "priority": "Low",
+    "sentiment": {
+      "emotional_tone": "Positive and playful/humorous.",
+      "risk_indicators": "None (Internal collaboration)",
+      "frustration_level": "Low",
+      "churn_likelihood": "Low"
+    },
+    "key_customer_statements": [
+      "Thank you so much Jimmeey, it doesn't look like I made it \u2764\ud83d\ude02",
+      "Hi Jimmeey, PFA"
+    ],
+    "response_strategy": "N/A - Internal staff communication. Maintain record as a non-customer interaction.",
+    "date_opened": "2023-11-01",
+    "sla_aging": "919 days",
+    "customer_email": "priyanka@physique57mumbai.com",
+    "ownership": "Jimmeey Gondaa",
+    "customer_name": "Priyanka Abnave",
+    "sla_classification": "Tier 3 Standard Service",
+    "root_cause": "The ticket was created from an internal email thread regarding administrative task coordination (presentation prep) rather than a customer inquiry.",
+    "recommended_actions": [
+      "Close ticket as 'Internal Communication' or 'Spam/Non-Support' to avoid skewing CX metrics.",
+      "No further customer support action required as this is an employee interaction."
+    ],
+    "suggested_reply": "N/A (Internal email)",
+    "internal_risk_flags": [
+      "Misclassified Ticket (Internal Correspondence)"
+    ],
+    "unknowns": "The specific content of the 'Presentation' mentioned is unknown as the attachments are not visible. Identifying this as a 'Support Ticket' is technically a misclassification as both parties are employees.",
+    "last_response_date": "2023-11-01",
+    "complaint_category": "Internal Communication / Administrative Support",
+    "current_status": "resolved",
+    "_thread_id": "18b892d269bb1912"
+  },
+  {
+    "ownership": "Sylvia Helen (HR/Recruitment)",
+    "suggested_reply": "Hi Shifa, Thank you for the update and for sharing the JD. I have noted the salary bracket of 30,000 - 35,000. I will widen the search to include 'Client Servicing & Sales Associate' profiles immediately. Regarding the title, would you prefer we post both or stick to 'Senior' to attract more experienced talent? Best, Sylvia.",
+    "customer_name": "Shifa Ali",
+    "customer_email": "shifa@physique57bengaluru.com",
+    "response_strategy": "Collaborative internal support; confirm receipt of the updated JD and salary bracket, and align on whether to post as 'Associate' or 'Senior Associate'.",
+    "sla_aging": "934 days",
+    "issue_summary": "Shifa Ali (Regional Operations Head - South) is requesting to expand the recruitment search to include a 'Client Servicing & Sales Associate' or 'Senior Client Servicing & Sales Associate' role due to lack of sales experience in current candidates for the Coordinator position.",
+    "root_cause": "Current candidate pool for 'Coordinator' role lacks necessary sales experience, necessitating a shift in job title and search parameters to attract more qualified talent.",
+    "priority": "Medium",
+    "ticket_id": "TKT-981231CC",
+    "current_status": "awaiting_internal_action",
+    "recommended_actions": [
+      "Update job board listings with the new 'Associate/Senior Associate' title.",
+      "Review the attached JD for South region specific requirements.",
+      "Acknowledge receipt to Shifa Ali and provide timeline for new candidate sourced."
+    ],
+    "sentiment": {
+      "churn_likelihood": "Low",
+      "emotional_tone": "Professional and proactive.",
+      "frustration_level": "Low",
+      "risk_indicators": "Operational delay in the South region due to unfilled sales positions."
+    },
+    "internal_risk_flags": [
+      "Hiring Delay",
+      "Budget constraints (30k-35k INR)",
+      "Skill gap in current applicant pool"
+    ],
+    "date_opened": "2023-10-17",
+    "sla_classification": "Internal Service Request",
+    "unknowns": "Whether the budget of 30,000 - 35,000 is Monthly or Weekly (assumed Monthly based on industry standards); whether the 'Senior' title change implies a higher salary bracket than stated.",
+    "complaint_category": "Internal Recruitment / Hiring Support",
+    "last_response_date": "2023-10-17",
+    "key_customer_statements": [
+      "since the candidates applying for the Sales & Client Servicing Coordinator role do not have much experience in sales, we would like to widen our search",
+      "Salary bracket - 30,000 - 35,000",
+      "We could also name the designation as Senior Client Servicing & Sales Associate."
+    ],
+    "_thread_id": "18b3d5d1981231cc"
+  },
+  {
+    "recommended_actions": [
+      "Audit the discrepancy in Mahek Anand's payment (Requested 3540, Confirmed 1770).",
+      "Cross-verify the Sunday 4th May transactions (Shraddha Setalvad, Avantika Chhabra, Tanwi Dixit) as they were not explicitly listed in the final confirmation email from Gaurav."
+    ],
+    "ticket_id": "TKT-32556126",
+    "current_status": "resolved",
+    "internal_risk_flags": [
+      "High volume of transactions in single thread",
+      "Manual UPI reconciliation process"
+    ],
+    "sentiment": {
+      "churn_likelihood": "Low",
+      "emotional_tone": "Professional and transactional.",
+      "frustration_level": "Low",
+      "risk_indicators": "Potential for partial payment mismatch (Mahek Anand)."
+    },
+    "sla_classification": "Standard Finance Support",
+    "date_opened": "2025-05-01",
+    "key_customer_statements": [
+      "Kindly confirm if we have received the UPI amount Reshma Sharma-99... Mahek Anand-3540... Simran Shah-1770",
+      "Please see the attached UPI transaction for 3rd May Opening shift.",
+      "Client Name- Resham Sajnani: 1770/- Shalini Pillai: 160/- Shrraddha Setalvad: 1770/- Mihir Sheth: 160/- + 240/-"
+    ],
+    "last_response_date": "2025-05-05",
+    "unknowns": "Confirmation of receipt for the 4th May Sunday shift transactions (Tanwi Dixit and Avantika Chhabra) was missing from the latest provided reply in the thread. Status of Mahek Anand payment (requested 3540 vs confirmed 1770) is unclear.",
+    "complaint_category": "Payment Verification / Accounts Reconciliation",
+    "suggested_reply": "Hi Saniya and Sheetal, Gaurav has confirmed receipt of the UPI payments for May 1st and May 3rd. Please ensure the May 4th transactions for Shraddha, Avantika, and Tanwi are also verified in the next bank statement cycle. Credits should now be updated on the respective client profiles.",
+    "customer_name": "Resham Sajnani (Multiple Clients)",
+    "ownership": "Gaurav Sogam (Finance/Accounts)",
+    "customer_email": "reshamsajnani@icloud.com (representative)",
+    "root_cause": "Standard operational payment verification process between Studio Sales and Central Finance.",
+    "issue_summary": "Reconciliation of multiple UPI payments for Bandra studio sessions between May 1st and May 4th, 2025. Sales associates (Saniya and Sheetal) submitted transaction proofs for various clients including Mahek Anand, Resham Sajnani, and Shraddha Setalvad. Finances confirmed receipt of the listed amounts on May 5th.",
+    "sla_aging": "372 days",
+    "response_strategy": "Internal reconciliation complete; map payments to client accounts in CRM.",
+    "priority": "Medium",
+    "_thread_id": "1968c67d32556126"
+  },
+  {
+    "unknowns": "The thread contains 64 messages but the provided text only shows interactions until March 4th; transactions for the remainder of March 2025 are not visible but are implied by the subject line. Status of transactions between March 5th, 2025 and May 8th, 2026 is unknown but likely archived.",
+    "ticket_id": "TKT-47D282C8",
+    "response_strategy": "This is an internal operational thread. The response strategy is to maintain the daily verification cadence and acknowledge receipt of digital payments to ensure studio records match bank records.",
+    "root_cause": "Manual verification process required between sales staff and accounting to confirm success of UPI digital payments.",
+    "sentiment": {
+      "frustration_level": "Low",
+      "churn_likelihood": "Low",
+      "risk_indicators": "None - this is standard operating procedure.",
+      "emotional_tone": "Professional and routine; administrative."
+    },
+    "issue_summary": "Internal recurring audit and verification of daily UPI transactions for the Bandra studio location for March 2025. Sales Associate Sheetal Kataria provides daily transaction lists for verification against bank credits to Gaurav Sogam.",
+    "last_response_date": "2025-03-04",
+    "priority": "Low",
+    "customer_email": "sheetal@physique57mumbai.com",
+    "current_status": "awaiting_internal_action",
+    "suggested_reply": "Hi Sheetal, confirming that all March 1st through March 3rd transactions have been verified and credited as per my previous emails. Please continue sending the shift closing reports for the remainder of the week for reconciliation.",
+    "sla_classification": "Internal Back-office Support",
+    "complaint_category": "Payment Reconciliation",
+    "ownership": "Gaurav Sogam (Finance/Accounting)",
+    "recommended_actions": [
+      "Continue validating daily UPI receipts against bank statements.",
+      "Update the master March 2025 reconciliation sheet with verified entries.",
+      "Check for any pending transactions from March 4th to May 8th given the current date."
+    ],
+    "date_opened": "2025-03-01",
+    "internal_risk_flags": [
+      "Internal process tracking only",
+      "High volume of manual reconciliation entries"
+    ],
+    "key_customer_statements": [
+      "Kindly confirm if we have received the UPI amount.",
+      "Please see the attached UPI transaction for the 1st March 2025 closing shift.",
+      "Client Name : Victoria Dell'oreo - 1770/-"
+    ],
+    "customer_name": "Sheetal Kataria (Internal Sales Associate)",
+    "sla_aging": "430 days since last recorded email in thread (as of 2026-05-08)",
+    "_thread_id": "1955210447d282c8"
+  },
+  {
+    "response_strategy": "Internal investigation to resolve technical booking threshold errors followed by proactive outreach to the impacted customer (Deshna).",
+    "last_response_date": "2023-09-25",
+    "sentiment": {
+      "emotional_tone": "Professional / Observational",
+      "risk_indicators": "Customer Deshna Kasliwala was unable to attend due to technical failure; risk of trial customer Rachana Shah having a poor first-time experience.",
+      "churn_likelihood": "Medium",
+      "frustration_level": "Medium"
+    },
+    "customer_email": "Internal Staff Escalation",
+    "internal_risk_flags": [
+      "Discrepancy between app capacity and actual class attendance",
+      "Potential lost revenue from unable-to-book customers",
+      "Inconsistent check-in/signup procedures for trial students"
+    ],
+    "ticket_id": "TKT-AF91B9CF",
+    "complaint_category": "App & Booking Management",
+    "date_opened": "2023-09-25",
+    "ownership": "Operations / Jimenez (Jimmeey)",
+    "priority": "Medium",
+    "root_cause": "Technical error or misconfiguration in the booking app's capacity threshold, causing it to block bookings prematurely.",
+    "key_customer_statements": [
+      "Deshna Kasliwala says she tried to check in at 6:15 p.m. but couldn't because the app showed capacity as full.",
+      "we had 9 signups plus 2 walk-ins - Rachana Shah & Shahena Zaveri.",
+      "Meher [Satsangi] informed us 5 minutes before about Rachana Shah, her friend, for a trial class."
+    ],
+    "suggested_reply": "(Internal Memo to Jimmeey): Jimmeey, please investigate the capacity settings for the 6:45pm Barre57 slot. We had a client, Deshna Kasliwala, locked out by the app while we still had physical room for walk-ins. We need to reconcile the app's 'full' status against our actual studio capacity to prevent further lost bookings. I recommend we credit Deshna's account as a gesture of goodwill.",
+    "sla_classification": "Standard Service Request",
+    "current_status": "awaiting_internal_action",
+    "unknowns": "The actual maximum capacity of the studio for that specific class; whether Rachana Shah and Vrinda Ahuja were eventually accommodated.",
+    "issue_summary": "Internal escalation reporting a booking/capacity discrepancy for the 6:45pm Barre57 class. Deshna Kasliwala was unable to check in because the app showed 'full' despite only 9 signups being present. Concurrently, walk-ins (Rachana Shah & Shahena Zaveri) and unscheduled arrivals occurred, highlighting a synchronization issue between the app's capacity limits and real-time studio availability.",
+    "customer_name": "Priyanka Abnave (Internal Reporting)",
+    "recommended_actions": [
+      "Audit the Barre57 6:45pm class capacity settings in the booking app.",
+      "Reach out to Deshna Kasliwala to apologize for the booking error and offer a complimentary credit.",
+      "Review walk-in and trial class registration protocols for staff to ensure real-time app updates.",
+      "Verify why the app reported 'Full' at 9 signups if the capacity allows for more."
+    ],
+    "sla_aging": "956 days",
+    "_thread_id": "18accac5af91b9cf"
+  },
+  {
+    "customer_name": "Arzoo Afzal (OOO Office)",
+    "response_strategy": "Proactive internal coordination to finalize logistics for the imminent April 6th event, followed by formalizing the offsite plans for later in the month.",
+    "last_response_date": "2024-04-02",
+    "customer_email": "arzoo@oooffice.co.in",
+    "sla_aging": "779 days since opening; 766 days since last customer activity (Context: This is an archived event coordination thread).",
+    "suggested_reply": "Hi Arzoo and Team, Thank you for the final rollout plan for April 6th. Shifa/Team, please see the approval request for the INR 10,000 F&B cost and the 11:00 AM start time. We will provide the sign-up links shortly. Arzoo, we look forward to the Talk Points by EOD. Regarding the offsite on the 20th/21st, let's circle back once the 6th is successfully executed.",
+    "complaint_category": "Marketing & Event Collaboration",
+    "sentiment": {
+      "frustration_level": "Low",
+      "emotional_tone": "Professional, collaborative, and deadline-oriented.",
+      "churn_likelihood": "Low",
+      "risk_indicators": "Tight execution timeline for April 6th event; dependency on internal approval for F&B budget."
+    },
+    "internal_risk_flags": [
+      "High external F&B cost approval required (INR 10,000)",
+      "Tight timeline (Event date April 6th)",
+      "Multiple external partners involved (FemTech, Urban Fork, Simrun Chopra)"
+    ],
+    "ticket_id": "TKT-D4C357D0",
+    "recommended_actions": [
+      "Approve or negotiate the INR 10,000 F&B cost for Urban Fork immediately.",
+      "Confirm 11:00 AM start time for the April 6th event.",
+      "Provide two sign-up links as requested by the marketing team.",
+      "Review 'Talk Points' for the panel discussion once received via email.",
+      "Coordinate studio space across both Bangalore studios for the 24+ external attendees."
+    ],
+    "sla_classification": "Standard Internal Support / Marketing Collaboration",
+    "ownership": "Shifa Ali (Regional Operations Head - South)",
+    "unknowns": "Final decision on offsite venue (Conrad vs JW Marriott); status of Sova Health response for April 7th; specific 'Talk Points' for the panel.",
+    "date_opened": "2024-03-20",
+    "root_cause": "Ongoing anniversary month celebration planning and partnership management.",
+    "current_status": "awaiting_internal_action",
+    "issue_summary": "Arzoo Afzal (OOO Office) is proposing and coordinating a series of events for Physique57 Bangalore's one-year anniversary. Plans include a panel discussion/workout on April 6th with FemTech, Urban Fork, and Simrun Chopra, a potential Sova Health collaboration on April 7th, and a large-scale offsite event (60-90 guests) around April 20th-21st. Recent updates require internal approval for a INR 10,000 F&B cost and confirmation of a 11:00 AM start time for the April 6th event.",
+    "priority": "High",
+    "key_customer_statements": [
+      "For the panel, this is the final rollout for the 6th.",
+      "F&B will be provided by Urban Fork, with a total cost of approximately INR 10,000 for all attendees. This will be navigated post your approval.",
+      "Please do let us know if 11:00am is good to start the event.",
+      "OOO will create a reel highlighting the key moments from the event, to be posted collaboratively."
+    ],
+    "_thread_id": "18e5aae7d4c357d0"
+  },
+  {
+    "ticket_id": "TKT-8127B9EA",
+    "issue_summary": "Client Rabia Kader, an international visitor from Karachi staying for one month, is refusing to follow the studio's progression levels (insisting on Advanced/Amped Up classes despite only having taken two classes). Additionally, she has a strict requirement for female-only trainers. This led to a confrontation where she demanded a refund after being denied entry to an advanced class led by a female trainer, while refusing a beginner class led by a male trainer. Head Trainer Saniya Jaiswal has intervened to manage expectations.",
+    "priority": "High",
+    "key_customer_statements": [
+      "I mentioned that time only I would not do class with a male trainer.",
+      "I will enroll since I can take any class I want, including advanced levels.",
+      "I barely burn any calories in Barre 57."
+    ],
+    "sentiment": {
+      "churn_likelihood": "High",
+      "emotional_tone": "Persistent, demanding, and uncompromising regarding trainer gender and class intensity.",
+      "frustration_level": "High",
+      "risk_indicators": "Requested refund early in the interaction; international visitor with limited stay duration."
+    },
+    "response_strategy": "Accommodative but safety-first. Staff have been instructed to allow her into advanced classes ONLY after documented warnings that she may not be able to cope, shifting the liability/experience risk to the client while maintaining the female-trainer preference.",
+    "date_opened": "2023-11-28",
+    "customer_email": "Unknown (Client handled in-person/via internal staff)",
+    "sla_aging": "892 days",
+    "sla_classification": "Standard Studio Inquiry (Overdue)",
+    "customer_name": "Rabia Kader",
+    "ownership": "Jimmeey (with Mitali Kumar oversight)",
+    "recommended_actions": [
+      "Jimmeey to meet with Mitali Kumar to discuss 'client handling' protocols as requested.",
+      "Monitor Rabia's attendance in 'Back Body Blaze' and ensure Saniya provides a secondary safety briefing.",
+      "Verify if a partial refund policy should be prepared if she remains dissatisfied with the local schedule/trainer constraints.",
+      "Flag her profile in the booking system regarding level waivers and trainer preferences."
+    ],
+    "root_cause": "Conflict between client's self-perceived fitness level (based on previous experience in Karachi) and studio's safety/progression policies, compounded by cultural/personal preference for female trainers.",
+    "suggested_reply": "[Internal Note] Saniya has already spoken to the client. The client is now aware of levels but insists on Advanced classes for calorie burn. We are proceeding by allowing her into Advanced classes at her own risk after verbal warnings, provided the trainer is female. Jimmeey and Mitali to align on whether this policy exception is permanent for her month-long stay.",
+    "unknowns": "Customer email address is not mentioned in the thread; specific 'Amped Up' class date/time she was originally denied for is implied as Nov 28 morning.",
+    "internal_risk_flags": [
+      "Refund demand issued",
+      "Refusal to adhere to safety/level protocols",
+      "Gender-based trainer preference creating scheduling conflicts",
+      "Reputational risk (short-term international visitor)"
+    ],
+    "current_status": "awaiting_internal_action",
+    "complaint_category": "Service Policy Conflict / Refund Demand",
+    "last_response_date": "2023-11-29",
+    "_thread_id": "18c13f4a8127b9ea"
+  },
+  {
+    "response_strategy": "Aligning internal expectations on candidate experience vs. salary before proceeding with 2nd round interviews. This is currently an internal pivoting of hiring requirements.",
+    "root_cause": "Candidates interviewed lacked the 'hardcore sales experience' required for the proposed salary bracket.",
+    "issue_summary": "Internal discussion regarding the recruitment of a Sales & Client Servicing Coordinator for the Bengaluru location. Feedback was provided on two candidates (Nitish S Chagashetty and Vamshi Abhilash). Despite Vamshi's strong communication and assessment completion, leadership (Jimmeey and Mitali) expressed concerns regarding hiting someone without sales experience at a 6.5LPA salary bracket. The hiring strategy is shifting toward looking for a Senior CST instead.",
+    "sla_aging": "934 days",
+    "priority": "Medium",
+    "ownership": "HR/Operations (Sylvia)",
+    "customer_name": "Shifa Ali",
+    "suggested_reply": "Hi Shifa, acknowledged the pivot to a Senior CST profile. Sylvia, please confirm once you have fresh resumes matching the 6.5LPA bracket with the required sales expertise. We will hold on Nitish and Vamshi for this specific role.",
+    "customer_email": "shifa@physique57bengaluru.com",
+    "date_opened": "2023-10-17",
+    "sla_classification": "Internal Recruitment Request",
+    "complaint_category": "Hiring & Recruitment",
+    "unknowns": "Whether Vamshi's assessment results were strong enough to justify a different role; current status of Sylvia's search.",
+    "key_customer_statements": [
+      "Vamshi has shown keen interest in learning about sales and he\u2019s got good amount of customer service experience.",
+      "Jimmeey & I spoke and he was clear that it makes no sense to hire someone at that salary bracket without sales experience.",
+      "I\u2019ve spoken with Sylvia to look out for a Senior CST."
+    ],
+    "last_response_date": "2023-10-17",
+    "recommended_actions": [
+      "Sylvia to source candidates for the Senior CST role with hardcore sales experience.",
+      "Formally reject Nitish and Vamshi if they do not meet the criteria for the revised role.",
+      "Update the internal job description to reflect the requirement for sales experience at the 6.5LPA bracket."
+    ],
+    "current_status": "awaiting_internal_action",
+    "ticket_id": "TKT-29FCAB33",
+    "sentiment": {
+      "frustration_level": "Low",
+      "emotional_tone": "Collaborative and professional internal coordination.",
+      "churn_likelihood": "Low",
+      "risk_indicators": "Inefficient hiring cycle if role requirements are not clearly defined before interviewing."
+    },
+    "internal_risk_flags": [
+      "Salary expectation misalignment",
+      "Lack of core technical skills in candidates",
+      "Role re-evaluation required"
+    ],
+    "_thread_id": "18b3cc5429fcab33"
+  },
+  {
+    "ownership": "Sylvia Helen (HR)",
+    "ticket_id": "TKT-B0D8A7FF",
+    "response_strategy": "Professional internal follow-up to clear the recruitment bottleneck. Provide a summary of the pending profiles to make feedback easier for the stakeholder.",
+    "issue_summary": "Shifa Ali (Regional Operations Head - South) requested HR assistance from Sylvia Helen (Corporate HR) to hire a Mid-level Sales & Client Servicing Coordinator for the Bengaluru location. HR provided approximately 20+ profiles across multiple batches. The process is currently stalled awaiting Shifa's feedback on the candidates provided to allow HR to proceed with applicant communication.",
+    "customer_email": "shifa@physique57bengaluru.com",
+    "priority": "Medium",
+    "current_status": "awaiting_customer_response",
+    "recommended_actions": [
+      "Internal HR to follow up with Shifa Ali via phone or Slack to confirm if the role is still active.",
+      "Review the candidate tracker for any updated notes since Oct 2023.",
+      "If the position was filled, archive the ticket and notify applicants."
+    ],
+    "complaint_category": "Internal Recruitment / HR Support",
+    "date_opened": "2023-10-03",
+    "root_cause": "Decision-maker (Regional Ops Head) has not provided feedback on candidate profiles provided by HR.",
+    "internal_risk_flags": [
+      "Significant delay in follow-up (over 2 years)",
+      "Hiring stall"
+    ],
+    "sla_aging": "938 days",
+    "key_customer_statements": [
+      "We are on the lookout for a Sales & Client Servicing Coordinator in Bengaluru.",
+      "Salary bracket - 45,000 - 50,000",
+      "I\u2019ll go through them in detail and revert accordingly."
+    ],
+    "last_response_date": "2023-10-11",
+    "customer_name": "Shifa Ali",
+    "suggested_reply": "Hi Shifa, following up on the recruitment for the Sales & Client Servicing Coordinator role in Bengaluru. We haven't received feedback on the 20+ profiles shared in October. Could you please let us know if any of these candidates are of interest, or if the requirements for the role have changed?",
+    "unknowns": "Status of the recruitment as of May 2026; whether the position was filled via other channels; if Shifa Ali is still in the same role.",
+    "sla_classification": "Standard Recruitment Support",
+    "sentiment": {
+      "emotional_tone": "Professional and collaborative, though currently unresponsive.",
+      "risk_indicators": "Operational delay in regional hiring.",
+      "frustration_level": "Low",
+      "churn_likelihood": "Low"
+    },
+    "_thread_id": "18af5e86b0d8a7ff"
+  },
+  {
+    "current_status": "awaiting_internal_action",
+    "priority": "Low",
+    "complaint_category": "Internal Career Development / Training",
+    "recommended_actions": [
+      "Jimmeey/Shifa to provide an update on the results of the Monday 12:00 PM call with Rajkumar.",
+      "Define the timeline for the 'CST' hiring process to allow Rajkumar to transition.",
+      "Review the research documents and PPT submitted by Rajkumar for further training guidance."
+    ],
+    "date_opened": "2023-10-19",
+    "sla_aging": "928 days",
+    "internal_risk_flags": [
+      "Resource gap (need to hire another CST)",
+      "Internal training dependency on busy staff (Jimmeey)"
+    ],
+    "root_cause": "Employee desire for career progression from CST to Sales, requiring management coordination and backfill hiring.",
+    "customer_name": "Shifa Ali",
+    "key_customer_statements": [
+      "Recapping my conversation with Rajkumar yesterday - he said he\u2019s keen on sales and feels it would definitely help upskill himself.",
+      "As Mitali had suggested before, we can hire another CST and train Rajkumar side by side.",
+      "attached is a presentation that was created by him on Consumer Behaviour & Customer Profiling."
+    ],
+    "last_response_date": "2023-10-23",
+    "suggested_reply": "Hi Mitali and Jimmeey, Since I haven't heard back since our scheduled call on Monday, could we get a quick update on the outcome? We need to know if we are proceeding with Rajkumar's sales training so I can begin the process of hiring a new CST member as previously discussed. Best, Shifa.",
+    "sentiment": {
+      "risk_indicators": "Staffing transition risk if a replacement CST is not hired promptly.",
+      "emotional_tone": "Professional, proactive, and supportive of employee growth.",
+      "churn_likelihood": "Low",
+      "frustration_level": "Low"
+    },
+    "sla_classification": "Internal Support - Operations",
+    "unknowns": "Outcome of the meeting held on Monday, Oct 23rd; Rajkumar's last name or specific employee ID; Budget approval status for a new CST hire.",
+    "ownership": "Jimmeey Gondaa / Mitali Kumar",
+    "response_strategy": "Facilitate internal communication between Bengaluru operations and India HQ to ensure the employee's career progression aligns with staffing needs.",
+    "ticket_id": "TKT-EF7DA0F7",
+    "issue_summary": "Internal request from Regional Operations Head (South) regarding the upskilling and transition of an employee, Rajkumar, into a sales-focused role. The team is discussing training protocols and the potential need to hire a replacement Customer Service Team (CST) member to facilitate Rajkumar's move into sales.",
+    "customer_email": "shifa@physique57bengaluru.com",
+    "_thread_id": "18b4bac8ef7da0f7"
+  },
+  {
+    "current_status": "awaiting_internal_action",
+    "ticket_id": "TKT-8A62255B",
+    "complaint_category": "Internal Data Reporting / Operational Audit",
+    "key_customer_statements": [
+      "Richard as attending classes last 3 months,which we know isnt possible",
+      "Also Rohan is missing from this list! could you please recheck & resend today?"
+    ],
+    "sla_classification": "Internal Operational Support",
+    "issue_summary": "The customer (internal stakeholder Mrigakshi) identified significant mapping and data accuracy errors in a Trainer Class Attendance and Retention report. Specifically, she noted that listed attendance for a trainer (Richard D'Costa) was impossible and another trainer (Rohan) was missing from the initial report. Subsequent revisions were sent by Jimmeey Gonda, but the data remains under internal review/revision.",
+    "sla_aging": "947 days (Calculated from 2023-10-04 to 2026-05-08)",
+    "root_cause": "Likely manual data entry error or incorrect CRM filter application resulting in skewed attendance and retention percentages.",
+    "internal_risk_flags": [
+      "Data Integrity issues in reporting",
+      "Internal miscommunication regarding staff performance metrics"
+    ],
+    "customer_email": "mrigakshi@physique57mumbai.com",
+    "date_opened": "2023-10-04",
+    "customer_name": "Mrigakshi Jaiswal",
+    "sentiment": {
+      "churn_likelihood": "Low",
+      "risk_indicators": "Possible impact on trainer compensation or performance reviews if data is incorrect.",
+      "frustration_level": "Medium",
+      "emotional_tone": "Professional, corrective, and focused on accuracy."
+    },
+    "recommended_actions": [
+      "Verify the source of truth for trainer attendance against the booking system (Mindbody or similar).",
+      "Cross-check 'Rohan Dahima' and 'Richard D'Costa' logs to reconcile the discrepancy mentioned by Mrigakshi.",
+      "Share the promised client details to complete the report set."
+    ],
+    "response_strategy": "Systematic verification of the digital attendance logs vs. the manual report shared to ensure data integrity before further dissemination.",
+    "suggested_reply": "Hi Mrigakshi, following up on the revised retention numbers sent earlier. I am currently running a final audit on the class logs for Richard and Rohan to ensure the 'impossible' attendance figures are cleared and the data is 100% accurate. I will share the final validated sheet along with the client details by EOD.",
+    "priority": "Medium",
+    "ownership": "Jimmeey Gondaa (Head - Sales & Client Servicing)",
+    "last_response_date": "2023-10-09",
+    "unknowns": "The reason why Richard's attendance was deemed 'impossible' (e.g., sabbatical, termination, or role change) is not explicitly stated in text. The specific 'client details' mentioned in the final email are unknown.",
+    "_thread_id": "18afab788a62255b"
+  },
+  {
+    "root_cause": "Routine scheduling management and trainer leave coverage.",
+    "response_strategy": "Internal coordination completed; final confirmation sent to client regarding substitute trainer. Monitoring for payment of October sessions.",
+    "customer_email": "Contact Info Unknown - Internal Thread",
+    "sla_classification": "Internal Schedule Coordination",
+    "current_status": "resolved",
+    "recommended_actions": [
+      "Ensure all 'Unpaid' sessions for October are invoiced and collected.",
+      "Confirm Saniya's calendar is blocked for 31st Oct 07:30 slot.",
+      "Update the centralized client tracker with the final October schedule."
+    ],
+    "key_customer_statements": [
+      "Client cancelled classes on 19th, 23rd, and 30th of September.",
+      "Client unavailable 8th Oct - 14th Oct and 23rd Oct - 27th Oct.",
+      "Client is ok to do class with Saniya on 31st Oct instead of Pranjali."
+    ],
+    "complaint_category": "Scheduling & Appointments",
+    "sla_aging": "979 days ago (Ticket historical)",
+    "sentiment": {
+      "frustration_level": "Low",
+      "risk_indicators": "No immediate risk; client accepted the substitute trainer.",
+      "churn_likelihood": "Low",
+      "emotional_tone": "Professional and cooperative."
+    },
+    "customer_name": "Sarayu Natarajan",
+    "internal_risk_flags": [
+      "Multiple unpaid future sessions listed",
+      "Trainer unavailability for requested slot"
+    ],
+    "ticket_id": "TKT-D5E017F9",
+    "date_opened": "2Sep 2023",
+    "unknowns": "External customer email address is not mentioned in the internal thread. Status of payment for 'Unpaid' sessions listed in October is not confirmed in the final message.",
+    "ownership": "Priyanka Abnave (Sales & Client Servicing)",
+    "priority": "Medium",
+    "last_response_date": "3 Oct 2023",
+    "issue_summary": "Coordination of September and October 2023 training schedule for private client Sarayu Natarajan, including cancellations, trainer leaves, and substitute arrangements.",
+    "suggested_reply": "N/A - This was an internal discussion finalizing a client's schedule. Final confirmation has already been conveyed to the client by Priyanka.",
+    "_thread_id": "18a552bed5e017f9"
+  },
+  {
+    "sla_classification": "Internal Operational Reporting",
+    "customer_name": "Anisha Shah",
+    "ownership": "Anisha Shah (Management)",
+    "recommended_actions": [
+      "Conduct a performance review with Instructor Janhavi regarding repeated tardiness.",
+      "Review the instructor transit/buffer time policy between studios (Colaba vs Kemps Corner).",
+      "Implement a standardized 'on-site' check-in time requirement (e.g., 30 minutes prior to class).",
+      "Verify if any classes actually started late, affecting paying clients.",
+      "Implement a more robust scheduling alert system to prevent location confusion."
+    ],
+    "root_cause": "Chronic traffic congestion in Mumbai, instructor illness, and a specific instance of instructor scheduling/location confusion.",
+    "unknowns": "It is unknown if any clients filed complaints directly due to these late arrivals or if classes were actually delayed past their start times. The specific 'buffer time' required by Physique 57 policy for instructors to arrive before class is not explicitly stated.",
+    "internal_risk_flags": [
+      "Repeated punctuality issues with same staff member (Janhavi)",
+      "Scheduling confusion/Human error (wrong studio location)",
+      "Operational risk to client experience (classes starting late/prep time reduced)",
+      "Trend of late arrival notifications (often <30 mins before class)"
+    ],
+    "suggested_reply": "Dear Zahur and Priyanka, thank you for these consistent updates. I have noted the pattern, particularly regarding Janhavi's schedule and the location confusion on Dec 6th. We will be reviewing the commute buffers and the instructor schedule for December to ensure arrivals are at least 30 minutes prior to class start times to maintain our service standards. Please continue to log these instances.",
+    "current_status": "awaiting_internal_action",
+    "complaint_category": "Staff Operations & Instructor Punctuality",
+    "last_response_date": "2023-12-07",
+    "issue_summary": "A series of reports from the Kemps Corner studio team (Zahur and Priyanka) notifying management (Anisha Shah) of frequent instructor tardiness throughout November and early December 2023. Multiple instructors (Janhavi, Reshma, Richard) arrived close to or after their scheduled arrival times, primarily citing traffic, health issues, or location confusion. Janhavi is the primary subject of these reports, appearing in 5 of the 7 documented instances.",
+    "ticket_id": "TKT-724C31F8",
+    "priority": "High",
+    "response_strategy": "Internal operational review. Management needs to address the pattern of punctuality with the instructors involved and assess if current scheduling allows for sufficient travel time in Mumbai traffic.",
+    "key_customer_statements": [
+      "Gonna be late today, my stomach is upset. Will reach at 5:25 or 5:30.",
+      "Gonna be late today, because of insane traffic. [Reached 5:33 for 5:45 class]",
+      "Janhavi reached the studio at 5:45 pm for the 6:00 pm Sweat In 30 class, because she was about to go to Colaba Mews... then suddenly she realized she had to teach at Kemps.",
+      "Richard reached the studio at 5:40 pm for 6:00 pm Cardio Barre because of traffic."
+    ],
+    "sentiment": {
+      "churn_likelihood": "Medium",
+      "emotional_tone": "Informational, apologetic (from studio staff), and matter-of-fact reporting.",
+      "frustration_level": "Medium",
+      "risk_indicators": "The 'customer' in this context is the internal department head/owner. Recurring staff issues pose a risk to brand reputation and client retention if classes are delayed or instructors are unprepared."
+    },
+    "customer_email": "anisha@physique57india.com",
+    "sla_aging": "918 days",
+    "date_opened": "2023-11-02",
+    "_thread_id": "18b8fdcd724c31f8"
+  },
+  {
+    "ticket_id": "TKT-64AEC62D",
+    "customer_email": "remotain@gmail.com",
+    "key_customer_statements": [
+      "The customer (Rajkumar) has not made statements in this thread, but the communication confirms his start date of Sept 8th and training in Mumbai from Sept 11th-15th."
+    ],
+    "root_cause": "Standard onboarding procedure and mandatory training travel.",
+    "internal_risk_flags": [
+      "Outdated Ticket (2023)",
+      "External Contractor/Employee Logistics"
+    ],
+    "last_response_date": "2023-09-08",
+    "sla_aging": "976 days",
+    "suggested_reply": "N/A - The matter appears resolved as of Sep 8, 2023, with the delivery of flight tickets.",
+    "complaint_category": "Employee Onboarding & Logistics",
+    "current_status": "resolved",
+    "sentiment": {
+      "churn_likelihood": "Low",
+      "risk_indicators": "No risk identified; proactive communication.",
+      "frustration_level": "Low",
+      "emotional_tone": "Professional, welcoming, and organized."
+    },
+    "priority": "Medium",
+    "unknowns": "It is unknown if the recipient (Rajkumar) confirmed receipt of the tickets or if any issues occurred during travel. The specific arrival/stay location in Mumbai is not mentioned.",
+    "date_opened": "2023-09-05",
+    "recommended_actions": [
+      "Verify if the per diem was successfully sent at the start of the week as promised.",
+      "Confirm Rajkumar completed the training period (Sept 11-15, 2023).",
+      "Close out old logistics tickets in the CRM to maintain data hygiene."
+    ],
+    "response_strategy": "Transactional/Informational: Providing tickets and logistics details as part of an onboarding workflow.",
+    "ownership": "Shifa Ali (Regional Operations Head - South)",
+    "issue_summary": "Coordination of onboarding schedule and travel logistics for new hire Rajkumar Venkat's training trip from Bengaluru to Mumbai.",
+    "sla_classification": "Standard Onboarding Support",
+    "customer_name": "Rajkumar Venkat",
+    "_thread_id": "18a73d8b64aec62d"
+  },
+  {
+    "internal_risk_flags": [
+      "Pending candidate feedback legacy issue",
+      "Time-sensitive interview scheduling"
+    ],
+    "ticket_id": "TKT-72D537AD",
+    "last_response_date": "2023-12-08",
+    "customer_email": "Darshana.b@kaam.com",
+    "response_strategy": "Maintain the collaborative recruitment partnership by providing the requested feedback on previous candidates while finalizing the current Bangalore interview process.",
+    "sentiment": {
+      "emotional_tone": "Professional and proactive.",
+      "frustration_level": "Low",
+      "churn_likelihood": "Low",
+      "risk_indicators": "Potential delay in candidate feedback may impact agency relationship."
+    },
+    "priority": "Medium",
+    "key_customer_statements": [
+      "we need our other candidates feedback",
+      "She will be able to attend a face-to-face interview before this Monday, December 11, 2023.",
+      "I wanted to share a selection of highly qualified candidates who have been thoroughly screened"
+    ],
+    "root_cause": "Ongoing talent acquisition process requiring coordination between external agency and internal regional heads.",
+    "ownership": "Shifa Ali / Sylvia Helen",
+    "complaint_category": "Recruitment Services",
+    "date_opened": "2023-12-06",
+    "current_status": "awaiting_internal_action",
+    "suggested_reply": "Dear Darshana, Thank you for arranging the interview with Susoma Saha today. Shifa's team will provide feedback on that session shortly. Regarding the Mumbai candidates (Mukti and Anamika), we are reviewing them and will provide feedback/scheduling details by early next week as previously discussed with Sylvia. Best regards, [Internal Team]",
+    "sla_classification": "Standard Recruitment Support",
+    "customer_name": "Darshana Bhana",
+    "unknowns": "Specific feedback for the 'other candidates' mentioned by Darshana; outcome of the 3:30 PM interview on Dec 8.",
+    "issue_summary": "Darshana Bhana from Kaam.com is providing recruitment services for Physique 57. She has submitted candidates for 'Sales and Client Servicing Associate' roles in Mumbai and Bangalore. Most recently, she scheduled an interview for candidate Susoma Saha (Bangalore) for today, Dec 8, 2023, at 3:30 PM. She is also requesting feedback on previously submitted candidates.",
+    "sla_aging": "884 days",
+    "recommended_actions": [
+      "Confirm if the 3:30 PM interview with Susoma Saha was completed successfully.",
+      "Internal team (Sylvia/Shifa) to provide feedback on the Mumbai candidates (Mukti Sagathiya and Anamika Tripathi) as requested.",
+      "Update Darshana on the next steps for Mumbai interviews scheduled for next week."
+    ],
+    "_thread_id": "18c400c872d537ad"
+  },
+  {
+    "recommended_actions": [
+      "Acknowledge receipt of onboarding documents for both candidates.",
+      "Verify validity and completeness of attached documents.",
+      "Initiate system access, email creation, and HR profile setup for Shahida Shinin and Rajkumar Venkat.",
+      "Confirm completion to Shifa Ali."
+    ],
+    "ticket_id": "TKT-0C29276D",
+    "current_status": "awaiting_internal_action",
+    "sentiment": {
+      "risk_indicators": "None; internal business as usual.",
+      "churn_likelihood": "Low",
+      "emotional_tone": "Professional, courteous, and informative.",
+      "frustration_level": "Low"
+    },
+    "internal_risk_flags": [
+      "Sensitive PII in attachments",
+      "Compliance/Documentation Requirement"
+    ],
+    "date_opened": "2023-09-04",
+    "sla_classification": "Internal Service Request",
+    "unknowns": "The specific documents attached were not listed in the text, so their completeness cannot be verified from the email body alone. Status of Rajkumar Venkat's setup (since his start date of Sep 1st has already passed based on the email date) is unknown.",
+    "complaint_category": "HR / Internal Operations - Onboarding",
+    "key_customer_statements": [
+      "Please find attached documents of Shahida Shinin. She has been recently hired as a Sales & Client Servicing Associate for Physique 57 Bengaluru.",
+      "Her start date is on September 8th 2023.",
+      "His start date is on September 1st 2023 [Rajkumar Venkat]."
+    ],
+    "last_response_date": "2023-09-04",
+    "ownership": "Sachin (IT/Admin Operations)",
+    "suggested_reply": "Hi Shifa, I hope you are having a great week. Thank you for sharing the documentation for Shahida Shinin and Rajkumar Venkat. I have received the attachments and will begin the onboarding process for their system access and internal profiles immediately to ensure everything is ready for their start dates. I will notify you once the setups are complete. Best regards, Sachin.",
+    "customer_name": "Shifa Ali",
+    "customer_email": "shifa@physique57bengaluru.com",
+    "response_strategy": "Professional and operational. Confirm receipt of documents and provide an ETA for system/HR setup to ensure both employees can start on their respective dates.",
+    "issue_summary": "Onboarding request for two new hires at the Bengaluru studio: Shahida Shinin (Sales & Client Servicing Associate, starting Sep 8, 2023) and Rajkumar Venkat (Sales & Client Servicing Associate, starting Sep 1, 2023). Support documents have been provided for both.",
+    "root_cause": "Standard internal employee onboarding procedure.",
+    "sla_aging": "977 days",
+    "priority": "Medium",
+    "_thread_id": "18a5ed5c0c29276d"
+  },
+  {
+    "suggested_reply": "(To Client - following up on the resolution): Dear Sandra, following our conversation, we have credited the 4 classes back to your account as a one-time gesture of goodwill. These will be valid for 14 days starting from September 26th, to accommodate your current travel. Please note that these specific credits cannot be frozen or extended further. We hope this helps you continue your fitness journey with us. Best regards, [Staff Name]",
+    "sla_classification": "Standard Studio Support",
+    "current_status": "resolved",
+    "unknowns": "Customer's personal email address is not in the thread. The exact time of the 'yesterday' call mentioned on Sept 16 is not specified. The date of the 2026 check-in is far removed from the 2023 resolution; assuming this is an archival or audit request.",
+    "issue_summary": "Customer Sandra Kaliden was highly agitated (shouting on the phone) after losing 4 class credits due to 'Late Cancel' status on the Momence platform. She claimed she was unaware that late cancellations resulted in loss of credit. The internal team coordinated an exception to restore her credits with specific validity constraints.",
+    "customer_name": "Sandra Kaliden",
+    "recommended_actions": [
+      "Monitor the account on 2026-05-08 for any new activity as the original incident was in 2023.",
+      "Audit communication logs to ensure the 'no-freeze/no-extension' policy on these credited classes was documented in writing to the client.",
+      "Verify 'Late Cancel' policy visibility on the Momence app to prevent future disputes."
+    ],
+    "sla_aging": "965 days ago (Note: Incident occurred Sep 2023, Current date May 2026)",
+    "customer_email": "unknown (internal relay)",
+    "sentiment": {
+      "frustration_level": "Severe",
+      "churn_likelihood": "High",
+      "risk_indicators": "Reputational risk due to verbal shouting; potential churn if credits were not restored.",
+      "emotional_tone": "Aggressive/Irate (via internal report)"
+    },
+    "response_strategy": "Service recovery through a one-time policy exception (crediting classes) while setting firm boundaries on further extensions to manage expectations.",
+    "last_response_date": "2023-09-18",
+    "internal_risk_flags": [
+      "Severe customer frustration (shouting)",
+      "Policy exception made",
+      "Repeat escalation risk if 14-day window missed"
+    ],
+    "ticket_id": "TKT-53517FB5",
+    "ownership": "Zahur Shaikh (Studio Coordinator)",
+    "complaint_category": "Billing & Class Credits",
+    "date_opened": "2023-09-16",
+    "priority": "High",
+    "key_customer_statements": [
+      "she mentioned that she wasn't aware that if she cancel late then too she will not get credit",
+      "she was very angry over the call... shouting over the call"
+    ],
+    "root_cause": "Customer ignorance of the 'Late Cancel' policy leading to lost credits and subsequent verbal escalation.",
+    "_thread_id": "18a9cd8a53517fb5"
+  },
+  {
+    "_thread_id": "18a2b62346c82257",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-46C82257"
+  },
+  {
+    "_thread_id": "189cf328f4dd2546",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-F4DD2546"
+  },
+  {
+    "_thread_id": "189dac37c1fca141",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-C1FCA141"
+  },
+  {
+    "_thread_id": "189692518b081e48",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-8B081E48"
+  },
+  {
+    "_thread_id": "194269be7850deb9",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-7850DEB9"
+  },
+  {
+    "_thread_id": "189fdd2119e63b78",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-19E63B78"
+  },
+  {
+    "_thread_id": "189cfd10be12f914",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-BE12F914"
+  },
+  {
+    "_thread_id": "1899b22a2922b564",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-2922B564"
+  },
+  {
+    "issue_summary": "Coordination of onboarding logistics and travel for new hire Shahida Shinin, including virtual induction details and travel tickets for training in Mumbai.",
+    "unknowns": "The specific hotel/accommodation details in Mumbai are mentioned as 'place of stay' but not specified. The exact timing of the virtual induction on Sept 8th is not explicitly stated in this thread.",
+    "sla_aging": "976 days",
+    "suggested_reply": "N/A - This was an internal operational handoff of travel documents and training schedules.",
+    "recommended_actions": [
+      "Archive thread as logistics have been completed.",
+      "Ensure HR records reflect the completion of training for Shahida Shinin."
+    ],
+    "current_status": "resolved",
+    "complaint_category": "Employee Onboarding & Logistics",
+    "sla_classification": "Internal Corporate Support",
+    "key_customer_statements": [
+      "As discussed, please find attached your tickets to Mumbai and back.",
+      "September 11th to September 15th: Five days of intense training",
+      "Office attire is semi formal/ smart casuals."
+    ],
+    "ownership": "Shifa Ali (Regional Operations Head - South)",
+    "customer_name": "Shifa Ali (On behalf of Shahida Shinin)",
+    "response_strategy": "N/A - Internal operational communication.",
+    "internal_risk_flags": [
+      "Internal logistics coordination only",
+      "Non-customer facing communication"
+    ],
+    "root_cause": "New hire onboarding process.",
+    "sentiment": {
+      "risk_indicators": "No customer risk; internal operational alignment.",
+      "frustration_level": "Low",
+      "churn_likelihood": "Low",
+      "emotional_tone": "Professional, welcoming, and organized."
+    },
+    "priority": "Low",
+    "customer_email": "shifa@physique57bengaluru.com",
+    "last_response_date": "2023-09-08",
+    "ticket_id": "TKT-A28A56C0",
+    "date_opened": "2023-09-05",
+    "_thread_id": "18a73d75a28a56c0"
+  },
+  {
+    "_thread_id": "1897331a4c0aec63",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-4C0AEC63"
+  },
+  {
+    "customer_email": "shifa@physique57bengaluru.com",
+    "complaint_category": "Internal Brand Operations / Presentation Review",
+    "date_opened": "2023-09-06",
+    "issue_summary": "Shifa Ali (Regional Operations Head - South) has updated the Brand Presentation for the Bangalore studio opening. Key changes include a revised presentation flow, a new organization hierarchy slide (Slide 7), an updated timeline reflecting the Bangalore opening month, and the replacement of Bombay pricing with Bangalore-specific class packages and memberships. She is seeking feedback/approval from Jimmeey before finalizing.",
+    "customer_name": "Shifa Ali",
+    "priority": "Medium",
+    "internal_risk_flags": [
+      "Potential internal misalignment on hierarchy slides",
+      "Pricing localized to Bangalore vs Bombay (verification required)",
+      "Significant SLA breach (if treated as a standard ticket)"
+    ],
+    "recommended_actions": [
+      "Jimmeey to review Slide 7 (Hierarchy) vs Slide 6 to ensure brand consistency.",
+      "Finance/Operations to verify that the Bangalore pricing listed in the deck is accurate and approved.",
+      "Confirm the new Bangalore studio opening month timeline reflects the current project plan.",
+      "Provide final 'Go-ahead' or specific feedback to Shifa Ali."
+    ],
+    "suggested_reply": "Hi Shifa, thank you for these updates. I have reviewed the new flow and the Bangalore-specific pricing, which looks correct for that market. Regarding the hierarchy, I will check Slide 7\u2014if it clarifies the local reporting structure better, we will proceed with your version. I'll get back to you by EOD with a final 'good to go'.",
+    "current_status": "awaiting_internal_action",
+    "unknowns": "The specific contents of the presentation file itself; Whether Jimmeey prefers the original hierarchy slide (Slide 6) or the new one (Slide 7).",
+    "key_customer_statements": [
+      "I made a few changes to the presentation: - Changed the flow a bit",
+      "The hierarchy slide (slide 6) - I tried to keep it as similar to yours but it was just not happening so I made a new one (slide 7).",
+      "Changed the class packages & memberships to the Bangalore pricing because I felt it would make more sense to get them acquainted to that rather than confuse them with Bombay pricing",
+      "Let me know if this is good to go otherwise."
+    ],
+    "sla_aging": "975 days",
+    "ticket_id": "TKT-6E4DB310",
+    "response_strategy": "Internal collaborative review. Jimmeey needs to acknowledge the edits and decide between the two hierarchy slide options provided.",
+    "root_cause": "Preparation for Bangalore studio launch requiring localized marketing and operational materials.",
+    "last_response_date": "2023-09-06",
+    "ownership": "Jimmeey .",
+    "sla_classification": "Internal Operational Request",
+    "sentiment": {
+      "emotional_tone": "Professional, proactive, and collaborative.",
+      "churn_likelihood": "Low",
+      "frustration_level": "Low",
+      "risk_indicators": "None (Internal operational coordination)."
+    },
+    "_thread_id": "18a696016e4db310"
+  },
+  {
+    "_thread_id": "18a2156cf98ef2bd",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-F98EF2BD"
+  },
+  {
+    "_thread_id": "18949093e045f60b",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-E045F60B"
+  },
+  {
+    "_thread_id": "18949a39372b5237",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-372B5237"
+  },
+  {
+    "_thread_id": "18829660761a0304",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-761A0304"
+  },
+  {
+    "_thread_id": "18936ad1c8d6a25d",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-C8D6A25D"
+  },
+  {
+    "_thread_id": "1892170cd754ba12",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-D754BA12"
+  },
+  {
+    "_thread_id": "1894a12660739278",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-60739278"
+  },
+  {
+    "_thread_id": "1848e2207ecc1577",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-7ECC1577"
+  },
+  {
+    "_thread_id": "187db8b2bdcb1f25",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-BDCB1F25"
+  },
+  {
+    "_thread_id": "186dab0fa9bdf832",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-A9BDF832"
+  },
+  {
+    "_thread_id": "18727a11a23f5c06",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-A23F5C06"
+  },
+  {
+    "_thread_id": "1868183d1f24026c",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-1F24026C"
+  },
+  {
+    "_thread_id": "1862b16e4051be77",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-4051BE77"
+  },
+  {
+    "_thread_id": "1860c71213b5e0ee",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-13B5E0EE"
+  },
+  {
+    "_thread_id": "18658a2b44af82ca",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-44AF82CA"
+  },
+  {
+    "_thread_id": "195f1f0552136a75",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-52136A75"
+  },
+  {
+    "_thread_id": "185f24f3dc5504ba",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-DC5504BA"
+  },
+  {
+    "_thread_id": "185d95f4abc21f0d",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-ABC21F0D"
+  },
+  {
+    "_thread_id": "1852a5527a2ef332",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-7A2EF332"
+  },
+  {
+    "_thread_id": "18525a6095914bd0",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-95914BD0"
+  },
+  {
+    "_thread_id": "18a604431b292d55",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-1B292D55"
+  },
+  {
+    "_thread_id": "18552fa30c3f5caa",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-0C3F5CAA"
+  },
+  {
+    "_thread_id": "1894407e3f4bc519",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-3F4BC519"
+  },
+  {
+    "_thread_id": "18483e63186c21d3",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-186C21D3"
+  },
+  {
+    "_thread_id": "18490473e94d3fed",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-E94D3FED"
+  },
+  {
+    "_thread_id": "18484e6701b533e9",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-01B533E9"
+  },
+  {
+    "_thread_id": "184be4068af59b1a",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-8AF59B1A"
+  },
+  {
+    "_thread_id": "184753021c5d8cf8",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-1C5D8CF8"
+  },
+  {
+    "_thread_id": "1843e09ed351f23e",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-D351F23E"
+  },
+  {
+    "_thread_id": "187546581ab4e418",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-1AB4E418"
+  },
+  {
+    "_thread_id": "1843cba6b4fedf66",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-B4FEDF66"
+  },
+  {
+    "_thread_id": "1882cb62f4dd20f7",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-F4DD20F7"
+  },
+  {
+    "_thread_id": "1842c4a696e91237",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-96E91237"
+  },
+  {
+    "_thread_id": "183b6aa1ef7b555e",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-EF7B555E"
+  },
+  {
+    "_thread_id": "18437dd13d880173",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-3D880173"
+  },
+  {
+    "_thread_id": "18431cad2479eadd",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-2479EADD"
+  },
+  {
+    "_thread_id": "18423d7794a4b40e",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-94A4B40E"
+  },
+  {
+    "_thread_id": "189d43a76088642a",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-6088642A"
+  },
+  {
+    "_thread_id": "1842db2b7521f69e",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-7521F69E"
+  },
+  {
+    "_thread_id": "18335e3dffc1c006",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-FFC1C006"
+  },
+  {
+    "_thread_id": "18b669c2404b20a6",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-404B20A6"
+  },
+  {
+    "_thread_id": "182ba463a2b7bd5b",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-A2B7BD5B"
+  },
+  {
+    "_thread_id": "181867098ffa685b",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-8FFA685B"
+  },
+  {
+    "_thread_id": "182bb67ff1e6ffae",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-F1E6FFAE"
+  },
+  {
+    "_thread_id": "188e830aec442623",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-EC442623"
+  },
+  {
+    "_thread_id": "1827ce6f23f4ac64",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-23F4AC64"
+  },
+  {
+    "_thread_id": "1835964cff738247",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-FF738247"
+  },
+  {
+    "_thread_id": "1822a78ba272272f",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-A272272F"
+  },
+  {
+    "_thread_id": "184f24457f7784fa",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-7F7784FA"
+  },
+  {
+    "_thread_id": "189ceeb16c1754ba",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-6C1754BA"
+  },
+  {
+    "_thread_id": "18967dc8ef525774",
+    "_error": "Rate limited \u2014 wait before retrying or increase delay between requests",
+    "ticket_id": "TKT-EF525774"
+  }
+]
