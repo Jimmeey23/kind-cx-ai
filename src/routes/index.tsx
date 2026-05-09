@@ -125,6 +125,37 @@ function Dashboard() {
     return Array.from(m.entries()).sort((a, b) => b[1] - a[1]).slice(0, 8);
   }, [tickets]);
 
+  const groups = useMemo(() => {
+    const m = new Map<string, Ticket[]>();
+    for (const t of tickets) {
+      const k = t.complaint_category || "Uncategorized";
+      const arr = m.get(k) ?? [];
+      arr.push(t);
+      m.set(k, arr);
+    }
+    return Array.from(m.entries())
+      .map(([cat, list]) => {
+        const subs = new Map<string, Ticket[]>();
+        for (const t of list) {
+          const sk = (t as any).complaint_subcategory || "General";
+          const a = subs.get(sk) ?? [];
+          a.push(t);
+          subs.set(sk, a);
+        }
+        const counts = { Critical: 0, High: 0, Medium: 0, Low: 0 } as Record<Priority, number>;
+        for (const t of list) counts[t.priority as Priority] = (counts[t.priority as Priority] ?? 0) + 1;
+        return {
+          category: cat,
+          tickets: list,
+          subgroups: Array.from(subs.entries())
+            .map(([name, items]) => ({ name, items }))
+            .sort((a, b) => b.items.length - a.items.length),
+          counts,
+        };
+      })
+      .sort((a, b) => b.tickets.length - a.tickets.length);
+  }, [tickets]);
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -170,10 +201,60 @@ function Dashboard() {
         <Tabs defaultValue="tickets" className="space-y-4">
           <TabsList className="bg-card border border-border">
             <TabsTrigger value="tickets">Tickets</TabsTrigger>
+            <TabsTrigger value="groups">Groups</TabsTrigger>
             <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="queue">Priority Queue</TabsTrigger>
             <TabsTrigger value="insights">Operational Insights</TabsTrigger>
           </TabsList>
+
+          <TabsContent value="groups" className="space-y-4">
+            {groups.map((g) => (
+              <Card key={g.category} className="p-4 bg-card/60">
+                <div className="flex items-center justify-between flex-wrap gap-2 mb-3">
+                  <div className="flex items-center gap-3">
+                    <h3 className="text-base font-semibold">{g.category}</h3>
+                    <Badge variant="outline" className="bg-muted">{g.tickets.length} tickets</Badge>
+                  </div>
+                  <div className="flex gap-1.5 text-xs">
+                    {(["Critical","High","Medium","Low"] as Priority[]).map((p) =>
+                      g.counts[p] ? (
+                        <Badge key={p} variant="outline" className={priorityClass(p)}>
+                          {p}: {g.counts[p]}
+                        </Badge>
+                      ) : null
+                    )}
+                  </div>
+                </div>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-2">
+                  {g.subgroups.map((sg) => (
+                    <div key={sg.name} className="rounded-lg border border-border bg-background/50 p-3">
+                      <div className="flex items-center justify-between mb-2">
+                        <div className="text-sm font-medium text-foreground line-clamp-1">{sg.name}</div>
+                        <span className="text-xs text-muted-foreground tabular-nums">{sg.items.length}</span>
+                      </div>
+                      <div className="space-y-1">
+                        {sg.items.slice(0, 5).map((t) => (
+                          <button
+                            key={t.ticket_id}
+                            onClick={() => setActiveTicket(t)}
+                            className="w-full text-left text-xs hover:bg-accent/40 rounded px-2 py-1 flex items-center gap-2"
+                          >
+                            <Badge variant="outline" className={priorityClass(t.priority as Priority) + " text-[10px] py-0 px-1.5"}>
+                              {t.priority[0]}
+                            </Badge>
+                            <span className="truncate text-muted-foreground flex-1">{t.customer_name}</span>
+                          </button>
+                        ))}
+                        {sg.items.length > 5 && (
+                          <div className="text-[11px] text-muted-foreground px-2">+{sg.items.length - 5} more</div>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+            ))}
+          </TabsContent>
 
           {/* TICKETS */}
           <TabsContent value="tickets" className="space-y-4">
