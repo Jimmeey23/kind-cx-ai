@@ -1,8 +1,11 @@
-import { writeFileSync, readFileSync } from "fs";
+import { writeFileSync, readFileSync, existsSync } from "fs";
 
 const CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 const CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
 const REFRESH_TOKEN = process.env.GOOGLE_REFRESH_TOKEN;
+
+const PROGRESS_FILE = "scripts/fetch-progress.json";
+const OUTPUT_FILE = "scripts/new-threads.json";
 
 async function getAccessToken() {
   const res = await fetch("https://oauth2.googleapis.com/token", {
@@ -28,17 +31,6 @@ async function gmailGet(token, path) {
     headers: { Authorization: `Bearer ${token}` },
   });
   return res.json();
-}
-
-function decodeBody(part) {
-  if (!part) return "";
-  if (part.body?.data) {
-    return Buffer.from(part.body.data, "base64url").toString("utf-8");
-  }
-  if (part.parts) {
-    return part.parts.map(decodeBody).join("\n");
-  }
-  return "";
 }
 
 function extractText(payload) {
@@ -67,83 +59,119 @@ function getHeader(headers, name) {
   return headers?.find(h => h.name?.toLowerCase() === name.toLowerCase())?.value || "";
 }
 
+async function fetchBatch(token, ids, startIdx) {
+  const results = [];
+  for (let i = 0; i < ids.length; i++) {
+    const id = ids[i];
+    try {
+      const thread = await gmailGet(token, `threads/${id}?format=full`);
+      const msgs = thread.messages || [];
+      results.push({
+        thread_id: id,
+        messages: msgs.map(msg => {
+          const h = msg.payload?.headers || [];
+          return {
+            id: msg.id,
+            from: getHeader(h, "From"),
+            to: getHeader(h, "To"),
+            subject: getHeader(h, "Subject"),
+            date: getHeader(h, "Date"),
+            body: extractText(msg.payload).slice(0, 4000),
+          };
+        }),
+      });
+    } catch (e) {
+      console.error(`Error fetching thread ${id}:`, e.message);
+      results.push({ thread_id: id, messages: [], _error: e.message });
+    }
+    if ((startIdx + i + 1) % 20 === 0) {
+      console.log(`Fetched ${startIdx + i + 1} threads total`);
+    }
+  }
+  return results;
+}
+
 async function main() {
   const token = await getAccessToken();
   console.log("Got access token");
 
-  // Find the Issues/Complaints label
-  const labels = await gmailGet(token, "labels");
-  console.log("All labels:", labels.labels?.map(l => `${l.id}: ${l.name}`).join("\n"));
-
-  const label = labels.labels?.find(l =>
-    l.name?.toLowerCase().includes("issues") ||
-    l.name?.toLowerCase().includes("complaint") ||
-    l.name?.toLowerCase().includes("issues/complaints")
-  );
-  if (!label) {
-    console.error("Could not find Issues/Complaints label. Available:", labels.labels?.map(l => l.name).join(", "));
-    process.exit(1);
-  }
-  console.log("Found label:", label.name, label.id);
-
   // Load existing thread IDs
   const existing = JSON.parse(readFileSync("public/data/tickets.json", "utf-8"));
   const existingIds = new Set(existing.map(t => t._thread_id).filter(Boolean));
-  console.log("Existing thread IDs:", existingIds.size);
 
-  // List all threads in the label (paginate)
-  let threads = [];
-  let pageToken = undefined;
-  let page = 0;
-  do {
-    const url = `threads?labelIds=${label.id}&maxResults=500${pageToken ? "&pageToken=" + pageToken : ""}`;
-    const data = await gmailGet(token, url);
-    if (data.threads) threads = threads.concat(data.threads);
-    pageToken = data.nextPageToken;
-    page++;
-    console.log(`Page ${page}: got ${data.threads?.length || 0} threads, total so far: ${threads.length}`);
-  } while (pageToken);
+  // Load progress (already-fetched threads)
+  let fetched = [];
+  let fetchedIds = new Set();
+  if (existsSync(OUTPUT_FILE)) {
+    fetched = JSON.parse(readFileSync(OUTPUT_FILE, "utf-8"));
+    fetchedIds = new Set(fetched.map(t => t.thread_id));
+    console.log(`Resuming: already fetched ${fetched.length} threads`);
+  }
 
-  console.log("Total threads in label:", threads.length);
+  // Load progress state
+  let allNewThreadIds = [];
+  if (existsSync(PROGRESS_FILE)) {
+    const progress = JSON.parse(readFileSync(PROGRESS_FILE, "utf-8"));
+    allNewThreadIds = progress.newThreadIds;
+    console.log(`Loaded ${allNewThreadIds.length} new thread IDs from progress file`);
+  } else {
+    // Find the label
+    const labels = await gmailGet(token, "labels");
+    const label = labels.labels?.find(l =>
+      l.name?.toLowerCase().includes("issues") ||
+      l.name?.toLowerCase().includes("complaint")
+    );
+    if (!label) {
+      console.error("Could not find Issues/Complaints label");
+      process.exit(1);
+    }
+    console.log("Found label:", label.name, label.id);
 
-  // Find new (unprocessed) threads
-  const newThreads = threads.filter(t => !existingIds.has(t.id));
-  console.log("New (unprocessed) threads:", newThreads.length);
+    // List all threads
+    let threads = [];
+    let pageToken = undefined;
+    do {
+      const url = `threads?labelIds=${label.id}&maxResults=500${pageToken ? "&pageToken=" + pageToken : ""}`;
+      const data = await gmailGet(token, url);
+      if (data.threads) threads = threads.concat(data.threads);
+      pageToken = data.nextPageToken;
+    } while (pageToken);
 
-  if (newThreads.length === 0) {
-    console.log("No new threads to process!");
-    writeFileSync("scripts/new-threads.json", JSON.stringify([], null, 2));
+    console.log("Total threads in label:", threads.length);
+    allNewThreadIds = threads.filter(t => !existingIds.has(t.id)).map(t => t.id);
+    console.log("New (unprocessed) threads:", allNewThreadIds.length);
+
+    writeFileSync(PROGRESS_FILE, JSON.stringify({ newThreadIds: allNewThreadIds }, null, 2));
+  }
+
+  // Find IDs not yet fetched
+  const remaining = allNewThreadIds.filter(id => !fetchedIds.has(id));
+  console.log(`Remaining to fetch: ${remaining.length}`);
+
+  if (remaining.length === 0) {
+    console.log("All threads already fetched!");
+    console.log(`Total fetched: ${fetched.length}`);
     process.exit(0);
   }
 
-  // Fetch full content for each new thread
-  const results = [];
-  for (let i = 0; i < newThreads.length; i++) {
-    const { id } = newThreads[i];
-    const thread = await gmailGet(token, `threads/${id}?format=full`);
-    const msgs = thread.messages || [];
+  // Fetch next batch (up to 90 threads per run to stay within time limits)
+  const BATCH_SIZE = 90;
+  const batch = remaining.slice(0, BATCH_SIZE);
+  const startIdx = fetched.length;
 
-    const emailData = {
-      thread_id: id,
-      messages: msgs.map(msg => {
-        const h = msg.payload?.headers || [];
-        return {
-          id: msg.id,
-          from: getHeader(h, "From"),
-          to: getHeader(h, "To"),
-          subject: getHeader(h, "Subject"),
-          date: getHeader(h, "Date"),
-          body: extractText(msg.payload).slice(0, 3000),
-        };
-      }),
-    };
-    results.push(emailData);
-    if ((i + 1) % 10 === 0) console.log(`Fetched ${i + 1}/${newThreads.length} threads`);
+  const newResults = await fetchBatch(token, batch, startIdx);
+  fetched = fetched.concat(newResults);
+
+  writeFileSync(OUTPUT_FILE, JSON.stringify(fetched, null, 2));
+  console.log(`Saved ${fetched.length} threads total to ${OUTPUT_FILE}`);
+
+  const stillRemaining = allNewThreadIds.filter(id => !new Set(fetched.map(t => t.thread_id)).has(id));
+  console.log(`Still remaining after this run: ${stillRemaining.length}`);
+  if (stillRemaining.length > 0) {
+    console.log("Run the script again to continue fetching.");
+  } else {
+    console.log("ALL DONE fetching! Ready for categorization.");
   }
-
-  console.log(`Fetched full content for ${results.length} threads`);
-  writeFileSync("scripts/new-threads.json", JSON.stringify(results, null, 2));
-  console.log("Saved to scripts/new-threads.json");
 }
 
 main().catch(e => { console.error(e); process.exit(1); });
