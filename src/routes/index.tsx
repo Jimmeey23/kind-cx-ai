@@ -1,50 +1,90 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import {
-  loadTickets, type Ticket, type Priority, type Status,
-  priorityRank, priorityClass, statusClass, statusLabel,
+  loadTickets, type Ticket, type Priority, type Status, type SortField, type SortDir,
+  priorityRank, priorityClass, statusClass, statusLabel, statusDotColor,
+  ALL_STATUSES, ALL_PRIORITIES, KNOWN_OWNERS, formatDate, daysOpen,
 } from "@/lib/tickets";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
 } from "@/components/ui/select";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { Separator } from "@/components/ui/separator";
 import {
   AlertTriangle, Inbox, ShieldAlert, Clock, TrendingUp, Search,
-  Mail, Activity, RefreshCw,
+  Activity, RefreshCw, LayoutList, Columns3, Group,
+  ChevronUp, ChevronDown, ChevronsUpDown, Download, CheckSquare,
+  X, Filter, BarChart3, Timer, Moon, Sun,
+  Zap,
 } from "lucide-react";
-import { CategoryChart, PriorityChart, SentimentChart } from "@/components/dashboard/Charts";
+import {
+  CategoryChart, PriorityChart, SentimentChart, StatusChart,
+  AgingChart, ChurnRiskChart, OwnershipChart,
+} from "@/components/dashboard/Charts";
 import { TicketDetail } from "@/components/dashboard/TicketDetail";
-import { Button } from "@/components/ui/button";
+import { KanbanView } from "@/components/dashboard/KanbanView";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Customer Experience Ops — Issues & Complaints" },
-      { name: "description", content: "AI-powered support ticket triage, sentiment analysis, and operations dashboard." },
+      { title: "CX Ops — AI Triage Console" },
+      { name: "description", content: "AI-powered support ticket triage and operations dashboard." },
     ],
   }),
   component: Dashboard,
 });
 
-function Stat({
-  label, value, icon: Icon, accent, sub,
-}: { label: string; value: string | number; icon: any; accent?: string; sub?: string }) {
+type ViewMode = "table" | "kanban" | "groups" | "overview";
+type GroupBy = "category" | "status" | "priority" | "owner";
+
+const TH_CLASS = "px-3 py-2.5 text-left text-[11px] font-semibold uppercase tracking-wider text-muted-foreground select-none";
+const TH_SORT_CLASS = `${TH_CLASS} cursor-pointer hover:text-foreground transition-colors group`;
+
+function SortIcon({ field, sort }: { field: SortField; sort: { field: SortField; dir: SortDir } }) {
+  if (sort.field !== field) return <ChevronsUpDown className="h-3 w-3 text-muted-foreground/40" />;
+  return sort.dir === "asc"
+    ? <ChevronUp className="h-3 w-3 text-primary" />
+    : <ChevronDown className="h-3 w-3 text-primary" />;
+}
+
+function ThSort({ field, sort, onSort, children }: {
+  field: SortField;
+  sort: { field: SortField; dir: SortDir };
+  onSort: (f: SortField) => void;
+  children: React.ReactNode;
+}) {
   return (
-    <Card className="p-4 relative overflow-hidden bg-card/80 backdrop-blur border-border">
+    <th className={TH_SORT_CLASS} onClick={() => onSort(field)}>
+      <span className="flex items-center gap-1">
+        {children}
+        <SortIcon field={field} sort={sort} />
+      </span>
+    </th>
+  );
+}
+
+function StatCard({
+  label, value, icon: Icon, sub, colorClass, trend,
+}: {
+  label: string; value: string | number; icon: any;
+  sub?: string; colorClass?: string; trend?: string;
+}) {
+  return (
+    <Card className="p-4 bg-white dark:bg-card border-border/60 hover:shadow-md transition-shadow">
       <div className="flex items-start justify-between">
-        <div>
-          <div className="text-xs uppercase tracking-wide text-muted-foreground font-medium">{label}</div>
-          <div className="text-3xl font-semibold mt-1.5 text-foreground tabular-nums">{value}</div>
-          {sub && <div className="text-xs text-muted-foreground mt-1">{sub}</div>}
+        <div className="flex-1 min-w-0">
+          <div className="text-xs uppercase tracking-wider text-muted-foreground font-medium mb-1">{label}</div>
+          <div className={`text-2xl font-bold tabular-nums ${colorClass ?? "text-foreground"}`}>{value}</div>
+          {sub && <div className="text-xs text-muted-foreground mt-0.5">{sub}</div>}
+          {trend && <div className="text-xs text-muted-foreground mt-0.5 flex items-center gap-1">{trend}</div>}
         </div>
-        <div
-          className="h-9 w-9 rounded-lg flex items-center justify-center shrink-0"
-          style={{ background: accent ? `${accent} / 0.15` : "var(--accent)" }}
-        >
-          <Icon className="h-4 w-4" style={{ color: accent ?? "var(--primary)" }} />
+        <div className={`h-9 w-9 rounded-lg flex items-center justify-center shrink-0 ${colorClass ? "bg-current/10" : "bg-muted"}`}
+          style={{ background: colorClass ? undefined : undefined }}>
+          <Icon className={`h-4 w-4 ${colorClass ?? "text-muted-foreground"}`} />
         </div>
       </div>
     </Card>
@@ -54,34 +94,83 @@ function Stat({
 function Dashboard() {
   const [tickets, setTickets] = useState<Ticket[]>([]);
   const [loading, setLoading] = useState(true);
+  const [view, setView] = useState<ViewMode>("table");
+  const [groupBy, setGroupBy] = useState<GroupBy>("category");
   const [search, setSearch] = useState("");
-  const [priority, setPriority] = useState<string>("all");
-  const [status, setStatus] = useState<string>("all");
-  const [category, setCategory] = useState<string>("all");
+  const [filterPriority, setFilterPriority] = useState<string>("all");
+  const [filterStatus, setFilterStatus] = useState<string>("all");
+  const [filterCategory, setFilterCategory] = useState<string>("all");
+  const [filterOwner, setFilterOwner] = useState<string>("all");
+  const [filterSentiment, setFilterSentiment] = useState<string>("all");
+  const [sort, setSort] = useState<{ field: SortField; dir: SortDir }>({ field: "priority", dir: "desc" });
   const [activeTicket, setActiveTicket] = useState<Ticket | null>(null);
+  const [selected, setSelected] = useState<Set<string>>(new Set());
+  const [bulkStatus, setBulkStatus] = useState<string>("");
+  const [bulkOwner, setBulkOwner] = useState<string>("");
+  const [darkMode, setDarkMode] = useState(false);
+  const [filtersOpen, setFiltersOpen] = useState(false);
 
-  const refresh = async () => {
+  // Apply dark mode
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", darkMode);
+  }, [darkMode]);
+
+  const refresh = useCallback(async () => {
     setLoading(true);
     try {
-      setTickets(await loadTickets());
+      const raw = await loadTickets();
+      setTickets((prev) => {
+        // Preserve local overrides when refreshing
+        const overrideMap = new Map(prev.map((t) => [t.ticket_id, t]));
+        return raw.map((t) => {
+          const existing = overrideMap.get(t.ticket_id);
+          if (!existing) return t;
+          return {
+            ...t,
+            _localStatus: existing._localStatus,
+            _localPriority: existing._localPriority,
+            _localOwner: existing._localOwner,
+            _localNotes: existing._localNotes,
+            _localTags: existing._localTags,
+          };
+        });
+      });
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
-  useEffect(() => { refresh(); }, []);
+  useEffect(() => { refresh(); }, [refresh]);
+
+  function updateTicket(id: string, changes: Partial<Ticket>) {
+    setTickets((prev) => prev.map((t) => t.ticket_id === id ? { ...t, ...changes } : t));
+    if (activeTicket?.ticket_id === id) {
+      setActiveTicket((prev) => prev ? { ...prev, ...changes } : prev);
+    }
+  }
 
   const categories = useMemo(
     () => Array.from(new Set(tickets.map((t) => t.complaint_category).filter(Boolean))).sort(),
     [tickets]
   );
 
+  const owners = useMemo(
+    () => Array.from(new Set(tickets.map((t) => t.ownership).filter(Boolean))).sort(),
+    [tickets]
+  );
+
+  function toggleSort(field: SortField) {
+    setSort((s) => s.field === field ? { field, dir: s.dir === "asc" ? "desc" : "asc" } : { field, dir: "desc" });
+  }
+
   const filtered = useMemo(() => {
     const q = search.toLowerCase().trim();
-    return tickets
-      .filter((t) => priority === "all" || t.priority === priority)
-      .filter((t) => status === "all" || t.current_status === status)
-      .filter((t) => category === "all" || t.complaint_category === category)
+    let arr = tickets
+      .filter((t) => filterPriority === "all" || (t._localPriority ?? t.priority) === filterPriority)
+      .filter((t) => filterStatus === "all" || (t._localStatus ?? t.current_status) === filterStatus)
+      .filter((t) => filterCategory === "all" || t.complaint_category === filterCategory)
+      .filter((t) => filterOwner === "all" || (t._localOwner ?? t.ownership) === filterOwner)
+      .filter((t) => filterSentiment === "all" || t.sentiment?.frustration_level === filterSentiment)
       .filter((t) => {
         if (!q) return true;
         return (
@@ -89,399 +178,683 @@ function Dashboard() {
           t.customer_email?.toLowerCase().includes(q) ||
           t.issue_summary?.toLowerCase().includes(q) ||
           t.complaint_category?.toLowerCase().includes(q) ||
-          t.ticket_id?.toLowerCase().includes(q)
+          t.complaint_subcategory?.toLowerCase().includes(q) ||
+          t.ticket_id?.toLowerCase().includes(q) ||
+          t.ownership?.toLowerCase().includes(q) ||
+          (t._localTags ?? []).some((tag) => tag.toLowerCase().includes(q))
         );
-      })
-      .sort((a, b) => priorityRank(b.priority) - priorityRank(a.priority));
-  }, [tickets, search, priority, status, category]);
+      });
+
+    arr.sort((a, b) => {
+      let va: any, vb: any;
+      switch (sort.field) {
+        case "priority":
+          va = priorityRank(a._localPriority ?? a.priority);
+          vb = priorityRank(b._localPriority ?? b.priority);
+          break;
+        case "date_opened":
+          va = new Date(a.date_opened).getTime();
+          vb = new Date(b.date_opened).getTime();
+          break;
+        case "last_response_date":
+          va = new Date(a.last_response_date).getTime();
+          vb = new Date(b.last_response_date).getTime();
+          break;
+        case "customer_name":
+          va = a.customer_name?.toLowerCase();
+          vb = b.customer_name?.toLowerCase();
+          break;
+        case "complaint_category":
+          va = a.complaint_category?.toLowerCase();
+          vb = b.complaint_category?.toLowerCase();
+          break;
+        case "current_status":
+          va = (a._localStatus ?? a.current_status);
+          vb = (b._localStatus ?? b.current_status);
+          break;
+        default:
+          va = 0; vb = 0;
+      }
+      if (va < vb) return sort.dir === "asc" ? -1 : 1;
+      if (va > vb) return sort.dir === "asc" ? 1 : -1;
+      return 0;
+    });
+
+    return arr;
+  }, [tickets, search, filterPriority, filterStatus, filterCategory, filterOwner, filterSentiment, sort]);
 
   const stats = useMemo(() => {
-    const critical = tickets.filter((t) => t.priority === "Critical").length;
-    const high = tickets.filter((t) => t.priority === "High").length;
-    const escalated = tickets.filter((t) => t.current_status === "escalated" || t.current_status === "high_risk").length;
-    const unresolved = tickets.filter((t) => t.current_status !== "resolved").length;
-    const refundRelated = tickets.filter((t) =>
-      /refund|chargeback|money.?back/i.test(t.complaint_category + " " + t.issue_summary)
-    ).length;
-    const churnRisk = tickets.filter((t) =>
-      ["High", "Very High"].includes(t.sentiment?.churn_likelihood ?? "")
-    ).length;
-    return { total: tickets.length, critical, high, escalated, unresolved, refundRelated, churnRisk };
+    const critical = tickets.filter((t) => (t._localPriority ?? t.priority) === "Critical").length;
+    const high = tickets.filter((t) => (t._localPriority ?? t.priority) === "High").length;
+    const escalated = tickets.filter((t) => ["escalated", "high_risk"].includes(t._localStatus ?? t.current_status)).length;
+    const unresolved = tickets.filter((t) => (t._localStatus ?? t.current_status) !== "resolved").length;
+    const resolved = tickets.filter((t) => (t._localStatus ?? t.current_status) === "resolved").length;
+    const churnRisk = tickets.filter((t) => ["High", "Very High"].includes(t.sentiment?.churn_likelihood ?? "")).length;
+    const avgDays = tickets.length
+      ? Math.round(tickets.reduce((s, t) => s + daysOpen(t.date_opened), 0) / tickets.length)
+      : 0;
+    return { total: tickets.length, critical, high, escalated, unresolved, resolved, churnRisk, avgDays };
   }, [tickets]);
 
-  const priorityQueue = useMemo(
-    () => [...tickets]
-      .sort((a, b) => priorityRank(b.priority) - priorityRank(a.priority))
-      .slice(0, 15),
-    [tickets]
-  );
-
-  const recurringIssues = useMemo(() => {
-    const m = new Map<string, number>();
-    for (const t of tickets) {
-      const k = t.complaint_category || "Uncategorized";
-      m.set(k, (m.get(k) ?? 0) + 1);
-    }
-    return Array.from(m.entries()).sort((a, b) => b[1] - a[1]).slice(0, 8);
-  }, [tickets]);
-
+  // Grouped view
   const groups = useMemo(() => {
+    const keyFn = (t: Ticket): string => {
+      switch (groupBy) {
+        case "status": return statusLabel(t._localStatus ?? t.current_status);
+        case "priority": return t._localPriority ?? t.priority;
+        case "owner": return t._localOwner ?? t.ownership ?? "Unassigned";
+        default: return t.complaint_category || "Uncategorized";
+      }
+    };
     const m = new Map<string, Ticket[]>();
-    for (const t of tickets) {
-      const k = t.complaint_category || "Uncategorized";
+    for (const t of filtered) {
+      const k = keyFn(t);
       const arr = m.get(k) ?? [];
       arr.push(t);
       m.set(k, arr);
     }
     return Array.from(m.entries())
-      .map(([cat, list]) => {
-        const subs = new Map<string, Ticket[]>();
-        for (const t of list) {
-          const sk = (t as any).complaint_subcategory || "General";
-          const a = subs.get(sk) ?? [];
-          a.push(t);
-          subs.set(sk, a);
-        }
-        const counts = { Critical: 0, High: 0, Medium: 0, Low: 0 } as Record<Priority, number>;
-        for (const t of list) counts[t.priority as Priority] = (counts[t.priority as Priority] ?? 0) + 1;
-        return {
-          category: cat,
-          tickets: list,
-          subgroups: Array.from(subs.entries())
-            .map(([name, items]) => ({ name, items }))
-            .sort((a, b) => b.items.length - a.items.length),
-          counts,
-        };
+      .map(([key, list]) => {
+        const counts = Object.fromEntries(ALL_PRIORITIES.map((p) => [p, 0])) as Record<Priority, number>;
+        for (const t of list) counts[(t._localPriority ?? t.priority) as Priority] = (counts[(t._localPriority ?? t.priority) as Priority] ?? 0) + 1;
+        return { key, tickets: list, counts };
       })
       .sort((a, b) => b.tickets.length - a.tickets.length);
-  }, [tickets]);
+  }, [filtered, groupBy]);
+
+  // Bulk actions
+  const allSelected = filtered.length > 0 && filtered.every((t) => selected.has(t.ticket_id));
+  function toggleSelectAll() {
+    if (allSelected) setSelected(new Set());
+    else setSelected(new Set(filtered.map((t) => t.ticket_id)));
+  }
+  function toggleSelect(id: string) {
+    setSelected((prev) => {
+      const n = new Set(prev);
+      n.has(id) ? n.delete(id) : n.add(id);
+      return n;
+    });
+  }
+  function applyBulkStatus() {
+    if (!bulkStatus || bulkStatus === "all") return;
+    selected.forEach((id) => updateTicket(id, { _localStatus: bulkStatus as Status }));
+    setSelected(new Set()); setBulkStatus("");
+  }
+  function applyBulkOwner() {
+    if (!bulkOwner || bulkOwner === "all") return;
+    selected.forEach((id) => updateTicket(id, { _localOwner: bulkOwner }));
+    setSelected(new Set()); setBulkOwner("");
+  }
+
+  // CSV export
+  function exportCSV() {
+    const cols = ["ticket_id","customer_name","customer_email","date_opened","last_response_date","complaint_category","complaint_subcategory","priority","current_status","ownership","sentiment_frustration","sentiment_churn","sla_classification","sla_aging","issue_summary"];
+    const rows = filtered.map((t) => cols.map((c) => {
+      const v =
+        c === "priority" ? (t._localPriority ?? t.priority) :
+        c === "current_status" ? (t._localStatus ?? t.current_status) :
+        c === "ownership" ? (t._localOwner ?? t.ownership) :
+        c === "sentiment_frustration" ? t.sentiment?.frustration_level :
+        c === "sentiment_churn" ? t.sentiment?.churn_likelihood :
+        (t as any)[c] ?? "";
+      return `"${String(v).replace(/"/g, '""')}"`;
+    }).join(","));
+    const csv = [cols.join(","), ...rows].join("\n");
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([csv], { type: "text/csv" }));
+    a.download = `cx-tickets-${new Date().toISOString().split("T")[0]}.csv`;
+    a.click();
+  }
+
+  const activeFilterCount = [
+    filterPriority !== "all", filterStatus !== "all",
+    filterCategory !== "all", filterOwner !== "all", filterSentiment !== "all",
+  ].filter(Boolean).length;
+
+  function clearFilters() {
+    setFilterPriority("all"); setFilterStatus("all");
+    setFilterCategory("all"); setFilterOwner("all"); setFilterSentiment("all");
+    setSearch("");
+  }
 
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="sticky top-0 z-30 border-b border-border bg-background/80 backdrop-blur-xl">
-        <div className="max-w-[1600px] mx-auto px-6 py-4 flex items-center justify-between gap-4">
+      <header className="sticky top-0 z-30 border-b border-border/60 bg-white/90 dark:bg-background/90 backdrop-blur-xl shadow-sm">
+        <div className="max-w-[1700px] mx-auto px-5 py-3 flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div
-              className="h-10 w-10 rounded-xl flex items-center justify-center"
-              style={{ background: "var(--gradient-primary)", boxShadow: "var(--shadow-glow)" }}
-            >
-              <ShieldAlert className="h-5 w-5 text-primary-foreground" />
+            <div className="h-9 w-9 rounded-xl flex items-center justify-center bg-gradient-to-br from-indigo-500 to-violet-600 shadow-sm">
+              <ShieldAlert className="h-4.5 w-4.5 text-white" style={{ height: 18, width: 18 }} />
             </div>
             <div>
-              <h1 className="text-base font-semibold leading-tight">Customer Experience Ops</h1>
-              <p className="text-xs text-muted-foreground">Issues &amp; Complaints — AI Triage Console</p>
+              <h1 className="text-sm font-semibold leading-tight text-foreground">Customer Experience Ops</h1>
+              <p className="text-xs text-muted-foreground">Issues & Complaints — AI Triage Console</p>
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <Badge variant="outline" className="gap-1.5 border-[var(--success)]/30 text-[var(--success)] bg-[var(--success)]/10">
-              <span className="h-1.5 w-1.5 rounded-full bg-[var(--success)] animate-pulse" />
-              Live · Gmail
+            <Badge variant="outline" className="gap-1.5 border-emerald-300 text-emerald-700 bg-emerald-50 dark:border-emerald-800 dark:text-emerald-400 dark:bg-emerald-950/30 text-xs">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              Live · Gmail Sync
             </Badge>
-            <Button size="sm" variant="outline" onClick={refresh} disabled={loading}>
-              <RefreshCw className={`h-3.5 w-3.5 mr-1.5 ${loading ? "animate-spin" : ""}`} />
-              Refresh
+            <Button size="sm" variant="outline" className="h-8 text-xs gap-1.5" onClick={exportCSV}>
+              <Download className="h-3.5 w-3.5" /> Export
+            </Button>
+            <Button size="sm" variant="outline" className="h-8 text-xs gap-1.5" onClick={refresh} disabled={loading}>
+              <RefreshCw className={`h-3.5 w-3.5 ${loading ? "animate-spin" : ""}`} />
+              {loading ? "Syncing…" : "Refresh"}
+            </Button>
+            <Button
+              size="sm"
+              variant="ghost"
+              className="h-8 w-8 p-0"
+              onClick={() => setDarkMode((d) => !d)}
+              title={darkMode ? "Light mode" : "Dark mode"}
+            >
+              {darkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </Button>
           </div>
         </div>
       </header>
 
-      <main className="max-w-[1600px] mx-auto px-6 py-6 space-y-6">
-        {/* Stats grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3">
-          <Stat label="Total Tickets" value={stats.total} icon={Inbox} accent="var(--info)" />
-          <Stat label="Critical" value={stats.critical} icon={AlertTriangle} accent="var(--critical)" />
-          <Stat label="High Priority" value={stats.high} icon={TrendingUp} accent="var(--high)" />
-          <Stat label="Escalated" value={stats.escalated} icon={ShieldAlert} accent="var(--critical)" />
-          <Stat label="Unresolved" value={stats.unresolved} icon={Clock} accent="var(--warning)" />
-          <Stat label="Refund-related" value={stats.refundRelated} icon={Activity} accent="var(--medium)" />
-          <Stat label="Churn Risk" value={stats.churnRisk} icon={TrendingUp} accent="var(--critical)" />
+      <main className="max-w-[1700px] mx-auto px-5 py-5 space-y-5">
+        {/* Stats */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
+          <StatCard label="Total" value={stats.total} icon={Inbox} colorClass="text-indigo-600 dark:text-indigo-400" />
+          <StatCard label="Critical" value={stats.critical} icon={AlertTriangle} colorClass="text-red-600 dark:text-red-400" />
+          <StatCard label="High Priority" value={stats.high} icon={TrendingUp} colorClass="text-orange-600 dark:text-orange-400" />
+          <StatCard label="Escalated" value={stats.escalated} icon={ShieldAlert} colorClass="text-red-700 dark:text-red-400" />
+          <StatCard label="Unresolved" value={stats.unresolved} icon={Clock} colorClass="text-amber-600 dark:text-amber-400" />
+          <StatCard label="Resolved" value={stats.resolved} icon={Activity} colorClass="text-emerald-600 dark:text-emerald-400" />
+          <StatCard label="Churn Risk" value={stats.churnRisk} icon={TrendingUp} colorClass="text-rose-600 dark:text-rose-400" />
+          <StatCard label="Avg Age" value={`${stats.avgDays}d`} icon={Timer} colorClass="text-slate-600 dark:text-slate-400" />
         </div>
 
-        <Tabs defaultValue="tickets" className="space-y-4">
-          <TabsList className="bg-card border border-border">
-            <TabsTrigger value="tickets">Tickets</TabsTrigger>
-            <TabsTrigger value="groups">Groups</TabsTrigger>
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="queue">Priority Queue</TabsTrigger>
-            <TabsTrigger value="insights">Operational Insights</TabsTrigger>
-          </TabsList>
+        {/* View selector + search + filters */}
+        <div className="flex flex-wrap items-center gap-2">
+          {/* View buttons */}
+          <div className="flex items-center bg-muted/60 rounded-lg p-0.5 border border-border/50">
+            {([
+              { v: "table", icon: LayoutList, label: "Table" },
+              { v: "kanban", icon: Columns3, label: "Kanban" },
+              { v: "groups", icon: Group, label: "Groups" },
+              { v: "overview", icon: BarChart3, label: "Overview" },
+            ] as { v: ViewMode; icon: any; label: string }[]).map(({ v, icon: Icon, label }) => (
+              <button
+                key={v}
+                onClick={() => setView(v)}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
+                  view === v
+                    ? "bg-white dark:bg-card shadow-sm text-foreground"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                <Icon className="h-3.5 w-3.5" /> {label}
+              </button>
+            ))}
+          </div>
 
-          <TabsContent value="groups" className="space-y-4">
+          {view === "groups" && (
+            <Select value={groupBy} onValueChange={(v) => setGroupBy(v as GroupBy)}>
+              <SelectTrigger className="h-8 text-xs w-[160px] bg-background">
+                <SelectValue placeholder="Group by…" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="category" className="text-xs">By Category</SelectItem>
+                <SelectItem value="status" className="text-xs">By Status</SelectItem>
+                <SelectItem value="priority" className="text-xs">By Priority</SelectItem>
+                <SelectItem value="owner" className="text-xs">By Owner</SelectItem>
+              </SelectContent>
+            </Select>
+          )}
+
+          {/* Search */}
+          <div className="relative flex-1 min-w-[220px]">
+            <Search className="h-3.5 w-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+            <Input
+              className="pl-9 h-8 text-xs bg-background"
+              placeholder="Search tickets, customers, categories, tags…"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            {search && (
+              <button onClick={() => setSearch("")} className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground">
+                <X className="h-3.5 w-3.5" />
+              </button>
+            )}
+          </div>
+
+          <Button
+            size="sm"
+            variant={filtersOpen || activeFilterCount > 0 ? "default" : "outline"}
+            className="h-8 text-xs gap-1.5"
+            onClick={() => setFiltersOpen((o) => !o)}
+          >
+            <Filter className="h-3.5 w-3.5" />
+            Filters
+            {activeFilterCount > 0 && (
+              <span className="ml-0.5 bg-white/25 text-white dark:bg-black/20 rounded-full px-1.5 py-0 text-[10px] font-bold">
+                {activeFilterCount}
+              </span>
+            )}
+          </Button>
+
+          {activeFilterCount > 0 && (
+            <Button size="sm" variant="ghost" className="h-8 text-xs text-muted-foreground" onClick={clearFilters}>
+              <X className="h-3 w-3 mr-1" /> Clear
+            </Button>
+          )}
+
+          <div className="ml-auto text-xs text-muted-foreground tabular-nums">
+            {filtered.length} / {tickets.length} tickets
+          </div>
+        </div>
+
+        {/* Filter panel */}
+        {filtersOpen && (
+          <Card className="p-3 bg-muted/30 border-border/60 flex flex-wrap gap-2 items-center">
+            <Select value={filterPriority} onValueChange={setFilterPriority}>
+              <SelectTrigger className="h-7 text-xs w-[130px] bg-background"><SelectValue placeholder="Priority" /></SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all" className="text-xs">All Priorities</SelectItem>
+                {ALL_PRIORITIES.map((p) => <SelectItem key={p} value={p} className="text-xs">{p}</SelectItem>)}
+              </SelectContent>
+            </Select>
+            <Select value={filterStatus} onValueChange={setFilterStatus}>
+              <SelectTrigger className="h-7 text-xs w-[170px] bg-background"><SelectValue placeholder="Status" /></SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all" className="text-xs">All Statuses</SelectItem>
+                {ALL_STATUSES.map((s) => <SelectItem key={s} value={s} className="text-xs">{statusLabel(s)}</SelectItem>)}
+              </SelectContent>
+            </Select>
+            <Select value={filterCategory} onValueChange={setFilterCategory}>
+              <SelectTrigger className="h-7 text-xs w-[180px] bg-background"><SelectValue placeholder="Category" /></SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all" className="text-xs">All Categories</SelectItem>
+                {categories.map((c) => <SelectItem key={c} value={c} className="text-xs">{c}</SelectItem>)}
+              </SelectContent>
+            </Select>
+            <Select value={filterOwner} onValueChange={setFilterOwner}>
+              <SelectTrigger className="h-7 text-xs w-[200px] bg-background"><SelectValue placeholder="Owner" /></SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all" className="text-xs">All Owners</SelectItem>
+                {owners.map((o) => <SelectItem key={o} value={o} className="text-xs truncate">{o}</SelectItem>)}
+              </SelectContent>
+            </Select>
+            <Select value={filterSentiment} onValueChange={setFilterSentiment}>
+              <SelectTrigger className="h-7 text-xs w-[150px] bg-background"><SelectValue placeholder="Frustration" /></SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all" className="text-xs">All Sentiments</SelectItem>
+                {["Low","Medium","High","Severe"].map((s) => <SelectItem key={s} value={s} className="text-xs">{s}</SelectItem>)}
+              </SelectContent>
+            </Select>
+          </Card>
+        )}
+
+        {/* Bulk action bar */}
+        {selected.size > 0 && (
+          <Card className="p-2.5 bg-indigo-50 dark:bg-indigo-950/30 border-indigo-200 dark:border-indigo-800/50 flex flex-wrap items-center gap-2">
+            <div className="flex items-center gap-2 text-xs font-semibold text-indigo-700 dark:text-indigo-400">
+              <CheckSquare className="h-4 w-4" />
+              {selected.size} selected
+            </div>
+            <Separator orientation="vertical" className="h-4 bg-indigo-200 dark:bg-indigo-800" />
+            <Select value={bulkStatus} onValueChange={setBulkStatus}>
+              <SelectTrigger className="h-7 text-xs w-[160px] bg-white dark:bg-card border-indigo-200 dark:border-indigo-800">
+                <SelectValue placeholder="Change status…" />
+              </SelectTrigger>
+              <SelectContent>
+                {ALL_STATUSES.map((s) => <SelectItem key={s} value={s} className="text-xs">{statusLabel(s)}</SelectItem>)}
+              </SelectContent>
+            </Select>
+            <Button size="sm" className="h-7 text-xs" onClick={applyBulkStatus} disabled={!bulkStatus}>
+              Apply Status
+            </Button>
+            <Separator orientation="vertical" className="h-4 bg-indigo-200 dark:bg-indigo-800" />
+            <Select value={bulkOwner} onValueChange={setBulkOwner}>
+              <SelectTrigger className="h-7 text-xs w-[200px] bg-white dark:bg-card border-indigo-200 dark:border-indigo-800">
+                <SelectValue placeholder="Reassign to…" />
+              </SelectTrigger>
+              <SelectContent>
+                {KNOWN_OWNERS.map((o) => <SelectItem key={o} value={o} className="text-xs">{o}</SelectItem>)}
+              </SelectContent>
+            </Select>
+            <Button size="sm" className="h-7 text-xs" onClick={applyBulkOwner} disabled={!bulkOwner}>
+              Reassign
+            </Button>
+            <Button size="sm" variant="ghost" className="h-7 text-xs ml-auto text-muted-foreground" onClick={() => setSelected(new Set())}>
+              <X className="h-3 w-3 mr-1" /> Clear
+            </Button>
+          </Card>
+        )}
+
+        {/* ── TABLE VIEW ── */}
+        {view === "table" && (
+          <Card className="overflow-hidden border-border/60 bg-white dark:bg-card shadow-sm">
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm min-w-[1100px]">
+                <thead className="bg-muted/40 border-b border-border/60">
+                  <tr>
+                    <th className="px-3 py-2.5 w-10">
+                      <Checkbox checked={allSelected} onCheckedChange={toggleSelectAll} aria-label="Select all" />
+                    </th>
+                    <th className={TH_CLASS}>Ticket ID</th>
+                    <ThSort field="date_opened" sort={sort} onSort={toggleSort}>Date</ThSort>
+                    <ThSort field="customer_name" sort={sort} onSort={toggleSort}>Customer</ThSort>
+                    <ThSort field="complaint_category" sort={sort} onSort={toggleSort}>Category</ThSort>
+                    <ThSort field="priority" sort={sort} onSort={toggleSort}>Priority</ThSort>
+                    <ThSort field="current_status" sort={sort} onSort={toggleSort}>Status</ThSort>
+                    <th className={TH_CLASS}>Sentiment</th>
+                    <th className={TH_CLASS}>Age</th>
+                    <ThSort field="last_response_date" sort={sort} onSort={toggleSort}>Last Response</ThSort>
+                    <th className={TH_CLASS}>SLA</th>
+                    <th className={TH_CLASS}>Owner</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {loading && tickets.length === 0 && (
+                    <tr>
+                      <td colSpan={12} className="text-center text-muted-foreground py-16 text-sm">
+                        <RefreshCw className="h-5 w-5 animate-spin mx-auto mb-2 text-muted-foreground/50" />
+                        Loading tickets…
+                      </td>
+                    </tr>
+                  )}
+                  {!loading && filtered.length === 0 && (
+                    <tr>
+                      <td colSpan={12} className="text-center text-muted-foreground py-16 text-sm">
+                        No tickets match your filters.
+                        {activeFilterCount > 0 && (
+                          <button onClick={clearFilters} className="ml-2 text-primary hover:underline">Clear filters</button>
+                        )}
+                      </td>
+                    </tr>
+                  )}
+                  {filtered.map((t) => {
+                    const p = (t._localPriority ?? t.priority) as Priority;
+                    const s = (t._localStatus ?? t.current_status) as Status;
+                    const o = t._localOwner ?? t.ownership;
+                    const days = daysOpen(t.date_opened);
+                    const isSelected = selected.has(t.ticket_id);
+                    return (
+                      <tr
+                        key={t.ticket_id}
+                        className={`border-b border-border/40 hover:bg-muted/30 transition-colors cursor-pointer ${isSelected ? "bg-indigo-50/60 dark:bg-indigo-950/20" : ""}`}
+                      >
+                        <td className="px-3 py-2.5" onClick={(e) => { e.stopPropagation(); toggleSelect(t.ticket_id); }}>
+                          <Checkbox checked={isSelected} onCheckedChange={() => toggleSelect(t.ticket_id)} />
+                        </td>
+                        <td className="px-3 py-2.5" onClick={() => setActiveTicket(t)}>
+                          <code className="text-[11px] text-muted-foreground font-mono">{t.ticket_id}</code>
+                          {(t._localNotes?.length ?? 0) > 0 && (
+                            <span className="ml-1.5 text-[10px] bg-amber-100 dark:bg-amber-950/30 text-amber-700 dark:text-amber-400 px-1.5 py-0 rounded-full">
+                              {t._localNotes!.length} note{t._localNotes!.length !== 1 ? "s" : ""}
+                            </span>
+                          )}
+                          {(t._localTags?.length ?? 0) > 0 && (
+                            <div className="flex flex-wrap gap-0.5 mt-0.5">
+                              {t._localTags!.map((tag) => (
+                                <span key={tag} className="text-[9px] px-1 py-0 rounded bg-indigo-100 dark:bg-indigo-950/30 text-indigo-600 dark:text-indigo-400">#{tag}</span>
+                              ))}
+                            </div>
+                          )}
+                        </td>
+                        <td className="px-3 py-2.5" onClick={() => setActiveTicket(t)}>
+                          <div className="text-xs text-foreground font-medium">{formatDate(t.date_opened)}</div>
+                        </td>
+                        <td className="px-3 py-2.5 max-w-[180px]" onClick={() => setActiveTicket(t)}>
+                          <div className="font-medium text-foreground text-xs truncate">{t.customer_name}</div>
+                          <div className="text-[11px] text-muted-foreground truncate">{t.customer_email}</div>
+                        </td>
+                        <td className="px-3 py-2.5 max-w-[220px]" onClick={() => setActiveTicket(t)}>
+                          <div className="text-xs font-medium text-foreground line-clamp-1">{t.complaint_category}</div>
+                          {t.complaint_subcategory && (
+                            <div className="text-[11px] text-muted-foreground line-clamp-1">{t.complaint_subcategory}</div>
+                          )}
+                          <div className="text-[11px] text-muted-foreground/70 line-clamp-1 mt-0.5">{t.issue_summary}</div>
+                        </td>
+                        <td className="px-3 py-2.5" onClick={() => setActiveTicket(t)}>
+                          <Badge variant="outline" className={`${priorityClass(p)} text-[11px] px-2 py-0`}>{p}</Badge>
+                        </td>
+                        <td className="px-3 py-2.5" onClick={() => setActiveTicket(t)}>
+                          <Badge variant="outline" className={`${statusClass(s)} text-[11px] px-2 py-0 flex items-center gap-1 w-fit`}>
+                            <span className={`h-1.5 w-1.5 rounded-full shrink-0 ${statusDotColor(s)}`} />
+                            {statusLabel(s)}
+                          </Badge>
+                        </td>
+                        <td className="px-3 py-2.5" onClick={() => setActiveTicket(t)}>
+                          <div className="text-xs text-foreground/80">{t.sentiment?.frustration_level}</div>
+                          <div className="text-[11px] text-muted-foreground">churn: {t.sentiment?.churn_likelihood}</div>
+                        </td>
+                        <td className="px-3 py-2.5" onClick={() => setActiveTicket(t)}>
+                          <span className={`text-xs font-medium tabular-nums ${days > 30 ? "text-red-600 dark:text-red-400" : days > 14 ? "text-amber-600 dark:text-amber-400" : "text-foreground/70"}`}>
+                            {days}d
+                          </span>
+                        </td>
+                        <td className="px-3 py-2.5" onClick={() => setActiveTicket(t)}>
+                          <div className="text-xs text-foreground/80">{formatDate(t.last_response_date)}</div>
+                        </td>
+                        <td className="px-3 py-2.5 max-w-[120px]" onClick={() => setActiveTicket(t)}>
+                          <div className="text-[11px] text-muted-foreground line-clamp-2">{t.sla_classification}</div>
+                        </td>
+                        <td className="px-3 py-2.5 max-w-[160px]" onClick={() => setActiveTicket(t)}>
+                          <div className="text-[11px] text-foreground/80 line-clamp-2">{o}</div>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <div className="px-4 py-2.5 border-t border-border/40 bg-muted/20 text-xs text-muted-foreground flex items-center justify-between">
+              <span>Showing {filtered.length} of {tickets.length} tickets</span>
+              <Button size="sm" variant="ghost" className="h-6 text-xs gap-1.5 text-muted-foreground" onClick={exportCSV}>
+                <Download className="h-3 w-3" /> Export CSV
+              </Button>
+            </div>
+          </Card>
+        )}
+
+        {/* ── KANBAN VIEW ── */}
+        {view === "kanban" && (
+          <KanbanView
+            tickets={filtered}
+            onSelect={setActiveTicket}
+            onStatusChange={(id, s) => updateTicket(id, { _localStatus: s })}
+          />
+        )}
+
+        {/* ── GROUPS VIEW ── */}
+        {view === "groups" && (
+          <div className="space-y-3">
+            {groups.length === 0 && (
+              <Card className="p-12 text-center text-muted-foreground text-sm bg-white dark:bg-card">
+                No tickets match current filters.
+              </Card>
+            )}
             {groups.map((g) => (
-              <Card key={g.category} className="p-4 bg-card/60">
-                <div className="flex items-center justify-between flex-wrap gap-2 mb-3">
+              <Card key={g.key} className="overflow-hidden border-border/60 bg-white dark:bg-card shadow-sm">
+                <div className="px-4 py-3 border-b border-border/50 bg-muted/30 flex items-center justify-between flex-wrap gap-2">
                   <div className="flex items-center gap-3">
-                    <h3 className="text-base font-semibold">{g.category}</h3>
-                    <Badge variant="outline" className="bg-muted">{g.tickets.length} tickets</Badge>
+                    <h3 className="text-sm font-semibold text-foreground">{g.key}</h3>
+                    <Badge variant="outline" className="bg-background text-muted-foreground text-[11px] px-2 py-0">
+                      {g.tickets.length} tickets
+                    </Badge>
                   </div>
-                  <div className="flex gap-1.5 text-xs">
+                  <div className="flex gap-1.5">
                     {(["Critical","High","Medium","Low"] as Priority[]).map((p) =>
                       g.counts[p] ? (
-                        <Badge key={p} variant="outline" className={priorityClass(p)}>
-                          {p}: {g.counts[p]}
+                        <Badge key={p} variant="outline" className={`${priorityClass(p)} text-[10px] px-1.5 py-0`}>
+                          {p[0]}: {g.counts[p]}
                         </Badge>
                       ) : null
                     )}
                   </div>
                 </div>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-2">
-                  {g.subgroups.map((sg) => (
-                    <div key={sg.name} className="rounded-lg border border-border bg-background/50 p-3">
-                      <div className="flex items-center justify-between mb-2">
-                        <div className="text-sm font-medium text-foreground line-clamp-1">{sg.name}</div>
-                        <span className="text-xs text-muted-foreground tabular-nums">{sg.items.length}</span>
-                      </div>
-                      <div className="space-y-1">
-                        {sg.items.slice(0, 5).map((t) => (
-                          <button
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <tbody>
+                      {g.tickets.slice(0, 10).map((t) => {
+                        const p = (t._localPriority ?? t.priority) as Priority;
+                        const s = (t._localStatus ?? t.current_status) as Status;
+                        return (
+                          <tr
                             key={t.ticket_id}
                             onClick={() => setActiveTicket(t)}
-                            className="w-full text-left text-xs hover:bg-accent/40 rounded px-2 py-1 flex items-center gap-2"
+                            className="border-b border-border/30 last:border-0 hover:bg-muted/20 cursor-pointer transition-colors"
                           >
-                            <Badge variant="outline" className={priorityClass(t.priority as Priority) + " text-[10px] py-0 px-1.5"}>
-                              {t.priority[0]}
-                            </Badge>
-                            <span className="truncate text-muted-foreground flex-1">{t.customer_name}</span>
-                          </button>
-                        ))}
-                        {sg.items.length > 5 && (
-                          <div className="text-[11px] text-muted-foreground px-2">+{sg.items.length - 5} more</div>
-                        )}
-                      </div>
-                    </div>
-                  ))}
+                            <td className="px-4 py-2.5 w-[130px]">
+                              <code className="text-[11px] text-muted-foreground font-mono">{t.ticket_id}</code>
+                              <div className="text-[10px] text-muted-foreground/60">{formatDate(t.date_opened)}</div>
+                            </td>
+                            <td className="px-3 py-2.5 max-w-[180px]">
+                              <div className="text-xs font-medium text-foreground truncate">{t.customer_name}</div>
+                              <div className="text-[11px] text-muted-foreground truncate">{t.customer_email}</div>
+                            </td>
+                            <td className="px-3 py-2.5 max-w-[260px]">
+                              <div className="text-xs text-foreground/80 line-clamp-1">{t.issue_summary}</div>
+                              {t.complaint_subcategory && (
+                                <div className="text-[10px] text-muted-foreground">{t.complaint_subcategory}</div>
+                              )}
+                            </td>
+                            <td className="px-3 py-2.5 whitespace-nowrap">
+                              <Badge variant="outline" className={`${priorityClass(p)} text-[10px] px-1.5 py-0`}>{p}</Badge>
+                            </td>
+                            <td className="px-3 py-2.5 whitespace-nowrap">
+                              <Badge variant="outline" className={`${statusClass(s)} text-[10px] px-1.5 py-0 flex items-center gap-1 w-fit`}>
+                                <span className={`h-1.5 w-1.5 rounded-full ${statusDotColor(s)}`} />
+                                {statusLabel(s)}
+                              </Badge>
+                            </td>
+                            <td className="px-3 py-2.5 text-[11px] text-muted-foreground max-w-[160px] truncate">
+                              {t._localOwner ?? t.ownership}
+                            </td>
+                            <td className="px-3 py-2.5 text-[11px] text-muted-foreground/70 whitespace-nowrap">
+                              {daysOpen(t.date_opened)}d ago
+                            </td>
+                          </tr>
+                        );
+                      })}
+                      {g.tickets.length > 10 && (
+                        <tr>
+                          <td colSpan={7} className="px-4 py-2 text-xs text-muted-foreground italic">
+                            + {g.tickets.length - 10} more tickets in this group
+                          </td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </table>
                 </div>
               </Card>
             ))}
-          </TabsContent>
+          </div>
+        )}
 
-          {/* TICKETS */}
-          <TabsContent value="tickets" className="space-y-4">
-            <Card className="p-3 flex flex-wrap items-center gap-2 bg-card/60">
-              <div className="relative flex-1 min-w-[240px]">
-                <Search className="h-4 w-4 absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
-                <Input
-                  className="pl-9 bg-background"
-                  placeholder="Search customer, summary, ticket id…"
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                />
-              </div>
-              <Select value={priority} onValueChange={setPriority}>
-                <SelectTrigger className="w-[140px] bg-background"><SelectValue placeholder="Priority" /></SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All priorities</SelectItem>
-                  <SelectItem value="Critical">Critical</SelectItem>
-                  <SelectItem value="High">High</SelectItem>
-                  <SelectItem value="Medium">Medium</SelectItem>
-                  <SelectItem value="Low">Low</SelectItem>
-                </SelectContent>
-              </Select>
-              <Select value={status} onValueChange={setStatus}>
-                <SelectTrigger className="w-[180px] bg-background"><SelectValue placeholder="Status" /></SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All statuses</SelectItem>
-                  {(["unresolved","partially_resolved","awaiting_internal_action","awaiting_customer_response","escalated","high_risk","resolved"] as Status[]).map(s => (
-                    <SelectItem key={s} value={s}>{statusLabel(s)}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              <Select value={category} onValueChange={setCategory}>
-                <SelectTrigger className="w-[200px] bg-background"><SelectValue placeholder="Category" /></SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All categories</SelectItem>
-                  {categories.map((c) => <SelectItem key={c} value={c}>{c}</SelectItem>)}
-                </SelectContent>
-              </Select>
-              <div className="text-xs text-muted-foreground ml-auto px-2">
-                {filtered.length} of {tickets.length}
-              </div>
-            </Card>
-
-            <Card className="overflow-hidden bg-card/60">
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm">
-                  <thead className="bg-muted/40 text-muted-foreground text-xs uppercase tracking-wide">
-                    <tr>
-                      <th className="text-left font-medium px-4 py-3">Ticket</th>
-                      <th className="text-left font-medium px-4 py-3">Customer</th>
-                      <th className="text-left font-medium px-4 py-3">Category</th>
-                      <th className="text-left font-medium px-4 py-3">Priority</th>
-                      <th className="text-left font-medium px-4 py-3">Status</th>
-                      <th className="text-left font-medium px-4 py-3">Sentiment</th>
-                      <th className="text-left font-medium px-4 py-3">Owner</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {loading && tickets.length === 0 && (
-                      <tr><td colSpan={7} className="text-center text-muted-foreground py-12">Loading tickets…</td></tr>
-                    )}
-                    {!loading && filtered.length === 0 && (
-                      <tr><td colSpan={7} className="text-center text-muted-foreground py-12">No tickets match your filters.</td></tr>
-                    )}
-                    {filtered.map((t) => (
-                      <tr
-                        key={t.ticket_id}
-                        onClick={() => setActiveTicket(t)}
-                        className="border-t border-border hover:bg-accent/40 cursor-pointer transition-colors"
-                      >
-                        <td className="px-4 py-3">
-                          <div className="font-mono text-xs text-muted-foreground">{t.ticket_id}</div>
-                          <div className="text-xs text-muted-foreground/80 mt-0.5">{t.date_opened}</div>
-                        </td>
-                        <td className="px-4 py-3">
-                          <div className="font-medium text-foreground line-clamp-1 max-w-[200px]">{t.customer_name}</div>
-                          <div className="text-xs text-muted-foreground line-clamp-1 max-w-[220px]">{t.customer_email}</div>
-                        </td>
-                        <td className="px-4 py-3 max-w-[260px]">
-                          <div className="text-foreground line-clamp-1">{t.complaint_category}</div>
-                          <div className="text-xs text-muted-foreground line-clamp-2 mt-0.5">{t.issue_summary}</div>
-                        </td>
-                        <td className="px-4 py-3">
-                          <Badge variant="outline" className={priorityClass(t.priority as Priority)}>
-                            {t.priority}
-                          </Badge>
-                        </td>
-                        <td className="px-4 py-3">
-                          <Badge variant="outline" className={statusClass(t.current_status)}>
-                            {statusLabel(t.current_status)}
-                          </Badge>
-                        </td>
-                        <td className="px-4 py-3 text-xs">
-                          <div className="text-foreground/90">{t.sentiment?.frustration_level}</div>
-                          <div className="text-muted-foreground">churn: {t.sentiment?.churn_likelihood}</div>
-                        </td>
-                        <td className="px-4 py-3 text-xs text-foreground/80">{t.ownership}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </Card>
-          </TabsContent>
-
-          {/* OVERVIEW */}
-          <TabsContent value="overview" className="space-y-4">
+        {/* ── OVERVIEW (Analytics) ── */}
+        {view === "overview" && (
+          <div className="space-y-4">
             <div className="grid lg:grid-cols-3 gap-4">
-              <Card className="p-4 bg-card/60">
-                <h3 className="text-sm font-semibold mb-2">Priority Distribution</h3>
+              <Card className="p-5 bg-white dark:bg-card border-border/60 shadow-sm">
+                <h3 className="text-sm font-semibold mb-1 text-foreground">Priority Distribution</h3>
+                <p className="text-xs text-muted-foreground mb-3">Breakdown by urgency level</p>
                 <PriorityChart tickets={tickets} />
               </Card>
-              <Card className="p-4 bg-card/60">
-                <h3 className="text-sm font-semibold mb-2">Customer Frustration</h3>
+              <Card className="p-5 bg-white dark:bg-card border-border/60 shadow-sm">
+                <h3 className="text-sm font-semibold mb-1 text-foreground">Status Overview</h3>
+                <p className="text-xs text-muted-foreground mb-3">Resolution pipeline</p>
+                <StatusChart tickets={tickets} />
+              </Card>
+              <Card className="p-5 bg-white dark:bg-card border-border/60 shadow-sm">
+                <h3 className="text-sm font-semibold mb-1 text-foreground">Customer Frustration</h3>
+                <p className="text-xs text-muted-foreground mb-3">Sentiment intensity levels</p>
                 <SentimentChart tickets={tickets} />
               </Card>
-              <Card className="p-4 bg-card/60 lg:col-span-1">
-                <h3 className="text-sm font-semibold mb-2">Top Categories</h3>
+            </div>
+            <div className="grid lg:grid-cols-2 gap-4">
+              <Card className="p-5 bg-white dark:bg-card border-border/60 shadow-sm">
+                <h3 className="text-sm font-semibold mb-1 text-foreground">Top Categories</h3>
+                <p className="text-xs text-muted-foreground mb-3">Most frequent complaint types</p>
                 <CategoryChart tickets={tickets} />
               </Card>
+              <Card className="p-5 bg-white dark:bg-card border-border/60 shadow-sm">
+                <h3 className="text-sm font-semibold mb-1 text-foreground">Assignment Load</h3>
+                <p className="text-xs text-muted-foreground mb-3">Tickets per owner</p>
+                <OwnershipChart tickets={tickets} />
+              </Card>
             </div>
-          </TabsContent>
+            <div className="grid lg:grid-cols-2 gap-4">
+              <Card className="p-5 bg-white dark:bg-card border-border/60 shadow-sm">
+                <h3 className="text-sm font-semibold mb-1 text-foreground">Ticket Age Distribution</h3>
+                <p className="text-xs text-muted-foreground mb-3">How long tickets have been open</p>
+                <AgingChart tickets={tickets} />
+              </Card>
+              <Card className="p-5 bg-white dark:bg-card border-border/60 shadow-sm">
+                <h3 className="text-sm font-semibold mb-1 text-foreground">Churn Risk Levels</h3>
+                <p className="text-xs text-muted-foreground mb-3">AI-assessed churn likelihood</p>
+                <ChurnRiskChart tickets={tickets} />
+              </Card>
+            </div>
 
-          {/* PRIORITY QUEUE */}
-          <TabsContent value="queue">
-            <Card className="bg-card/60 divide-y divide-border">
-              {priorityQueue.map((t, i) => (
-                <button
-                  key={t.ticket_id}
-                  onClick={() => setActiveTicket(t)}
-                  className="w-full text-left p-4 hover:bg-accent/40 transition-colors flex items-start gap-4"
-                >
-                  <div className="text-2xl font-semibold text-muted-foreground tabular-nums w-10 shrink-0">
-                    {String(i + 1).padStart(2, "0")}
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 flex-wrap mb-1">
-                      <Badge variant="outline" className={priorityClass(t.priority as Priority)}>{t.priority}</Badge>
-                      <Badge variant="outline" className={statusClass(t.current_status)}>{statusLabel(t.current_status)}</Badge>
-                      <span className="text-xs text-muted-foreground">{t.complaint_category}</span>
-                    </div>
-                    <div className="font-medium text-foreground">{t.customer_name}</div>
-                    <div className="text-sm text-muted-foreground line-clamp-2 mt-0.5">{t.issue_summary}</div>
-                  </div>
-                  <Mail className="h-4 w-4 text-muted-foreground shrink-0 mt-1" />
-                </button>
-              ))}
-            </Card>
-          </TabsContent>
-
-          {/* INSIGHTS */}
-          <TabsContent value="insights" className="space-y-4">
+            {/* Insights */}
             <div className="grid md:grid-cols-2 gap-4">
-              <Card className="p-5 bg-card/60">
-                <h3 className="text-sm font-semibold mb-3 flex items-center gap-2">
-                  <TrendingUp className="h-4 w-4 text-primary" /> Recurring Issue Patterns
+              <Card className="p-5 bg-white dark:bg-card border-border/60 shadow-sm">
+                <h3 className="text-sm font-semibold mb-3 flex items-center gap-2 text-foreground">
+                  <TrendingUp className="h-4 w-4 text-indigo-500" /> Recurring Issue Patterns
                 </h3>
                 <div className="space-y-2">
-                  {recurringIssues.map(([cat, count]) => (
-                    <div key={cat} className="flex items-center gap-3">
-                      <div className="text-sm text-foreground flex-1 truncate">{cat}</div>
-                      <div className="h-2 rounded-full bg-muted flex-1 overflow-hidden max-w-[200px]">
-                        <div
-                          className="h-full rounded-full"
-                          style={{
-                            width: `${(count / recurringIssues[0][1]) * 100}%`,
-                            background: "var(--gradient-primary)",
-                          }}
-                        />
+                  {Array.from(new Map(tickets.map((t) => [t.complaint_category, 0])))
+                    .map(([cat]) => ({
+                      cat,
+                      count: tickets.filter((t) => t.complaint_category === cat).length,
+                    }))
+                    .sort((a, b) => b.count - a.count)
+                    .slice(0, 8)
+                    .map(({ cat, count }, _, arr) => (
+                      <div key={cat} className="flex items-center gap-3">
+                        <div className="text-xs text-foreground flex-1 truncate">{cat}</div>
+                        <div className="h-1.5 rounded-full bg-muted flex-1 overflow-hidden max-w-[140px]">
+                          <div
+                            className="h-full rounded-full bg-indigo-500"
+                            style={{ width: `${(count / arr[0].count) * 100}%` }}
+                          />
+                        </div>
+                        <div className="text-xs tabular-nums text-muted-foreground w-7 text-right">{count}</div>
                       </div>
-                      <div className="text-sm tabular-nums text-muted-foreground w-8 text-right">{count}</div>
-                    </div>
-                  ))}
+                    ))}
                 </div>
               </Card>
 
-              <Card className="p-5 bg-card/60">
+              <Card className="p-5 bg-white dark:bg-card border-border/60 shadow-sm">
                 <h3 className="text-sm font-semibold mb-3 flex items-center gap-2">
-                  <ShieldAlert className="h-4 w-4 text-[var(--critical)]" /> High-Risk Indicators
+                  <Zap className="h-4 w-4 text-amber-500" /> Strategic Recommendations
                 </h3>
-                <div className="space-y-3 text-sm">
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Severe frustration</span>
-                    <span className="text-[var(--critical)] font-medium">
-                      {tickets.filter(t => t.sentiment?.frustration_level === "Severe").length}
-                    </span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Very high churn risk</span>
-                    <span className="text-[var(--high)] font-medium">
-                      {tickets.filter(t => t.sentiment?.churn_likelihood === "Very High").length}
-                    </span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Legal / refund flags</span>
-                    <span className="text-[var(--high)] font-medium">
-                      {tickets.filter(t => (t.internal_risk_flags ?? []).some(f =>
-                        /legal|lawyer|refund|chargeback/i.test(f))).length}
-                    </span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Public / PR risk</span>
-                    <span className="text-[var(--high)] font-medium">
-                      {tickets.filter(t => (t.internal_risk_flags ?? []).some(f =>
-                        /pr|social|public|reputation|media/i.test(f))).length}
-                    </span>
-                  </div>
-                </div>
+                <ul className="space-y-2.5 text-sm text-muted-foreground">
+                  {[
+                    "Address the top recurring complaint category — it accounts for the largest share of tickets.",
+                    "Establish a 2-hour SLA acknowledgement for Critical and High-Risk tickets.",
+                    "Build a refund/credit decision matrix so frontline staff can resolve without escalation.",
+                    "Review communication templates — many complaints reference perceived dismissiveness.",
+                    "Run weekly review of unresolved >72h tickets with the operations lead.",
+                    "Investigate churn risk cohort — high churn indicators warrant proactive outreach.",
+                  ].map((rec, i) => (
+                    <li key={i} className="flex items-start gap-2">
+                      <span className="h-4 w-4 rounded-full bg-amber-100 dark:bg-amber-950/30 text-amber-700 dark:text-amber-400 text-[10px] flex items-center justify-center shrink-0 mt-0.5 font-bold">
+                        {i + 1}
+                      </span>
+                      {rec}
+                    </li>
+                  ))}
+                </ul>
               </Card>
             </div>
-
-            <Card className="p-5 bg-card/60">
-              <h3 className="text-sm font-semibold mb-3">Strategic Recommendations</h3>
-              <ul className="space-y-2 text-sm text-muted-foreground list-disc pl-5">
-                <li>Address the top recurring complaint category — it accounts for the largest share of tickets and likely points to a structural issue.</li>
-                <li>Establish a 2-hour SLA acknowledgement for any ticket flagged Critical or High-Risk; route directly to management.</li>
-                <li>Build a refund/credit decision matrix so frontline staff can resolve within policy without escalation.</li>
-                <li>Review communication templates for tone — many complaints reference perceived dismissiveness.</li>
-                <li>Run weekly review of unresolved &gt;72h tickets with the operations lead to prevent churn.</li>
-              </ul>
-            </Card>
-          </TabsContent>
-        </Tabs>
+          </div>
+        )}
       </main>
 
-      <TicketDetail ticket={activeTicket} onOpenChange={(o) => !o && setActiveTicket(null)} />
+      <TicketDetail
+        ticket={activeTicket}
+        onOpenChange={(o) => !o && setActiveTicket(null)}
+        onUpdate={updateTicket}
+      />
     </div>
   );
 }
