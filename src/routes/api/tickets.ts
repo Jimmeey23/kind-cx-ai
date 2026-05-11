@@ -6,7 +6,7 @@ export const Route = createFileRoute("/api/tickets")({
       GET: async () => {
         // Prefer the live, continuously-updated file in /tmp; fall back to the
         // snapshot bundled in public/data so the app still works in production.
-        const { readFileSync, existsSync } = await import("fs");
+        const { readFileSync, existsSync } = await import("node:fs");
         const live = "/tmp/tickets.json";
         const snapshot = "public/data/tickets.json";
         const path = existsSync(live) ? live : snapshot;
