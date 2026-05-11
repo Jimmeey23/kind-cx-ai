@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import {
-  loadTickets, type Ticket, type Priority, type Status, type SortField, type SortDir,
+  loadTickets, type Ticket, type Priority, type Status, type SortField, type SortDir, type Location,
   priorityRank, priorityClass, statusClass, statusLabel, statusDotColor,
-  ALL_STATUSES, ALL_PRIORITIES, KNOWN_OWNERS, formatDate, daysOpen,
+  ALL_STATUSES, ALL_PRIORITIES, ALL_LOCATIONS, KNOWN_OWNERS, formatDate, daysOpen, getTicketLocation, locationColor,
 } from "@/lib/tickets";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -102,6 +102,9 @@ function Dashboard() {
   const [filterCategory, setFilterCategory] = useState<string>("all");
   const [filterOwner, setFilterOwner] = useState<string>("all");
   const [filterSentiment, setFilterSentiment] = useState<string>("all");
+  const [filterLocation, setFilterLocation] = useState<string>("all");
+  const [filterDateFrom, setFilterDateFrom] = useState<string>("");
+  const [filterDateTo, setFilterDateTo] = useState<string>("");
   const [sort, setSort] = useState<{ field: SortField; dir: SortDir }>({ field: "priority", dir: "desc" });
   const [activeTicket, setActiveTicket] = useState<Ticket | null>(null);
   const [selected, setSelected] = useState<Set<string>>(new Set());
@@ -165,12 +168,27 @@ function Dashboard() {
 
   const filtered = useMemo(() => {
     const q = search.toLowerCase().trim();
+    const fromDate = filterDateFrom ? new Date(filterDateFrom).getTime() : null;
+    const toDate = filterDateTo ? new Date(filterDateTo).getTime() : null;
+    
     let arr = tickets
       .filter((t) => filterPriority === "all" || (t._localPriority ?? t.priority) === filterPriority)
       .filter((t) => filterStatus === "all" || (t._localStatus ?? t.current_status) === filterStatus)
       .filter((t) => filterCategory === "all" || t.complaint_category === filterCategory)
       .filter((t) => filterOwner === "all" || (t._localOwner ?? t.ownership) === filterOwner)
       .filter((t) => filterSentiment === "all" || t.sentiment?.frustration_level === filterSentiment)
+      .filter((t) => {
+        if (filterLocation === "all") return true;
+        const loc = getTicketLocation(t);
+        return loc === filterLocation;
+      })
+      .filter((t) => {
+        if (!fromDate && !toDate) return true;
+        const tDate = new Date(t.date_opened).getTime();
+        if (fromDate && tDate < fromDate) return false;
+        if (toDate && tDate > toDate) return false;
+        return true;
+      })
       .filter((t) => {
         if (!q) return true;
         return (
@@ -221,7 +239,7 @@ function Dashboard() {
     });
 
     return arr;
-  }, [tickets, search, filterPriority, filterStatus, filterCategory, filterOwner, filterSentiment, sort]);
+  }, [tickets, search, filterPriority, filterStatus, filterCategory, filterOwner, filterSentiment, filterLocation, filterDateFrom, filterDateTo, sort]);
 
   const stats = useMemo(() => {
     const critical = tickets.filter((t) => (t._localPriority ?? t.priority) === "Critical").length;
@@ -309,11 +327,13 @@ function Dashboard() {
   const activeFilterCount = [
     filterPriority !== "all", filterStatus !== "all",
     filterCategory !== "all", filterOwner !== "all", filterSentiment !== "all",
+    filterLocation !== "all", filterDateFrom !== "", filterDateTo !== "",
   ].filter(Boolean).length;
 
   function clearFilters() {
     setFilterPriority("all"); setFilterStatus("all");
     setFilterCategory("all"); setFilterOwner("all"); setFilterSentiment("all");
+    setFilterLocation("all"); setFilterDateFrom(""); setFilterDateTo("");
     setSearch("");
   }
 
@@ -487,6 +507,27 @@ function Dashboard() {
                 {["Low","Medium","High","Severe"].map((s) => <SelectItem key={s} value={s} className="text-xs">{s}</SelectItem>)}
               </SelectContent>
             </Select>
+            <Select value={filterLocation} onValueChange={setFilterLocation}>
+              <SelectTrigger className="h-7 text-xs w-[220px] bg-background"><SelectValue placeholder="Location" /></SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all" className="text-xs">All Locations</SelectItem>
+                {ALL_LOCATIONS.map((l) => <SelectItem key={l} value={l} className="text-xs">{l}</SelectItem>)}
+              </SelectContent>
+            </Select>
+            <Input
+              type="date"
+              value={filterDateFrom}
+              onChange={(e) => setFilterDateFrom(e.target.value)}
+              placeholder="From date"
+              className="h-7 text-xs w-[130px] bg-background"
+            />
+            <Input
+              type="date"
+              value={filterDateTo}
+              onChange={(e) => setFilterDateTo(e.target.value)}
+              placeholder="To date"
+              className="h-7 text-xs w-[130px] bg-background"
+            />
           </Card>
         )}
 
@@ -541,6 +582,7 @@ function Dashboard() {
                     <ThSort field="date_opened" sort={sort} onSort={toggleSort}>Date</ThSort>
                     <ThSort field="customer_name" sort={sort} onSort={toggleSort}>Customer</ThSort>
                     <ThSort field="complaint_category" sort={sort} onSort={toggleSort}>Category</ThSort>
+                    <th className={TH_CLASS}>Location</th>
                     <ThSort field="priority" sort={sort} onSort={toggleSort}>Priority</ThSort>
                     <ThSort field="current_status" sort={sort} onSort={toggleSort}>Status</ThSort>
                     <th className={TH_CLASS}>Sentiment</th>
@@ -553,7 +595,7 @@ function Dashboard() {
                 <tbody>
                   {loading && tickets.length === 0 && (
                     <tr>
-                      <td colSpan={12} className="text-center text-muted-foreground py-16 text-sm">
+                      <td colSpan={13} className="text-center text-muted-foreground py-16 text-sm">
                         <RefreshCw className="h-5 w-5 animate-spin mx-auto mb-2 text-muted-foreground/50" />
                         Loading tickets…
                       </td>
@@ -561,7 +603,7 @@ function Dashboard() {
                   )}
                   {!loading && filtered.length === 0 && (
                     <tr>
-                      <td colSpan={12} className="text-center text-muted-foreground py-16 text-sm">
+                      <td colSpan={13} className="text-center text-muted-foreground py-16 text-sm">
                         No tickets match your filters.
                         {activeFilterCount > 0 && (
                           <button onClick={clearFilters} className="ml-2 text-primary hover:underline">Clear filters</button>
@@ -611,6 +653,11 @@ function Dashboard() {
                             <div className="text-[11px] text-muted-foreground line-clamp-1">{t.complaint_subcategory}</div>
                           )}
                           <div className="text-[11px] text-muted-foreground/70 line-clamp-1 mt-0.5">{t.issue_summary}</div>
+                        </td>
+                        <td className="px-3 py-2.5" onClick={() => setActiveTicket(t)}>
+                          <Badge variant="outline" className={`${locationColor(getTicketLocation(t))} text-[11px] px-2 py-0 whitespace-nowrap`}>
+                            {getTicketLocation(t) || "Unknown"}
+                          </Badge>
                         </td>
                         <td className="px-3 py-2.5" onClick={() => setActiveTicket(t)}>
                           <Badge variant="outline" className={`${priorityClass(p)} text-[11px] px-2 py-0`}>{p}</Badge>

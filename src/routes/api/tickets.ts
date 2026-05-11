@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { readFileSync, existsSync } from "fs";
 
 export const Route = createFileRoute("/api/tickets")({
   server: {
@@ -7,6 +6,7 @@ export const Route = createFileRoute("/api/tickets")({
       GET: async () => {
         // Prefer the live, continuously-updated file in /tmp; fall back to the
         // snapshot bundled in public/data so the app still works in production.
+        const { readFileSync, existsSync } = await import("fs");
         const live = "/tmp/tickets.json";
         const snapshot = "public/data/tickets.json";
         const path = existsSync(live) ? live : snapshot;

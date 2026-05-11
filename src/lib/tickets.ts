@@ -11,6 +11,7 @@ export type Status =
 export type ViewMode = "table" | "kanban" | "groups" | "timeline";
 export type SortField = "priority" | "date_opened" | "last_response_date" | "customer_name" | "complaint_category" | "current_status" | "sla_aging";
 export type SortDir = "asc" | "desc";
+export type Location = "Supreme HQ, Bandra" | "Kwality House, Kemps Corner";
 
 export interface Sentiment {
   frustration_level: "Low" | "Medium" | "High" | "Severe";
@@ -48,6 +49,7 @@ export interface Ticket {
   sla_aging: string;
   ownership: string;
   unknowns: string;
+  location?: Location;
   _thread_id?: string;
   _error?: string;
   // local overrides (stored in memory)
@@ -147,6 +149,46 @@ export const KNOWN_OWNERS = [
   "Finance Team",
   "Unassigned",
 ];
+
+// Location mapping by associate
+const ASSOCIATE_TO_LOCATION: Record<string, Location> = {
+  // Supreme HQ, Bandra
+  imran: "Supreme HQ, Bandra",
+  shipra: "Supreme HQ, Bandra",
+  deesha: "Supreme HQ, Bandra",
+  nadiya: "Supreme HQ, Bandra",
+  sheetal: "Supreme HQ, Bandra",
+  // Kwality House, Kemps Corner
+  akshay: "Kwality House, Kemps Corner",
+  taahira: "Kwality House, Kemps Corner",
+  zaheer: "Kwality House, Kemps Corner",
+  vahishta: "Kwality House, Kemps Corner",
+};
+
+export const ALL_LOCATIONS: Location[] = [
+  "Supreme HQ, Bandra",
+  "Kwality House, Kemps Corner",
+];
+
+export function getLocationFromAssociate(ownership: string): Location | undefined {
+  const key = ownership?.toLowerCase().split(/[\s,()]+/)[0];
+  return key ? ASSOCIATE_TO_LOCATION[key] : undefined;
+}
+
+export function getTicketLocation(ticket: Ticket): Location | undefined {
+  // Use explicit location if available
+  if (ticket.location) return ticket.location;
+  // Otherwise infer from ownership/associate
+  return getLocationFromAssociate(ticket.ownership);
+}
+
+export function locationColor(location?: Location): string {
+  switch (location) {
+    case "Supreme HQ, Bandra": return "bg-purple-50 text-purple-700 border-purple-200 dark:bg-purple-950/30 dark:text-purple-400 dark:border-purple-800/50";
+    case "Kwality House, Kemps Corner": return "bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-950/30 dark:text-blue-400 dark:border-blue-800/50";
+    default: return "bg-slate-50 text-slate-700 border-slate-200 dark:bg-slate-950/30 dark:text-slate-400 dark:border-slate-800/50";
+  }
+}
 
 export async function loadTickets(): Promise<Ticket[]> {
   const res = await fetch("/api/tickets", { cache: "no-store" });
