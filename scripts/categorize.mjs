@@ -1,5 +1,6 @@
 import { writeFileSync, readFileSync } from "fs";
 import crypto from "crypto";
+import { classifyEmailType } from "./email-intelligence.mjs";
 
 const threads = JSON.parse(readFileSync("scripts/threads-metadata.json", "utf-8"));
 const existing = JSON.parse(readFileSync("public/data/tickets.json", "utf-8"));
@@ -474,7 +475,10 @@ const existingIds = new Set(existing.map(t => t._thread_id));
 const merged = [
   ...existing,
   ...newTickets.filter(t => !existingIds.has(t._thread_id)),
-];
+].map((ticket) => ({
+  ...ticket,
+  ...classifyEmailType(ticket),
+}));
 
 writeFileSync("public/data/tickets.json", JSON.stringify(merged, null, 2));
 console.log(`Done! Existing: ${existing.length}, New: ${newTickets.length}, Total: ${merged.length}`);

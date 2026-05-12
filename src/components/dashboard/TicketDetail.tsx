@@ -20,7 +20,7 @@ import {
 import {
   type Ticket, type Status, type Priority, type TicketNote,
   priorityClass, statusClass, statusLabel, statusDotColor,
-  ALL_STATUSES, ALL_PRIORITIES, KNOWN_OWNERS, formatDate, daysOpen,
+  ALL_STATUSES, ALL_PRIORITIES, KNOWN_OWNERS, formatDate, daysOpen, emailTypeClass, bucketClass,
 } from "@/lib/tickets";
 
 interface Props {
@@ -120,6 +120,9 @@ export function TicketDetail({ ticket, onOpenChange, onUpdate }: Props) {
                 <Badge variant="outline" className={`${statusClass(status)} text-xs flex items-center gap-1.5`}>
                   <span className={`h-1.5 w-1.5 rounded-full ${statusDotColor(status)}`} />
                   {statusLabel(status)}
+                </Badge>
+                <Badge variant="outline" className={`${emailTypeClass(ticket.email_type)} text-xs`}>
+                  {ticket.email_type || "Unclassified"}
                 </Badge>
                 {days > 0 && (
                   <span className={`text-xs flex items-center gap-1 ${days > 30 ? "text-red-600" : days > 14 ? "text-amber-600" : "text-muted-foreground"}`}>
@@ -260,11 +263,36 @@ export function TicketDetail({ ticket, onOpenChange, onUpdate }: Props) {
             <div className="grid grid-cols-2 gap-2">
               <InfoCard icon={Calendar} label="Date Opened" value={formatDate(ticket.date_opened)} />
               <InfoCard icon={Clock} label="Last Response" value={formatDate(ticket.last_response_date)} />
+              <InfoCard icon={Target} label="Email Type" value={ticket.email_type || "Unclassified"} highlight={emailTypeClass(ticket.email_type)} />
+              <InfoCard icon={Shield} label="Intelligence Bucket" value={ticket.intelligence_bucket || "Needs Review"} highlight={bucketClass(ticket.intelligence_bucket)} />
               <InfoCard icon={Target} label="SLA Classification" value={ticket.sla_classification} />
               <InfoCard icon={Timer} label="SLA Aging" value={ticket.sla_aging || `${days} days open`}
                 highlight={days > 30 ? "bg-red-50 border-red-200 text-red-700 dark:bg-red-950/20 dark:border-red-800" : undefined}
               />
             </div>
+
+            <Card className={`p-3 border ${ticket.cx_ticket_qualified ? "bg-indigo-50 border-indigo-200 dark:bg-indigo-950/20 dark:border-indigo-800/50" : "bg-slate-50 border-slate-200 dark:bg-slate-900/40 dark:border-slate-700"}`}>
+              <div className="flex items-center justify-between gap-3">
+                <div>
+                  <div className="text-xs font-semibold text-foreground">
+                    {ticket.cx_ticket_qualified ? "Qualified CX ticket" : "Not counted as a CX ticket"}
+                  </div>
+                  <div className="text-xs text-muted-foreground mt-0.5">
+                    Confidence: {ticket.cx_ticket_confidence || "Low"}
+                  </div>
+                </div>
+                <Badge variant="outline" className={`${bucketClass(ticket.intelligence_bucket)} text-xs`}>
+                  {ticket.intelligence_bucket || "Needs Review"}
+                </Badge>
+              </div>
+              {ticket.classification_reasons?.length ? (
+                <ul className="mt-2 space-y-1 text-xs text-muted-foreground">
+                  {ticket.classification_reasons.map((reason, index) => (
+                    <li key={index}>{reason}</li>
+                  ))}
+                </ul>
+              ) : null}
+            </Card>
 
             {ticket.sla_aging && days > 14 && (
               <Card className="p-3 bg-amber-50 border-amber-200 dark:bg-amber-950/20 dark:border-amber-800/50">

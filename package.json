@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
+    "test": "node scripts/email-intelligence.test.mjs",
     "build": "vite build",
     "start": "node .output/server/index.mjs",
     "preview": "vite preview"

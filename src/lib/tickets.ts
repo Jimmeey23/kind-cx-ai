@@ -12,6 +12,25 @@ export type ViewMode = "table" | "kanban" | "groups" | "timeline";
 export type SortField = "priority" | "date_opened" | "last_response_date" | "customer_name" | "complaint_category" | "current_status" | "sla_aging";
 export type SortDir = "asc" | "desc";
 export type Location = "Supreme HQ, Bandra" | "Kwality House, Kemps Corner";
+export type EmailType =
+  | "Member Feedback"
+  | "Complaint"
+  | "Issue"
+  | "Incident"
+  | "Internal Operations"
+  | "Sales / Lead Intelligence"
+  | "Hosted Class Report"
+  | "Marketing / Partnership"
+  | "Finance / Reconciliation"
+  | "HR / Admin"
+  | "Ignore / Archive";
+export type IntelligenceBucket =
+  | "CX Ticket"
+  | "Member Voice"
+  | "Business Intelligence"
+  | "Admin Workflow"
+  | "Needs Review";
+export type CxTicketConfidence = "High" | "Medium" | "Low";
 
 export interface Sentiment {
   frustration_level: "Low" | "Medium" | "High" | "Severe";
@@ -49,6 +68,11 @@ export interface Ticket {
   sla_aging: string;
   ownership: string;
   unknowns: string;
+  email_type?: EmailType;
+  intelligence_bucket?: IntelligenceBucket;
+  cx_ticket_confidence?: CxTicketConfidence;
+  cx_ticket_qualified?: boolean;
+  classification_reasons?: string[];
   location?: Location;
   _thread_id?: string;
   _error?: string;
@@ -137,6 +161,27 @@ export const ALL_STATUSES: Status[] = [
 ];
 
 export const ALL_PRIORITIES: Priority[] = ["Critical", "High", "Medium", "Low"];
+export const ALL_EMAIL_TYPES: EmailType[] = [
+  "Complaint",
+  "Issue",
+  "Incident",
+  "Member Feedback",
+  "Hosted Class Report",
+  "Sales / Lead Intelligence",
+  "Internal Operations",
+  "Marketing / Partnership",
+  "Finance / Reconciliation",
+  "HR / Admin",
+  "Ignore / Archive",
+];
+
+export const ALL_INTELLIGENCE_BUCKETS: IntelligenceBucket[] = [
+  "CX Ticket",
+  "Member Voice",
+  "Business Intelligence",
+  "Admin Workflow",
+  "Needs Review",
+];
 
 export const KNOWN_OWNERS = [
   "Jimmeey (Corporate/Executive Leadership)",
@@ -187,6 +232,33 @@ export function locationColor(location?: Location): string {
     case "Supreme HQ, Bandra": return "bg-purple-50 text-purple-700 border-purple-200 dark:bg-purple-950/30 dark:text-purple-400 dark:border-purple-800/50";
     case "Kwality House, Kemps Corner": return "bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-950/30 dark:text-blue-400 dark:border-blue-800/50";
     default: return "bg-slate-50 text-slate-700 border-slate-200 dark:bg-slate-950/30 dark:text-slate-400 dark:border-slate-800/50";
+  }
+}
+
+export function emailTypeClass(type?: string): string {
+  switch (type) {
+    case "Complaint": return "bg-red-50 text-red-700 border-red-200 dark:bg-red-950/30 dark:text-red-400";
+    case "Incident": return "bg-rose-50 text-rose-700 border-rose-200 dark:bg-rose-950/30 dark:text-rose-400";
+    case "Issue": return "bg-orange-50 text-orange-700 border-orange-200 dark:bg-orange-950/30 dark:text-orange-400";
+    case "Member Feedback": return "bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-950/30 dark:text-emerald-400";
+    case "Hosted Class Report": return "bg-fuchsia-50 text-fuchsia-700 border-fuchsia-200 dark:bg-fuchsia-950/30 dark:text-fuchsia-400";
+    case "Sales / Lead Intelligence": return "bg-cyan-50 text-cyan-700 border-cyan-200 dark:bg-cyan-950/30 dark:text-cyan-400";
+    case "Internal Operations": return "bg-slate-50 text-slate-700 border-slate-200 dark:bg-slate-800/50 dark:text-slate-300";
+    case "Marketing / Partnership": return "bg-pink-50 text-pink-700 border-pink-200 dark:bg-pink-950/30 dark:text-pink-400";
+    case "Finance / Reconciliation": return "bg-lime-50 text-lime-700 border-lime-200 dark:bg-lime-950/30 dark:text-lime-400";
+    case "HR / Admin": return "bg-stone-50 text-stone-700 border-stone-200 dark:bg-stone-900/50 dark:text-stone-300";
+    default: return "bg-muted text-muted-foreground border-border";
+  }
+}
+
+export function bucketClass(bucket?: string): string {
+  switch (bucket) {
+    case "CX Ticket": return "bg-indigo-50 text-indigo-700 border-indigo-200 dark:bg-indigo-950/30 dark:text-indigo-400";
+    case "Member Voice": return "bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-950/30 dark:text-emerald-400";
+    case "Business Intelligence": return "bg-sky-50 text-sky-700 border-sky-200 dark:bg-sky-950/30 dark:text-sky-400";
+    case "Admin Workflow": return "bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-950/30 dark:text-amber-400";
+    case "Needs Review": return "bg-violet-50 text-violet-700 border-violet-200 dark:bg-violet-950/30 dark:text-violet-400";
+    default: return "bg-muted text-muted-foreground border-border";
   }
 }
 

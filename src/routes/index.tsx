@@ -3,7 +3,8 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import {
   loadTickets, type Ticket, type Priority, type Status, type SortField, type SortDir, type Location,
   priorityRank, priorityClass, statusClass, statusLabel, statusDotColor,
-  ALL_STATUSES, ALL_PRIORITIES, ALL_LOCATIONS, KNOWN_OWNERS, formatDate, daysOpen, getTicketLocation, locationColor,
+  ALL_STATUSES, ALL_PRIORITIES, ALL_LOCATIONS, ALL_EMAIL_TYPES, ALL_INTELLIGENCE_BUCKETS,
+  KNOWN_OWNERS, formatDate, daysOpen, getTicketLocation, locationColor, emailTypeClass, bucketClass,
 } from "@/lib/tickets";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -40,6 +41,7 @@ export const Route = createFileRoute("/")({
 
 type ViewMode = "table" | "kanban" | "groups" | "overview";
 type GroupBy = "category" | "status" | "priority" | "owner";
+type TriageScope = "cx" | "all" | "non_cx" | "review";
 
 const TH_CLASS = "px-3 py-2.5 text-left text-[11px] font-semibold uppercase tracking-wider text-muted-foreground select-none";
 const TH_SORT_CLASS = `${TH_CLASS} cursor-pointer hover:text-foreground transition-colors group`;
@@ -103,6 +105,9 @@ function Dashboard() {
   const [filterOwner, setFilterOwner] = useState<string>("all");
   const [filterSentiment, setFilterSentiment] = useState<string>("all");
   const [filterLocation, setFilterLocation] = useState<string>("all");
+  const [filterEmailType, setFilterEmailType] = useState<string>("all");
+  const [filterBucket, setFilterBucket] = useState<string>("all");
+  const [triageScope, setTriageScope] = useState<TriageScope>("cx");
   const [filterDateFrom, setFilterDateFrom] = useState<string>("");
   const [filterDateTo, setFilterDateTo] = useState<string>("");
   const [sort, setSort] = useState<{ field: SortField; dir: SortDir }>({ field: "priority", dir: "desc" });
@@ -177,6 +182,14 @@ function Dashboard() {
       .filter((t) => filterCategory === "all" || t.complaint_category === filterCategory)
       .filter((t) => filterOwner === "all" || (t._localOwner ?? t.ownership) === filterOwner)
       .filter((t) => filterSentiment === "all" || t.sentiment?.frustration_level === filterSentiment)
+      .filter((t) => filterEmailType === "all" || t.email_type === filterEmailType)
+      .filter((t) => filterBucket === "all" || t.intelligence_bucket === filterBucket)
+      .filter((t) => {
+        if (triageScope === "all") return true;
+        if (triageScope === "cx") return t.cx_ticket_qualified === true;
+        if (triageScope === "non_cx") return t.cx_ticket_qualified !== true;
+        return t.intelligence_bucket === "Needs Review" || t.cx_ticket_confidence === "Low";
+      })
       .filter((t) => {
         if (filterLocation === "all") return true;
         const loc = getTicketLocation(t);
@@ -197,6 +210,8 @@ function Dashboard() {
           t.issue_summary?.toLowerCase().includes(q) ||
           t.complaint_category?.toLowerCase().includes(q) ||
           t.complaint_subcategory?.toLowerCase().includes(q) ||
+          t.email_type?.toLowerCase().includes(q) ||
+          t.intelligence_bucket?.toLowerCase().includes(q) ||
           t.ticket_id?.toLowerCase().includes(q) ||
           t.ownership?.toLowerCase().includes(q) ||
           (t._localTags ?? []).some((tag) => tag.toLowerCase().includes(q))
@@ -239,19 +254,29 @@ function Dashboard() {
     });
 
     return arr;
-  }, [tickets, search, filterPriority, filterStatus, filterCategory, filterOwner, filterSentiment, filterLocation, filterDateFrom, filterDateTo, sort]);
+  }, [tickets, search, filterPriority, filterStatus, filterCategory, filterOwner, filterSentiment, filterEmailType, filterBucket, triageScope, filterLocation, filterDateFrom, filterDateTo, sort]);
 
   const stats = useMemo(() => {
-    const critical = tickets.filter((t) => (t._localPriority ?? t.priority) === "Critical").length;
-    const high = tickets.filter((t) => (t._localPriority ?? t.priority) === "High").length;
-    const escalated = tickets.filter((t) => ["escalated", "high_risk"].includes(t._localStatus ?? t.current_status)).length;
-    const unresolved = tickets.filter((t) => (t._localStatus ?? t.current_status) !== "resolved").length;
-    const resolved = tickets.filter((t) => (t._localStatus ?? t.current_status) === "resolved").length;
-    const churnRisk = tickets.filter((t) => ["High", "Very High"].includes(t.sentiment?.churn_likelihood ?? "")).length;
-    const avgDays = tickets.length
-      ? Math.round(tickets.reduce((s, t) => s + daysOpen(t.date_opened), 0) / tickets.length)
+    const metricTickets = triageScope === "all" ? tickets : filtered;
+    const critical = metricTickets.filter((t) => (t._localPriority ?? t.priority) === "Critical").length;
+    const high = metricTickets.filter((t) => (t._localPriority ?? t.priority) === "High").length;
+    const escalated = metricTickets.filter((t) => ["escalated", "high_risk"].includes(t._localStatus ?? t.current_status)).length;
+    const unresolved = metricTickets.filter((t) => (t._localStatus ?? t.current_status) !== "resolved").length;
+    const resolved = metricTickets.filter((t) => (t._localStatus ?? t.current_status) === "resolved").length;
+    const churnRisk = metricTickets.filter((t) => ["High", "Very High"].includes(t.sentiment?.churn_likelihood ?? "")).length;
+    const avgDays = metricTickets.length
+      ? Math.round(metricTickets.reduce((s, t) => s + daysOpen(t.date_opened), 0) / metricTickets.length)
       : 0;
-    return { total: tickets.length, critical, high, escalated, unresolved, resolved, churnRisk, avgDays };
+    return { total: metricTickets.length, critical, high, escalated, unresolved, resolved, churnRisk, avgDays };
+  }, [filtered, tickets, triageScope]);
+
+  const intelligenceStats = useMemo(() => {
+    const cx = tickets.filter((t) => t.cx_ticket_qualified === true).length;
+    const nonCx = tickets.length - cx;
+    const review = tickets.filter((t) => t.intelligence_bucket === "Needs Review" || t.cx_ticket_confidence === "Low").length;
+    const business = tickets.filter((t) => t.intelligence_bucket === "Business Intelligence").length;
+    const admin = tickets.filter((t) => t.intelligence_bucket === "Admin Workflow").length;
+    return { cx, nonCx, review, business, admin };
   }, [tickets]);
 
   // Grouped view
@@ -327,12 +352,14 @@ function Dashboard() {
   const activeFilterCount = [
     filterPriority !== "all", filterStatus !== "all",
     filterCategory !== "all", filterOwner !== "all", filterSentiment !== "all",
-    filterLocation !== "all", filterDateFrom !== "", filterDateTo !== "",
+    filterEmailType !== "all", filterBucket !== "all", filterLocation !== "all",
+    filterDateFrom !== "", filterDateTo !== "",
   ].filter(Boolean).length;
 
   function clearFilters() {
     setFilterPriority("all"); setFilterStatus("all");
     setFilterCategory("all"); setFilterOwner("all"); setFilterSentiment("all");
+    setFilterEmailType("all"); setFilterBucket("all");
     setFilterLocation("all"); setFilterDateFrom(""); setFilterDateTo("");
     setSearch("");
   }
@@ -348,7 +375,7 @@ function Dashboard() {
             </div>
             <div>
               <h1 className="text-sm font-semibold leading-tight text-foreground">Customer Experience Ops</h1>
-              <p className="text-xs text-muted-foreground">Issues & Complaints — AI Triage Console</p>
+              <p className="text-xs text-muted-foreground">Member Voice & Email Intelligence — AI Triage Console</p>
             </div>
           </div>
           <div className="flex items-center gap-2">
@@ -379,7 +406,7 @@ function Dashboard() {
       <main className="max-w-[1700px] mx-auto px-5 py-5 space-y-5">
         {/* Stats */}
         <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
-          <StatCard label="Total" value={stats.total} icon={Inbox} colorClass="text-indigo-600 dark:text-indigo-400" />
+          <StatCard label={triageScope === "cx" ? "CX Tickets" : "Visible"} value={stats.total} icon={Inbox} colorClass="text-indigo-600 dark:text-indigo-400" />
           <StatCard label="Critical" value={stats.critical} icon={AlertTriangle} colorClass="text-red-600 dark:text-red-400" />
           <StatCard label="High Priority" value={stats.high} icon={TrendingUp} colorClass="text-orange-600 dark:text-orange-400" />
           <StatCard label="Escalated" value={stats.escalated} icon={ShieldAlert} colorClass="text-red-700 dark:text-red-400" />
@@ -388,6 +415,37 @@ function Dashboard() {
           <StatCard label="Churn Risk" value={stats.churnRisk} icon={TrendingUp} colorClass="text-rose-600 dark:text-rose-400" />
           <StatCard label="Avg Age" value={`${stats.avgDays}d`} icon={Timer} colorClass="text-slate-600 dark:text-slate-400" />
         </div>
+
+        <Card className="p-3 bg-white dark:bg-card border-border/60 shadow-sm">
+          <div className="flex flex-wrap items-center gap-2">
+            {([
+              { value: "cx", label: "CX Tickets", count: intelligenceStats.cx },
+              { value: "non_cx", label: "Non-CX Intelligence", count: intelligenceStats.nonCx },
+              { value: "review", label: "Needs Review", count: intelligenceStats.review },
+              { value: "all", label: "All Email Records", count: tickets.length },
+            ] as { value: TriageScope; label: string; count: number }[]).map((item) => (
+              <Button
+                key={item.value}
+                size="sm"
+                variant={triageScope === item.value ? "default" : "outline"}
+                className="h-8 text-xs gap-1.5"
+                onClick={() => setTriageScope(item.value)}
+              >
+                {item.label}
+                <span className={`rounded-full px-1.5 py-0 text-[10px] ${triageScope === item.value ? "bg-white/20 text-white" : "bg-muted text-muted-foreground"}`}>
+                  {item.count}
+                </span>
+              </Button>
+            ))}
+            <Separator orientation="vertical" className="h-5 mx-1 hidden sm:block" />
+            <Badge variant="outline" className={`${bucketClass("Business Intelligence")} text-[11px]`}>
+              Business Intel: {intelligenceStats.business}
+            </Badge>
+            <Badge variant="outline" className={`${bucketClass("Admin Workflow")} text-[11px]`}>
+              Admin: {intelligenceStats.admin}
+            </Badge>
+          </div>
+        </Card>
 
         {/* View selector + search + filters */}
         <div className="flex flex-wrap items-center gap-2">
@@ -432,7 +490,7 @@ function Dashboard() {
             <Search className="h-3.5 w-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
             <Input
               className="pl-9 h-8 text-xs bg-background"
-              placeholder="Search tickets, customers, categories, tags…"
+              placeholder="Search tickets, members, email types, categories, tags…"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
@@ -465,7 +523,7 @@ function Dashboard() {
           )}
 
           <div className="ml-auto text-xs text-muted-foreground tabular-nums">
-            {filtered.length} / {tickets.length} tickets
+            {filtered.length} / {tickets.length} records
           </div>
         </div>
 
@@ -505,6 +563,20 @@ function Dashboard() {
               <SelectContent>
                 <SelectItem value="all" className="text-xs">All Sentiments</SelectItem>
                 {["Low","Medium","High","Severe"].map((s) => <SelectItem key={s} value={s} className="text-xs">{s}</SelectItem>)}
+              </SelectContent>
+            </Select>
+            <Select value={filterEmailType} onValueChange={setFilterEmailType}>
+              <SelectTrigger className="h-7 text-xs w-[190px] bg-background"><SelectValue placeholder="Email Type" /></SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all" className="text-xs">All Email Types</SelectItem>
+                {ALL_EMAIL_TYPES.map((type) => <SelectItem key={type} value={type} className="text-xs">{type}</SelectItem>)}
+              </SelectContent>
+            </Select>
+            <Select value={filterBucket} onValueChange={setFilterBucket}>
+              <SelectTrigger className="h-7 text-xs w-[190px] bg-background"><SelectValue placeholder="Intelligence Bucket" /></SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all" className="text-xs">All Buckets</SelectItem>
+                {ALL_INTELLIGENCE_BUCKETS.map((bucket) => <SelectItem key={bucket} value={bucket} className="text-xs">{bucket}</SelectItem>)}
               </SelectContent>
             </Select>
             <Select value={filterLocation} onValueChange={setFilterLocation}>
@@ -581,6 +653,7 @@ function Dashboard() {
                     <th className={TH_CLASS}>Ticket ID</th>
                     <ThSort field="date_opened" sort={sort} onSort={toggleSort}>Date</ThSort>
                     <ThSort field="customer_name" sort={sort} onSort={toggleSort}>Customer</ThSort>
+                    <th className={TH_CLASS}>Intelligence</th>
                     <ThSort field="complaint_category" sort={sort} onSort={toggleSort}>Category</ThSort>
                     <th className={TH_CLASS}>Location</th>
                     <ThSort field="priority" sort={sort} onSort={toggleSort}>Priority</ThSort>
@@ -595,16 +668,16 @@ function Dashboard() {
                 <tbody>
                   {loading && tickets.length === 0 && (
                     <tr>
-                      <td colSpan={13} className="text-center text-muted-foreground py-16 text-sm">
+                      <td colSpan={14} className="text-center text-muted-foreground py-16 text-sm">
                         <RefreshCw className="h-5 w-5 animate-spin mx-auto mb-2 text-muted-foreground/50" />
-                        Loading tickets…
+                        Loading email intelligence…
                       </td>
                     </tr>
                   )}
                   {!loading && filtered.length === 0 && (
                     <tr>
-                      <td colSpan={13} className="text-center text-muted-foreground py-16 text-sm">
-                        No tickets match your filters.
+                      <td colSpan={14} className="text-center text-muted-foreground py-16 text-sm">
+                        No email records match your filters.
                         {activeFilterCount > 0 && (
                           <button onClick={clearFilters} className="ml-2 text-primary hover:underline">Clear filters</button>
                         )}
@@ -646,6 +719,17 @@ function Dashboard() {
                         <td className="px-3 py-2.5 max-w-[180px]" onClick={() => setActiveTicket(t)}>
                           <div className="font-medium text-foreground text-xs truncate">{t.customer_name}</div>
                           <div className="text-[11px] text-muted-foreground truncate">{t.customer_email}</div>
+                        </td>
+                        <td className="px-3 py-2.5 max-w-[170px]" onClick={() => setActiveTicket(t)}>
+                          <Badge variant="outline" className={`${emailTypeClass(t.email_type)} text-[10px] px-1.5 py-0 mb-1`}>
+                            {t.email_type || "Unclassified"}
+                          </Badge>
+                          <div className="flex items-center gap-1">
+                            <Badge variant="outline" className={`${bucketClass(t.intelligence_bucket)} text-[10px] px-1.5 py-0`}>
+                              {t.intelligence_bucket || "Needs Review"}
+                            </Badge>
+                            <span className="text-[10px] text-muted-foreground">{t.cx_ticket_confidence || "Low"}</span>
+                          </div>
                         </td>
                         <td className="px-3 py-2.5 max-w-[220px]" onClick={() => setActiveTicket(t)}>
                           <div className="text-xs font-medium text-foreground line-clamp-1">{t.complaint_category}</div>
@@ -693,7 +777,7 @@ function Dashboard() {
               </table>
             </div>
             <div className="px-4 py-2.5 border-t border-border/40 bg-muted/20 text-xs text-muted-foreground flex items-center justify-between">
-              <span>Showing {filtered.length} of {tickets.length} tickets</span>
+              <span>Showing {filtered.length} of {tickets.length} email records</span>
               <Button size="sm" variant="ghost" className="h-6 text-xs gap-1.5 text-muted-foreground" onClick={exportCSV}>
                 <Download className="h-3 w-3" /> Export CSV
               </Button>
@@ -724,7 +808,7 @@ function Dashboard() {
                   <div className="flex items-center gap-3">
                     <h3 className="text-sm font-semibold text-foreground">{g.key}</h3>
                     <Badge variant="outline" className="bg-background text-muted-foreground text-[11px] px-2 py-0">
-                      {g.tickets.length} tickets
+                      {g.tickets.length} records
                     </Badge>
                   </div>
                   <div className="flex gap-1.5">
@@ -784,7 +868,7 @@ function Dashboard() {
                       {g.tickets.length > 10 && (
                         <tr>
                           <td colSpan={7} className="px-4 py-2 text-xs text-muted-foreground italic">
-                            + {g.tickets.length - 10} more tickets in this group
+                            + {g.tickets.length - 10} more records in this group
                           </td>
                         </tr>
                       )}
@@ -803,41 +887,41 @@ function Dashboard() {
               <Card className="p-5 bg-white dark:bg-card border-border/60 shadow-sm">
                 <h3 className="text-sm font-semibold mb-1 text-foreground">Priority Distribution</h3>
                 <p className="text-xs text-muted-foreground mb-3">Breakdown by urgency level</p>
-                <PriorityChart tickets={tickets} />
+                <PriorityChart tickets={filtered} />
               </Card>
               <Card className="p-5 bg-white dark:bg-card border-border/60 shadow-sm">
                 <h3 className="text-sm font-semibold mb-1 text-foreground">Status Overview</h3>
                 <p className="text-xs text-muted-foreground mb-3">Resolution pipeline</p>
-                <StatusChart tickets={tickets} />
+                <StatusChart tickets={filtered} />
               </Card>
               <Card className="p-5 bg-white dark:bg-card border-border/60 shadow-sm">
                 <h3 className="text-sm font-semibold mb-1 text-foreground">Customer Frustration</h3>
                 <p className="text-xs text-muted-foreground mb-3">Sentiment intensity levels</p>
-                <SentimentChart tickets={tickets} />
+                <SentimentChart tickets={filtered} />
               </Card>
             </div>
             <div className="grid lg:grid-cols-2 gap-4">
               <Card className="p-5 bg-white dark:bg-card border-border/60 shadow-sm">
                 <h3 className="text-sm font-semibold mb-1 text-foreground">Top Categories</h3>
                 <p className="text-xs text-muted-foreground mb-3">Most frequent complaint types</p>
-                <CategoryChart tickets={tickets} />
+                <CategoryChart tickets={filtered} />
               </Card>
               <Card className="p-5 bg-white dark:bg-card border-border/60 shadow-sm">
                 <h3 className="text-sm font-semibold mb-1 text-foreground">Assignment Load</h3>
                 <p className="text-xs text-muted-foreground mb-3">Tickets per owner</p>
-                <OwnershipChart tickets={tickets} />
+                <OwnershipChart tickets={filtered} />
               </Card>
             </div>
             <div className="grid lg:grid-cols-2 gap-4">
               <Card className="p-5 bg-white dark:bg-card border-border/60 shadow-sm">
                 <h3 className="text-sm font-semibold mb-1 text-foreground">Ticket Age Distribution</h3>
                 <p className="text-xs text-muted-foreground mb-3">How long tickets have been open</p>
-                <AgingChart tickets={tickets} />
+                <AgingChart tickets={filtered} />
               </Card>
               <Card className="p-5 bg-white dark:bg-card border-border/60 shadow-sm">
                 <h3 className="text-sm font-semibold mb-1 text-foreground">Churn Risk Levels</h3>
                 <p className="text-xs text-muted-foreground mb-3">AI-assessed churn likelihood</p>
-                <ChurnRiskChart tickets={tickets} />
+                <ChurnRiskChart tickets={filtered} />
               </Card>
             </div>
 
@@ -848,10 +932,10 @@ function Dashboard() {
                   <TrendingUp className="h-4 w-4 text-indigo-500" /> Recurring Issue Patterns
                 </h3>
                 <div className="space-y-2">
-                  {Array.from(new Map(tickets.map((t) => [t.complaint_category, 0])))
+                  {Array.from(new Map(filtered.map((t) => [t.complaint_category, 0])))
                     .map(([cat]) => ({
                       cat,
-                      count: tickets.filter((t) => t.complaint_category === cat).length,
+                      count: filtered.filter((t) => t.complaint_category === cat).length,
                     }))
                     .sort((a, b) => b.count - a.count)
                     .slice(0, 8)
