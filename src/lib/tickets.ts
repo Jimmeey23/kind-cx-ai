@@ -263,7 +263,10 @@ export function bucketClass(bucket?: string): string {
 }
 
 export async function loadTickets(): Promise<Ticket[]> {
-  const res = await fetch("/api/tickets", { cache: "no-store" });
-  const raw = (await res.json()) as Ticket[];
+  const apiRes = await fetch("/api/tickets", { cache: "no-store" });
+  const apiRaw = apiRes.ok ? ((await apiRes.json()) as Ticket[]) : [];
+  const raw = apiRaw.length > 0
+    ? apiRaw
+    : ((await (await fetch("/data/tickets.json", { cache: "no-store" })).json()) as Ticket[]);
   return raw.filter((t) => !t._error && t.ticket_id);
 }
